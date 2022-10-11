@@ -10,6 +10,10 @@ export const LoginMainSection = styled.section`
 `;
 
 export const LoginFormSection = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 100%;
   width: 45%;
 `;

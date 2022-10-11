@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../../images/Logo.jpg';
+import components from '../../components';
 import {
   LoginMainSection,
   LoginLogo,
@@ -8,6 +9,7 @@ import {
 } from './loginStyles';
 
 function LoginPage() {
+  const { Input } = components;
   return (
     <LoginMainSection>
       <LoginLogoContainer>
@@ -17,7 +19,12 @@ function LoginPage() {
           data-testid="login-logo"
         />
       </LoginLogoContainer>
-      <LoginFormSection />
+      <LoginFormSection>
+        <Input
+          margin="2rem 0"
+        />
+        <Input />
+      </LoginFormSection>
     </LoginMainSection>
   );
 }
