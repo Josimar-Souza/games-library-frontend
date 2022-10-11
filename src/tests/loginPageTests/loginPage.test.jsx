@@ -8,6 +8,7 @@ import pages from '../../pages';
 const emailInputTestId = 'email-input-login';
 const passwordInputTestId = 'password-input-login';
 const feedbackTestId = 'feedback-login';
+const loginLogoTestId = 'login-logo';
 
 describe('Testes da página de login', () => {
   describe('Verifica a existência dos elementos', () => {
@@ -16,7 +17,7 @@ describe('Testes da página de login', () => {
     });
 
     it('Verifica se a logo aparece na página', async () => {
-      const logo = await screen.findByTestId('login-logo');
+      const logo = await screen.findByTestId(loginLogoTestId);
 
       expect(logo).toBeInTheDocument();
     });

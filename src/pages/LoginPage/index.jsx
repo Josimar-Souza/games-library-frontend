@@ -1,10 +1,23 @@
 import React from 'react';
-import LoginMainSection from './loginStyles';
+import Logo from '../../images/Logo.jpg';
+import {
+  LoginMainSection,
+  LoginLogo,
+  LoginFormSection,
+  LoginLogoContainer,
+} from './loginStyles';
 
 function LoginPage() {
   return (
     <LoginMainSection>
-      <h1>Login Page</h1>
+      <LoginLogoContainer>
+        <LoginLogo
+          src={Logo}
+          alt="Logo da aplicação"
+          data-testid="login-logo"
+        />
+      </LoginLogoContainer>
+      <LoginFormSection />
     </LoginMainSection>
   );
 }
