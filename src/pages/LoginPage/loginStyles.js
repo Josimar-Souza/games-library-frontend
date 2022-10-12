@@ -15,7 +15,7 @@ export const LoginFormSection = styled.form`
   flex-direction: column;
   justify-content: center;
   max-width: 100%;
-  width: 45%;
+  width: 50%;
 `;
 
 export const LoginLogoContainer = styled.div`
@@ -27,7 +27,7 @@ export const LoginLogoContainer = styled.div`
 `;
 
 export const LoginLogo = styled.img`
-  width: 100%;
+  width: 80%;
 `;
 
 export const LoginInputsContainer = styled.div`
