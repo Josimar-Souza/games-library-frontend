@@ -17,6 +17,7 @@ function LoginPage() {
     Paragraph,
     Button,
   } = components;
+
   return (
     <LoginMainSection>
       <LoginLogoContainer>
@@ -53,10 +54,22 @@ function LoginPage() {
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>
-          <Button>
+          <Button
+            width="45%"
+            borderRadius="8px"
+            hoverCursor="pointer"
+            hoverTransform="scale(1.1, 1.1)"
+            transition="0.2s"
+          >
             Logar
           </Button>
-          <Button>
+          <Button
+            width="45%"
+            borderRadius="8px"
+            hoverCursor="pointer"
+            hoverTransform="scale(1.1, 1.1)"
+            transition="0.2s"
+          >
             Registre-se
           </Button>
         </LoginButtonsContainer>
