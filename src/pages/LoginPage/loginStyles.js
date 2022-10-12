@@ -9,7 +9,7 @@ export const LoginMainSection = styled.section`
   width: 100%
 `;
 
-export const LoginFormSection = styled.div`
+export const LoginFormSection = styled.form`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -28,4 +28,10 @@ export const LoginLogoContainer = styled.div`
 
 export const LoginLogo = styled.img`
   width: 100%;
+`;
+
+export const LoginInputsContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `;

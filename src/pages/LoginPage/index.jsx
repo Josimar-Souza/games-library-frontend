@@ -6,10 +6,11 @@ import {
   LoginLogo,
   LoginFormSection,
   LoginLogoContainer,
+  LoginInputsContainer,
 } from './loginStyles';
 
 function LoginPage() {
-  const { Input } = components;
+  const { Input, Title } = components;
   return (
     <LoginMainSection>
       <LoginLogoContainer>
@@ -20,10 +21,25 @@ function LoginPage() {
         />
       </LoginLogoContainer>
       <LoginFormSection>
-        <Input
-          margin="2rem 0"
-        />
-        <Input />
+        <Title
+          textAlign="center"
+        >
+          Bem vindo ao Games Library!
+        </Title>
+        <LoginInputsContainer>
+          <Input
+            testId="email-input-login"
+            margin="2rem 0"
+            width="100%"
+            placeholder="Digite seu email"
+          />
+          <Input
+            testId="password-input-login"
+            margin="2rem 0"
+            width="100%"
+            placeholder="Digite sua senha"
+          />
+        </LoginInputsContainer>
       </LoginFormSection>
     </LoginMainSection>
   );
