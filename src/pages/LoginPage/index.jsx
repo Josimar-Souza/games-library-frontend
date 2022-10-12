@@ -7,6 +7,7 @@ import {
   LoginFormSection,
   LoginLogoContainer,
   LoginInputsContainer,
+  LoginButtonsContainer,
 } from './loginStyles';
 
 function LoginPage() {
@@ -14,6 +15,7 @@ function LoginPage() {
     Input,
     Title,
     Paragraph,
+    Button,
   } = components;
   return (
     <LoginMainSection>
@@ -50,6 +52,14 @@ function LoginPage() {
             placeholder="Digite sua senha"
           />
         </LoginInputsContainer>
+        <LoginButtonsContainer>
+          <Button>
+            Logar
+          </Button>
+          <Button>
+            Registre-se
+          </Button>
+        </LoginButtonsContainer>
       </LoginFormSection>
     </LoginMainSection>
   );

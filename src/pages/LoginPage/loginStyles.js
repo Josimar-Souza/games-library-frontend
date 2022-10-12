@@ -35,3 +35,10 @@ export const LoginInputsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const LoginButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 50%;
+`;
