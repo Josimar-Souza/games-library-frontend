@@ -17,6 +17,7 @@ function Input(props) {
     onChange,
     margin,
     placeholder,
+    name,
   } = props;
 
   return (
@@ -34,6 +35,7 @@ function Input(props) {
       onChange={onChange}
       margin={margin}
       placeholder={placeholder}
+      name={name}
     />
   );
 }
@@ -50,6 +52,7 @@ Input.defaultProps = {
   boxShadow: 'none',
   margin: '0',
   placeholder: '',
+  name: '',
 };
 
 Input.propTypes = {
@@ -66,6 +69,7 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   margin: PropTypes.string,
   placeholder: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default Input;

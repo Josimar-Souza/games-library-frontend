@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../../images/Logo.jpg';
 import components from '../../components';
 import {
@@ -11,12 +11,18 @@ import {
 } from './loginStyles';
 
 function LoginPage() {
+  const [email, setEmail] = useState({ value: '', color: '' });
+
   const {
     Input,
     Title,
     Paragraph,
     Button,
   } = components;
+
+  const onInputChange = ({ target: { value } }) => {
+    setEmail({ ...email, value });
+  };
 
   return (
     <LoginMainSection>
@@ -45,12 +51,17 @@ function LoginPage() {
             margin="2rem 0"
             width="100%"
             placeholder="Digite seu email"
+            onChange={onInputChange}
+            name="email"
+            value={email.value}
           />
           <Input
             testId="password-input-login"
             margin="2rem 0"
             width="100%"
             placeholder="Digite sua senha"
+            onChange={onInputChange}
+            name="password"
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>

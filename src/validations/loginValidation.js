@@ -1,8 +1,11 @@
-import joi from 'joi';
+export const passwordValidation = (value) => {
+  const pattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!#$%&*])[a-zA-Z\d!#$%&*]{8,12}/;
 
-const loginSchema = joi.object({
-  email: joi.string().email().required(),
-  password: joi.string().required().regex(/(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&*])[a-zA-Z\d!#$%&*]{8, 12}/),
-});
+  return pattern.test(value);
+};
 
-export default (value) => loginSchema.validate(value);
+export const emailValidation = (value) => {
+  const pattern = /^[a-zA-Z0-9.]+@[a-z]+(.com)$/;
+
+  return pattern.test(value);
+};
