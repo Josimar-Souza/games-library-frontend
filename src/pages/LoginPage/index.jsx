@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../../images/Logo.jpg';
 import components from '../../components';
+import { emailValidation, passwordValidation } from '../../validations/loginValidation';
 import {
   LoginMainSection,
   LoginLogo,
@@ -12,6 +13,7 @@ import {
 
 function LoginPage() {
   const [email, setEmail] = useState({ value: '', color: '' });
+  const [password, setPassword] = useState({ value: '', color: '' });
 
   const {
     Input,
@@ -20,8 +22,24 @@ function LoginPage() {
     Button,
   } = components;
 
-  const onInputChange = ({ target: { value } }) => {
-    setEmail({ ...email, value });
+  const handleInputChange = ({ target: { value, name } }) => {
+    if (name === 'email') {
+      const validationResult = emailValidation(value);
+
+      if (!validationResult) {
+        setEmail({ ...email, value, color: 'red' });
+      } else {
+        setEmail({ ...email, value, color: 'green' });
+      }
+    } else {
+      const validationResult = passwordValidation(value);
+
+      if (!validationResult) {
+        setPassword({ ...password, value, color: 'red' });
+      } else {
+        setPassword({ ...password, value, color: 'green' });
+      }
+    }
   };
 
   return (
@@ -51,7 +69,7 @@ function LoginPage() {
             margin="2rem 0"
             width="100%"
             placeholder="Digite seu email"
-            onChange={onInputChange}
+            onChange={handleInputChange}
             name="email"
             value={email.value}
           />
@@ -60,8 +78,9 @@ function LoginPage() {
             margin="2rem 0"
             width="100%"
             placeholder="Digite sua senha"
-            onChange={onInputChange}
+            onChange={handleInputChange}
             name="password"
+            type="password"
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>

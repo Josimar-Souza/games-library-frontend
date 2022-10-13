@@ -18,6 +18,7 @@ function Input(props) {
     margin,
     placeholder,
     name,
+    type,
   } = props;
 
   return (
@@ -36,6 +37,7 @@ function Input(props) {
       margin={margin}
       placeholder={placeholder}
       name={name}
+      type={type}
     />
   );
 }
@@ -53,6 +55,7 @@ Input.defaultProps = {
   margin: '0',
   placeholder: '',
   name: '',
+  type: 'text',
 };
 
 Input.propTypes = {
@@ -70,6 +73,7 @@ Input.propTypes = {
   margin: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default Input;
