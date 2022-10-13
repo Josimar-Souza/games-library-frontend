@@ -12,8 +12,16 @@ import {
 } from './loginStyles';
 
 function LoginPage() {
-  const [email, setEmail] = useState({ value: '', color: '' });
-  const [password, setPassword] = useState({ value: '', color: '' });
+  const [email, setEmail] = useState({
+    value: '',
+    border: '1px solid black',
+    boxShadow: 'none',
+  });
+  const [password, setPassword] = useState({
+    value: '',
+    border: '1px solid black',
+    boxShadow: 'none',
+  });
 
   const {
     Input,
@@ -27,17 +35,37 @@ function LoginPage() {
       const validationResult = emailValidation(value);
 
       if (!validationResult) {
-        setEmail({ ...email, value, color: 'red' });
+        setEmail({
+          ...email,
+          value,
+          border: '1px solid red',
+          boxShadow: '0 0 10px red',
+        });
       } else {
-        setEmail({ ...email, value, color: 'green' });
+        setEmail({
+          ...email,
+          value,
+          border: '1px solid green',
+          boxShadow: '0 0 10px green',
+        });
       }
     } else {
       const validationResult = passwordValidation(value);
 
       if (!validationResult) {
-        setPassword({ ...password, value, color: 'red' });
+        setPassword({
+          ...password,
+          value,
+          border: '1px solid red',
+          boxShadow: '0 0 10px red',
+        });
       } else {
-        setPassword({ ...password, value, color: 'green' });
+        setPassword({
+          ...password,
+          value,
+          border: '1px solid green',
+          boxShadow: '0 0 10px green',
+        });
       }
     }
   };
@@ -72,6 +100,8 @@ function LoginPage() {
             onChange={handleInputChange}
             name="email"
             value={email.value}
+            border={email.border}
+            boxShadow={email.boxShadow}
           />
           <Input
             testId="password-input-login"
@@ -81,6 +111,9 @@ function LoginPage() {
             onChange={handleInputChange}
             name="password"
             type="password"
+            value={password.value}
+            border={password.border}
+            boxShadow={password.boxShadow}
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>

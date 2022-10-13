@@ -59,40 +59,40 @@ describe('Testes da página de login', () => {
 
       expect(emailInput).toHaveStyle(`
         border: 1px solid red;
-        box-shadow: 5px 5px 10px red;
+        box-shadow: 0 0 10px red;
       `);
     });
 
     it('Verifica se ao digitar um email válido, o input fica verde', async () => {
       const emailInput = await screen.findByTestId(emailInputTestId);
 
-      userEvent(emailInput, 'testemail@gmail.com');
+      userEvent.type(emailInput, 'testemail@gmail.com');
 
       expect(emailInput).toHaveStyle(`
         border: 1px solid green;
-        box-shadow: none;
+        box-shadow: 0 0 10px green;
       `);
     });
 
     it('Verifica se ao digitar uma senha inválida, o input fica vermelho', async () => {
-      const passwordInput = await findByTestId(passwordInputTestId);
+      const passwordInput = await screen.findByTestId(passwordInputTestId);
 
       userEvent.type(passwordInput, 'Kfnoiadiodw');
 
       expect(passwordInput).toHaveStyle(`
         border: 1px solid red;
-        box-shadow: 5px 5px 10px red;
+        box-shadow: 0 0 10px red;
       `);
     });
 
     it('Verifica se ao digitar um senha válida, o input fica verde', async () => {
-      const passwordInput = await findByTestId(passwordInputTestId);
+      const passwordInput = await screen.findByTestId(passwordInputTestId);
 
       userEvent.type(passwordInput, 'TestePass15!');
 
       expect(passwordInput).toHaveStyle(`
         border: 1px solid green;
-        box-shadow: none;
+        box-shadow: 0 0 10px green;
       `);
     });
 
