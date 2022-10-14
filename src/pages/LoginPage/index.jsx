@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../../images/Logo.jpg';
 import components from '../../components';
 import { emailValidation, passwordValidation } from '../../validations/loginValidation';
@@ -12,6 +13,8 @@ import {
 } from './loginStyles';
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState({
     value: '',
     border: '1px solid black',
@@ -68,6 +71,10 @@ function LoginPage() {
         });
       }
     }
+  };
+
+  const onRegisterButtonClick = () => {
+    navigate('/register');
   };
 
   return (
@@ -133,6 +140,7 @@ function LoginPage() {
             hoverCursor="pointer"
             hoverTransform="scale(1.1, 1.1)"
             transition="0.2s"
+            onClick={onRegisterButtonClick}
           >
             Registre-se
           </Button>
