@@ -9,6 +9,7 @@ const emailInputTestId = 'email-input-login';
 const passwordInputTestId = 'password-input-login';
 const feedbackTestId = 'feedback-login';
 const loginLogoTestId = 'login-logo';
+const loginParagraph = 'login-paragraph';
 
 describe('Testes da página de login', () => {
   describe('Verifica a existência dos elementos', () => {
@@ -20,6 +21,19 @@ describe('Testes da página de login', () => {
       const logo = await screen.findByTestId(loginLogoTestId);
 
       expect(logo).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um título escrito "Bem vindo ao Games Library!"', async () => {
+      const title = await screen.findByRole('heading', { name: 'Bem vindo ao Games Library!' });
+
+      expect(title).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um parágrafo escrito "Por favor, faça login ou registre-se!"', async () => {
+      const paragraph = await screen.findByTestId(loginParagraph);
+
+      expect(paragraph).toBeInTheDocument();
+      expect(paragraph.textContent).toBe('Por favor, faça login ou registre-se!');
     });
 
     it('Verifica se existe um input para o email', async () => {

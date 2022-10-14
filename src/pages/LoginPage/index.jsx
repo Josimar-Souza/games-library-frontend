@@ -86,6 +86,7 @@ function LoginPage() {
           Bem vindo ao Games Library!
         </Title>
         <Paragraph
+          testId="login-paragraph"
           textAlign="center"
           margin="1rem 0"
         >
