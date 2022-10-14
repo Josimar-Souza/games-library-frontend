@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../images/Logo.jpg';
 import components from '../../components';
-import { emailValidation, passwordValidation } from '../../validations/loginValidation';
 import {
   LoginMainSection,
   LoginLogo,
@@ -15,16 +14,7 @@ import {
 function LoginPage() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState({
-    value: '',
-    border: '1px solid black',
-    boxShadow: 'none',
-  });
-  const [password, setPassword] = useState({
-    value: '',
-    border: '1px solid black',
-    boxShadow: 'none',
-  });
+  const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
   const {
     Input,
@@ -34,43 +24,7 @@ function LoginPage() {
   } = components;
 
   const handleInputChange = ({ target: { value, name } }) => {
-    if (name === 'email') {
-      const validationResult = emailValidation(value);
-
-      if (!validationResult) {
-        setEmail({
-          ...email,
-          value,
-          border: '1px solid red',
-          boxShadow: '0 0 10px red',
-        });
-      } else {
-        setEmail({
-          ...email,
-          value,
-          border: '1px solid green',
-          boxShadow: '0 0 10px green',
-        });
-      }
-    } else {
-      const validationResult = passwordValidation(value);
-
-      if (!validationResult) {
-        setPassword({
-          ...password,
-          value,
-          border: '1px solid red',
-          boxShadow: '0 0 10px red',
-        });
-      } else {
-        setPassword({
-          ...password,
-          value,
-          border: '1px solid green',
-          boxShadow: '0 0 10px green',
-        });
-      }
-    }
+    setLoginInfo({ ...loginInfo, [name]: value });
   };
 
   const onRegisterButtonClick = () => {
@@ -107,9 +61,7 @@ function LoginPage() {
             placeholder="Digite seu email"
             onChange={handleInputChange}
             name="email"
-            value={email.value}
-            border={email.border}
-            boxShadow={email.boxShadow}
+            value={loginInfo.email}
           />
           <Input
             testId="password-input-login"
@@ -119,9 +71,7 @@ function LoginPage() {
             onChange={handleInputChange}
             name="password"
             type="password"
-            value={password.value}
-            border={password.border}
-            boxShadow={password.boxShadow}
+            value={loginInfo.password}
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>
