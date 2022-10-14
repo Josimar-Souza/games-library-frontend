@@ -66,51 +66,7 @@ describe('Testes da página de login', () => {
       renderWithRouter(<pages.LoginPage />);
     });
 
-    it('Verifica se ao digitar um email inválido, o input fica vermelho', async () => {
-      const emailInput = await screen.findByTestId(emailInputTestId);
-
-      userEvent.type(emailInput, 'email.email');
-
-      expect(emailInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
-    });
-
-    it('Verifica se ao digitar um email válido, o input fica verde', async () => {
-      const emailInput = await screen.findByTestId(emailInputTestId);
-
-      userEvent.type(emailInput, 'testemail@gmail.com');
-
-      expect(emailInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
-    });
-
-    it('Verifica se ao digitar uma senha inválida, o input fica vermelho', async () => {
-      const passwordInput = await screen.findByTestId(passwordInputTestId);
-
-      userEvent.type(passwordInput, 'Kfnoiadiodw');
-
-      expect(passwordInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
-    });
-
-    it('Verifica se ao digitar um senha válida, o input fica verde', async () => {
-      const passwordInput = await screen.findByTestId(passwordInputTestId);
-
-      userEvent.type(passwordInput, 'TestePass15!');
-
-      expect(passwordInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
-    });
-
-    it('Verifica se ao clicar no botão "Logar" com valores inválidos, uma mensagem aparece', async () => {
+    it('Verifica se ao clicar no botão "Logar" com valores inválidos, a mensagem "Email ou senha inválidos" aparece', async () => {
       const signInButton = await screen.findByRole('button', { name: 'Logar' });
       const emailInput = await screen.findByTestId(emailInputTestId);
       const passwordInput = await findByTestId(passwordInputTestId);
