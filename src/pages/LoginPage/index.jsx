@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../images/Logo.jpg';
 import components from '../../components';
+import UsersAPI from '../../api/usersAPI';
 import {
   LoginMainSection,
   LoginLogo,
@@ -11,10 +12,14 @@ import {
   LoginButtonsContainer,
 } from './loginStyles';
 
+const apiURL = process.env.REACT_APP_API_URL;
+const usersAPI = new UsersAPI(apiURL, 15000);
+
 function LoginPage() {
   const navigate = useNavigate();
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
+  const [feedbackMessage, setFeedbackMessage] = useState({ message: 'Teste', error: false });
 
   const {
     Input,
@@ -29,6 +34,37 @@ function LoginPage() {
 
   const onRegisterButtonClick = () => {
     navigate('/register');
+  };
+
+  const onLoginButtonClick = async (event) => {
+    event.preventDefault();
+
+    const result = await usersAPI.login(loginInfo);
+
+    if ('error' in result) {
+      setFeedbackMessage({ message: result.message, error: result.error });
+
+      setTimeout(() => {
+        setFeedbackMessage({ message: '', error: false });
+      }, 3000);
+    }
+  };
+
+  const getFeedbackMessage = () => {
+    if (feedbackMessage.error) {
+      return (
+        <Paragraph
+          textAlign="center"
+          fontSize="2vw"
+          margin="2rem 0"
+          fontColor="red"
+        >
+          { feedbackMessage.message }
+        </Paragraph>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -81,6 +117,7 @@ function LoginPage() {
             hoverCursor="pointer"
             hoverTransform="scale(1.1, 1.1)"
             transition="0.2s"
+            onClick={onLoginButtonClick}
           >
             Logar
           </Button>
@@ -95,6 +132,7 @@ function LoginPage() {
             Registre-se
           </Button>
         </LoginButtonsContainer>
+        { getFeedbackMessage() }
       </LoginFormSection>
     </LoginMainSection>
   );

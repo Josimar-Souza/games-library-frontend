@@ -1,4 +1,5 @@
 import axios from 'axios';
+import erros from '../tests/helpers/erros';
 
 class UsersAPI {
   constructor(baseURL, timeout) {
@@ -9,9 +10,19 @@ class UsersAPI {
   }
 
   async login(loginValues) {
-    const result = await this.api.post('/user/register', loginValues);
+    try {
+      const { data: { token } } = await this.api.post('/user/login', loginValues);
 
-    return result;
+      return token;
+    } catch ({ response }) {
+      const { data: { message } } = response;
+
+      if (message === 'User not found') {
+        return { message: erros.userNotFound, error: true };
+      }
+
+      return { message: erros.InvalidLoginValues, error: true };
+    }
   }
 }
 
