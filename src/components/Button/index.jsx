@@ -6,15 +6,19 @@ function Button(props) {
   const {
     children,
     fontSize,
+    mobileFontSize,
     fontColor,
     width,
+    mobileWidth,
     padding,
+    mobilePadding,
     backgroundColor,
     border,
     borderRadius,
     testId,
     onClick,
     margin,
+    mobileMargin,
     hoverCursor,
     hoverTransform,
     transition,
@@ -35,6 +39,10 @@ function Button(props) {
       hoverCursor={hoverCursor}
       hoverTransform={hoverTransform}
       transition={transition}
+      mobileFontSize={mobileFontSize}
+      mobileWidth={mobileWidth}
+      mobilePadding={mobilePadding}
+      mobileMargin={mobileMargin}
     >
       {children}
     </ButtonStyle>
@@ -43,14 +51,18 @@ function Button(props) {
 
 Button.defaultProps = {
   fontSize: '2vw',
+  mobileFontSize: '6vw',
   fontColor: 'black',
   width: '50%',
+  mobileWidth: '40%',
   padding: '2px',
+  mobilePadding: '2px',
   backgroundColor: '#dbdbdb',
   border: '1px solid black',
   borderRadius: '0',
   testId: '',
   margin: '0',
+  mobileMargin: '0',
   hoverCursor: 'auto',
   hoverTransform: 'none',
   transition: 'none',
@@ -71,6 +83,10 @@ Button.propTypes = {
   hoverCursor: PropTypes.string,
   hoverTransform: PropTypes.string,
   transition: PropTypes.string,
+  mobileFontSize: PropTypes.string,
+  mobileWidth: PropTypes.string,
+  mobilePadding: PropTypes.string,
+  mobileMargin: PropTypes.string,
 };
 
 export default Button;

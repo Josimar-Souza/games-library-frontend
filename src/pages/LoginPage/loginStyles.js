@@ -54,4 +54,9 @@ export const LoginButtonsContainer = styled.div`
   justify-content: space-between;
   max-width: 100%;
   width: 50%;
+
+  @media (max-width: 460px) {
+    justify-content: center;
+    width: 100%;
+  }
 `;

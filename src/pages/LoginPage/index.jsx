@@ -123,6 +123,7 @@ function LoginPage() {
             hoverTransform="scale(1.1, 1.1)"
             transition="0.2s"
             onClick={onLoginButtonClick}
+            mobileMargin="0 5px"
           >
             Logar
           </Button>
@@ -133,6 +134,7 @@ function LoginPage() {
             hoverTransform="scale(1.1, 1.1)"
             transition="0.2s"
             onClick={onRegisterButtonClick}
+            mobileMargin="0 5px"
           >
             Registre-se
           </Button>

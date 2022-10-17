@@ -14,6 +14,13 @@ const ButtonStyle = styled.button`
     cursor: ${({ hoverCursor }) => hoverCursor};
     transform: ${({ hoverTransform }) => hoverTransform};
   }
+
+  @media (max-width: 460px) {
+    font-size: ${({ mobileFontSize }) => mobileFontSize};
+    margin: ${({ mobileMargin }) => mobileMargin};
+    padding: ${({ mobilePadding }) => mobilePadding};
+    width: ${({ mobileWidth }) => mobileWidth};
+  }
 `;
 
 export default ButtonStyle;
