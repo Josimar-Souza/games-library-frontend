@@ -5,17 +5,21 @@ import InputStyle from './inputStyles';
 function Input(props) {
   const {
     width,
+    mobileWidth,
     testId,
     border,
     borderRadius,
     fontColor,
     fontSize,
+    mobileFontSize,
     backgroundColor,
     padding,
+    mobilePadding,
     boxShadow,
     value,
     onChange,
     margin,
+    mobileMargin,
     placeholder,
     name,
     type,
@@ -38,21 +42,29 @@ function Input(props) {
       placeholder={placeholder}
       name={name}
       type={type}
+      mobileWidth={mobileWidth}
+      mobileFontSize={mobileFontSize}
+      mobilePadding={mobilePadding}
+      mobileMargin={mobileMargin}
     />
   );
 }
 
 Input.defaultProps = {
   width: '50%',
+  mobileWidth: '80%',
   testId: '',
   border: '1px solid black',
   fontColor: 'black',
   fontSize: '2vw',
+  mobileFontSize: '6vw',
   backgroundColor: 'white',
   borderRadius: '0',
   padding: '5px',
+  mobilePadding: '5px',
   boxShadow: 'none',
   margin: '0',
+  mobileMargin: '0',
   placeholder: '',
   name: '',
   type: 'text',
@@ -71,9 +83,13 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   margin: PropTypes.string,
+  mobileMargin: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
+  mobileWidth: PropTypes.string,
+  mobileFontSize: PropTypes.string,
+  mobilePadding: PropTypes.string,
 };
 
 export default Input;

@@ -96,6 +96,7 @@ function LoginPage() {
           <Input
             testId="email-input-login"
             margin="2rem 0"
+            mobileMargin="1rem 0"
             width="100%"
             placeholder="Digite seu email"
             onChange={handleInputChange}
@@ -105,6 +106,7 @@ function LoginPage() {
           <Input
             testId="password-input-login"
             margin="2rem 0"
+            mobileMargin="1rem 0"
             width="100%"
             placeholder="Digite sua senha"
             onChange={handleInputChange}

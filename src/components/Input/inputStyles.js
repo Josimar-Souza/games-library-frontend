@@ -15,6 +15,12 @@ const InputStyle = styled.input`
   :focus {
     outline: none;
   }
+
+  @media (max-width: 460px) {
+    font-size: ${({ mobileFontSize }) => mobileFontSize};
+    margin: ${({ mobileMargin }) => mobileMargin};
+    width: ${({ mobileWidth }) => mobileWidth};
+  }
 `;
 
 export default InputStyle;
