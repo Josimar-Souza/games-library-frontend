@@ -1,5 +1,5 @@
 import axios from 'axios';
-import erros from '../tests/helpers/erros';
+import erros from '../helpers/erros';
 
 class UsersAPI {
   constructor(baseURL, timeout) {
