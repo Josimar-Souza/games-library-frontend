@@ -7,9 +7,12 @@ function Paragraph(props) {
     children,
     testId,
     fontSize,
+    mobileFontSize,
     fontColor,
     width,
+    mobileWidth,
     margin,
+    mobileMargin,
     textAlign,
   } = props;
 
@@ -21,6 +24,9 @@ function Paragraph(props) {
       width={width}
       margin={margin}
       textAlign={textAlign}
+      mobileFontSize={mobileFontSize}
+      mobileWidth={mobileWidth}
+      mobileMargin={mobileMargin}
     >
       {children}
     </ParagraphStyle>
@@ -30,9 +36,12 @@ function Paragraph(props) {
 Paragraph.defaultProps = {
   testId: '',
   fontSize: '1.2vw',
+  mobileFontSize: '5vw',
   fontColor: 'black',
   width: '50%',
+  mobileWidth: '80%',
   margin: '0',
+  mobileMargin: '0',
   textAlign: 'left',
 };
 
@@ -44,6 +53,9 @@ Paragraph.propTypes = {
   width: PropTypes.string,
   margin: PropTypes.string,
   textAlign: PropTypes.string,
+  mobileFontSize: PropTypes.string,
+  mobileWidth: PropTypes.string,
+  mobileMargin: PropTypes.string,
 };
 
 export default Paragraph;
