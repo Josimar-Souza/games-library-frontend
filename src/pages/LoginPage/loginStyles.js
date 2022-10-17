@@ -9,7 +9,7 @@ export const LoginMainSection = styled.section`
   width: 100%
 `;
 
-export const LoginFormSection = styled.form`
+export const LoginFormSection = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;

@@ -2,6 +2,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import { usersAPI } from '../../pages/LoginPage';
@@ -76,7 +77,9 @@ describe('Testes da página de login', () => {
 
       jest.spyOn(usersAPI, 'login').mockResolvedValue({ message: 'Email ou senha inválidos!', error: true });
 
-      userEvent.click(signInButton);
+      await act(async () => {
+        userEvent.click(signInButton);
+      });
 
       const feedbackMessage = await screen.findByTestId(feedbackTestId);
 
@@ -88,7 +91,9 @@ describe('Testes da página de login', () => {
 
       jest.spyOn(usersAPI, 'login').mockResolvedValue({ token: 'aksdawdniasdnAWDIAUSDAWd1564' });
 
-      userEvent.click(signInButton);
+      await act(async () => {
+        userEvent.click(signInButton);
+      });
 
       const { pathname } = window.location;
 

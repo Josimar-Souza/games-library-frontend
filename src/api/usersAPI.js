@@ -16,7 +16,7 @@ class UsersAPI {
       return { token };
     } catch ({ response }) {
       const { data: { message } } = response;
-      console.log(message);
+
       if (message === 'User not found') {
         return { message: erros.userNotFound, error: true };
       }

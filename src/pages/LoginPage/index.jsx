@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../../images/Logo.jpg';
 import components from '../../components';
 import UsersAPI from '../../api/usersAPI';
+import { saveItem } from '../../helpers/localStorageManager';
 import {
   LoginMainSection,
   LoginLogo,
@@ -36,9 +37,7 @@ function LoginPage() {
     navigate('/register');
   };
 
-  const onLoginButtonClick = async (event) => {
-    event.preventDefault();
-
+  const onLoginButtonClick = async () => {
     const result = await usersAPI.login(loginInfo);
 
     if ('error' in result) {
@@ -47,6 +46,9 @@ function LoginPage() {
       setTimeout(() => {
         setFeedbackMessage({ message: '', error: false });
       }, 3000);
+    } else {
+      saveItem(result.token, 'token');
+      navigate('/games');
     }
   };
 
