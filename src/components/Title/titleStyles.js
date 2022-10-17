@@ -7,7 +7,7 @@ const TitleStyle = styled.h1`
   text-align: ${({ textAlign }) => textAlign};
   width: ${({ width }) => width};
 
-  @media (max-width: 460px) {
+  @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
     margin: ${({ mobileMargin }) => mobileMargin};
     width: ${({ mobileWidth }) => mobileWidth};

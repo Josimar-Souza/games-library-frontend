@@ -16,7 +16,7 @@ const InputStyle = styled.input`
     outline: none;
   }
 
-  @media (max-width: 460px) {
+  @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
     margin: ${({ mobileMargin }) => mobileMargin};
     width: ${({ mobileWidth }) => mobileWidth};

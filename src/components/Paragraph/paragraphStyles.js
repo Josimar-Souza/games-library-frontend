@@ -7,7 +7,7 @@ const ParagraphStyle = styled.p`
   text-align: ${({ textAlign }) => textAlign};
   width: ${({ width }) => width};
 
-  @media (max-width: 460px) {
+  @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
     mobileMargin: ${({ mobileMargin }) => mobileMargin};
     width: ${({ mobileWidth }) => mobileWidth};
