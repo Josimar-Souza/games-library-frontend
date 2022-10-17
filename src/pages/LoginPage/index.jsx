@@ -12,6 +12,7 @@ import {
   LoginInputsContainer,
   LoginButtonsContainer,
   LoginFormInfo,
+  CreditsLink,
 } from './loginStyles';
 
 const apiURL = process.env.REACT_APP_API_URL;
@@ -144,6 +145,12 @@ function LoginPage() {
         </LoginButtonsContainer>
         { getFeedbackMessage() }
       </LoginFormSection>
+      <CreditsLink
+        href="http://www.freepik.com"
+        target="_blank"
+      >
+        Logo designed by pch.vector / Freepik
+      </CreditsLink>
     </LoginMainSection>
   );
 }

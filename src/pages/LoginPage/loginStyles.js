@@ -69,3 +69,12 @@ export const LoginButtonsContainer = styled.div`
     width: 100%;
   }
 `;
+
+export const CreditsLink = styled.a`
+  position: fixed;
+  top: 95%;
+
+  @media (max-width: 480px) {
+    top: 97%;
+  }
+`;
