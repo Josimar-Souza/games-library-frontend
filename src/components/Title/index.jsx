@@ -7,9 +7,12 @@ function Title(props) {
     children,
     testId,
     fontSize,
+    mobileFontSize,
     fontColor,
     width,
+    mobileWidth,
     margin,
+    mobileMargin,
     textAlign,
   } = props;
 
@@ -21,6 +24,9 @@ function Title(props) {
       width={width}
       margin={margin}
       textAlign={textAlign}
+      mobileFontSize={mobileFontSize}
+      mobileWidth={mobileWidth}
+      mobileMargin={mobileMargin}
     >
       {children}
     </TitleStyle>
@@ -30,10 +36,13 @@ function Title(props) {
 Title.defaultProps = {
   testId: '',
   fontSize: '3vw',
+  mobileFontSize: '10vw',
   fontColor: 'black',
   width: '50%',
+  mobileWidth: '80%',
   margin: '0',
   textAlign: 'left',
+  mobileMargin: '0',
 };
 
 Title.propTypes = {
@@ -44,6 +53,9 @@ Title.propTypes = {
   width: PropTypes.string,
   margin: PropTypes.string,
   textAlign: PropTypes.string,
+  mobileFontSize: PropTypes.string,
+  mobileWidth: PropTypes.string,
+  mobileMargin: PropTypes.string,
 };
 
 export default Title;
