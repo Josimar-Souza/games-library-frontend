@@ -6,6 +6,7 @@ import { act } from 'react-dom/test-utils';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import { usersAPI } from '../../pages/LoginPage';
+import logoImage from '../../images/Logo.jpg';
 
 const emailInputTestId = 'email-input-login';
 const passwordInputTestId = 'password-input-login';
@@ -23,6 +24,7 @@ describe('Testes da página de login', () => {
       const logo = await screen.findByTestId(loginLogoTestId);
 
       expect(logo).toBeInTheDocument();
+      expect(logo).toHaveAttribute('src', logoImage);
     });
 
     it('Verifica se existe um título escrito "Bem vindo ao Games Library!"', async () => {
@@ -60,6 +62,13 @@ describe('Testes da página de login', () => {
       const registerButton = await screen.findByRole('button', { name: 'Registre-se' });
 
       expect(registerButton).toBeInTheDocument();
+    });
+
+    it('Verifica se existe o link de créditos da logo', async () => {
+      const creditsLink = await screen.findByRole('link', { name: 'Logo designed by pch.vector / Freepik' });
+
+      expect(creditsLink).toBeInTheDocument();
+      expect(creditsLink).toHaveAttribute('href', 'http://www.freepik.com');
     });
   });
 
