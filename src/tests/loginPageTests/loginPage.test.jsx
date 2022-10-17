@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { findByTestId, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
+import { usersAPI } from '../../pages/LoginPage';
 
 const emailInputTestId = 'email-input-login';
 const passwordInputTestId = 'password-input-login';
@@ -66,27 +67,27 @@ describe('Testes da página de login', () => {
       renderWithRouter(<pages.LoginPage />);
     });
 
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
     it('Verifica se ao clicar no botão "Logar" com valores inválidos, a mensagem "Email ou senha inválidos" aparece', async () => {
       const signInButton = await screen.findByRole('button', { name: 'Logar' });
-      const emailInput = await screen.findByTestId(emailInputTestId);
-      const passwordInput = await findByTestId(passwordInputTestId);
 
-      userEvent.type(emailInput, 'testemail.gmail.com');
-      userEvent.type(passwordInput, 'TestePass1554875!');
+      jest.spyOn(usersAPI, 'login').mockResolvedValue({ message: 'Email ou senha inválidos!', error: true });
+
       userEvent.click(signInButton);
 
       const feedbackMessage = await screen.findByTestId(feedbackTestId);
 
-      expect(feedbackMessage.textContent).toBe('Email ou senha inválidos');
+      expect(feedbackMessage.textContent).toBe('Email ou senha inválidos!');
     });
 
     it('Verifica se ao clicar no botão "Logar" com valores válidos, a página é redirecionada', async () => {
       const signInButton = await screen.findByRole('button', { name: 'Logar' });
-      const emailInput = await screen.findByTestId(emailInputTestId);
-      const passwordInput = await findByTestId(passwordInputTestId);
 
-      userEvent.type(emailInput, 'testemail@gmail.com');
-      userEvent.type(passwordInput, 'TestePass15!');
+      jest.spyOn(usersAPI, 'login').mockResolvedValue({ token: 'aksdawdniasdnAWDIAUSDAWd1564' });
+
       userEvent.click(signInButton);
 
       const { pathname } = window.location;

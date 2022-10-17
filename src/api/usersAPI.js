@@ -13,10 +13,10 @@ class UsersAPI {
     try {
       const { data: { token } } = await this.api.post('/user/login', loginValues);
 
-      return token;
+      return { token };
     } catch ({ response }) {
       const { data: { message } } = response;
-
+      console.log(message);
       if (message === 'User not found') {
         return { message: erros.userNotFound, error: true };
       }

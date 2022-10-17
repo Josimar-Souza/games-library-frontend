@@ -13,7 +13,7 @@ import {
 } from './loginStyles';
 
 const apiURL = process.env.REACT_APP_API_URL;
-const usersAPI = new UsersAPI(apiURL, 15000);
+export const usersAPI = new UsersAPI(apiURL, 15000);
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -54,6 +54,7 @@ function LoginPage() {
     if (feedbackMessage.error) {
       return (
         <Paragraph
+          testId="feedback-login"
           textAlign="center"
           fontSize="2vw"
           margin="2rem 0"
