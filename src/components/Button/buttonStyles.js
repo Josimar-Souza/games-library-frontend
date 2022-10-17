@@ -15,7 +15,7 @@ const ButtonStyle = styled.button`
     transform: ${({ hoverTransform }) => hoverTransform};
   }
 
-  @media (max-width: 460px) {
+  @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
     margin: ${({ mobileMargin }) => mobileMargin};
     padding: ${({ mobilePadding }) => mobilePadding};

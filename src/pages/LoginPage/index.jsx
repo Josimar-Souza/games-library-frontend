@@ -11,6 +11,7 @@ import {
   LoginLogoContainer,
   LoginInputsContainer,
   LoginButtonsContainer,
+  LoginFormInfo,
 } from './loginStyles';
 
 const apiURL = process.env.REACT_APP_API_URL;
@@ -80,18 +81,20 @@ function LoginPage() {
         />
       </LoginLogoContainer>
       <LoginFormSection>
-        <Title
-          textAlign="center"
-        >
-          Bem vindo ao Games Library!
-        </Title>
-        <Paragraph
-          testId="login-paragraph"
-          textAlign="center"
-          margin="1rem 0"
-        >
-          Por favor, faça login ou registre-se!
-        </Paragraph>
+        <LoginFormInfo>
+          <Title
+            textAlign="center"
+          >
+            Bem vindo ao Games Library!
+          </Title>
+          <Paragraph
+            testId="login-paragraph"
+            textAlign="center"
+            margin="1rem 0"
+          >
+            Por favor, faça login ou registre-se!
+          </Paragraph>
+        </LoginFormInfo>
         <LoginInputsContainer>
           <Input
             testId="email-input-login"

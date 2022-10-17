@@ -10,7 +10,6 @@ export const LoginMainSection = styled.section`
 
   @media (max-width: 480px) {
     flex-direction: column;
-    justify-content: space-around;
   }
 `;
 
@@ -23,8 +22,18 @@ export const LoginFormSection = styled.div`
   width: 50%;
 
   @media (max-width: 480px) {
+    height: 100vh;
+    justify-content: space-around;
     width: 90%;
   }
+`;
+
+export const LoginFormInfo = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
 `;
 
 export const LoginLogoContainer = styled.div`
@@ -55,7 +64,7 @@ export const LoginButtonsContainer = styled.div`
   max-width: 100%;
   width: 50%;
 
-  @media (max-width: 460px) {
+  @media (max-width: 480px) {
     justify-content: center;
     width: 100%;
   }
