@@ -44,6 +44,15 @@ function RegisterPage() {
         margin="10px 0"
         padding="10px"
       />
+      <Input
+        placeholder="Confirme sua senha"
+        width="30%"
+        borderRadius="15px"
+        name="password"
+        type="password"
+        margin="10px 0"
+        padding="10px"
+      />
       <Button
         width="15%"
         margin="10px 0"
