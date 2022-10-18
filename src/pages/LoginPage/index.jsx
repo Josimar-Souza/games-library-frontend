@@ -112,6 +112,7 @@ function LoginPage() {
             onChange={handleInputChange}
             name="email"
             value={loginInfo.email}
+            borderRadius="10px"
           />
           <Input
             testId="password-input-login"
@@ -123,6 +124,7 @@ function LoginPage() {
             name="password"
             type="password"
             value={loginInfo.password}
+            borderRadius="10px"
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>
