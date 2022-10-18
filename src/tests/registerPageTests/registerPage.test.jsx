@@ -64,5 +64,27 @@ describe('Testes da página de registro', () => {
         box-shadow: 0 0 10 green;
       `);
     });
+
+    it('Verifica se ao digitar um email inválido, o input fica com características vermelhas', async () => {
+      const emailInput = await screen.findByPlaceholderText('Digite seu email');
+
+      userEvent.type(emailInput, 'email.com');
+
+      expect(emailInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10 red;
+      `);
+    });
+
+    it('Verifica se ao digitar um email válido, o input fica com características verdes', async () => {
+      const emailInput = await screen.findByPlaceholderText('Digite seu email');
+
+      userEvent.type(emailInput, 'emailtest@gmail.com');
+
+      expect(emailInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10 green;
+      `);
+    });
   });
 });
