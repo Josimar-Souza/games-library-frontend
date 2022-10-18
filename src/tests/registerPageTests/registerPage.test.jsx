@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 
@@ -38,6 +39,30 @@ describe('Testes da página de registro', () => {
       const registerButton = await screen.findByRole('button', { name: 'Registrar' });
 
       expect(registerButton).toBeInTheDocument();
+    });
+  });
+
+  describe('Verifica o comportamento da página', () => {
+    it('Verifica se ao digitar um username inválido, o input fica com características vermelhas', async () => {
+      const usernameInput = await screen.findByPlaceholderText('Digite seu username');
+
+      userEvent.type(usernameInput, '');
+
+      expect(usernameInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10 red;
+      `);
+    });
+
+    it('Verifica se ao digitar um username válido, o input fica com características verdes', async () => {
+      const usernameInput = await screen.findByPlaceholderText('Digite seu username');
+
+      userEvent.type(usernameInput, 'Josimar');
+
+      expect(usernameInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10 green;
+      `);
     });
   });
 });
