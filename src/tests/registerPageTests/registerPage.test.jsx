@@ -46,22 +46,22 @@ describe('Testes da página de registro', () => {
     it('Verifica se ao digitar um username inválido, o input fica com características vermelhas', async () => {
       const usernameInput = await screen.findByPlaceholderText('Digite seu username');
 
-      userEvent.type(usernameInput, '');
+      userEvent.type(usernameInput, 'Io');
 
       expect(usernameInput).toHaveStyle(`
         border: 1px solid red;
-        box-shadow: 0 0 10 red;
+        box-shadow: 0 0 10px red;
       `);
     });
 
     it('Verifica se ao digitar um username válido, o input fica com características verdes', async () => {
       const usernameInput = await screen.findByPlaceholderText('Digite seu username');
 
-      userEvent.type(usernameInput, 'Josimar');
+      userEvent.type(usernameInput, 'Iorns');
 
       expect(usernameInput).toHaveStyle(`
         border: 1px solid green;
-        box-shadow: 0 0 10 green;
+        box-shadow: 0 0 10px green;
       `);
     });
 
@@ -72,7 +72,7 @@ describe('Testes da página de registro', () => {
 
       expect(emailInput).toHaveStyle(`
         border: 1px solid red;
-        box-shadow: 0 0 10 red;
+        box-shadow: 0 0 10px red;
       `);
     });
 
@@ -83,7 +83,29 @@ describe('Testes da página de registro', () => {
 
       expect(emailInput).toHaveStyle(`
         border: 1px solid green;
-        box-shadow: 0 0 10 green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
+
+    it('Verifica se ao digitar uma senha inválida, o input fica com características vermelhas', async () => {
+      const passwordInput = await screen.findByPlaceholderText('Digite sua senha');
+
+      userEvent.type(passwordInput, 'Lkjdnfje12');
+
+      expect(passwordInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Verifica se ao digitar uma senha válida, o input fica com características verdes', async () => {
+      const passwordInput = await screen.findByPlaceholderText('Digite sua senha');
+
+      userEvent.type(passwordInput, 'Lkgjhte13!');
+
+      expect(passwordInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
       `);
     });
   });
