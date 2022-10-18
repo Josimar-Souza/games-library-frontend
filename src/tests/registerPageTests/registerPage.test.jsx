@@ -35,6 +35,12 @@ describe('Testes da página de registro', () => {
       expect(passwordInput).toBeInTheDocument();
     });
 
+    it('Verifica se existe um input para confirmar a senha', async () => {
+      const passwordConfirmationInput = await screen.findByPlaceholderText('Confirme sua senha');
+
+      expect(passwordConfirmationInput).toBeInTheDocument();
+    });
+
     it('Verifica se existe um botão para se registrar', async () => {
       const registerButton = await screen.findByRole('button', { name: 'Registrar' });
 
@@ -43,7 +49,7 @@ describe('Testes da página de registro', () => {
   });
 
   describe('Verifica o comportamento da página', () => {
-    it('Verifica se ao digitar um username inválido, o input fica com características vermelhas', async () => {
+    it('Verifica se ao digitar um username inválido, o input fica com estilos vermelhos', async () => {
       const usernameInput = await screen.findByPlaceholderText('Digite seu username');
 
       userEvent.type(usernameInput, 'Io');
@@ -54,7 +60,7 @@ describe('Testes da página de registro', () => {
       `);
     });
 
-    it('Verifica se ao digitar um username válido, o input fica com características verdes', async () => {
+    it('Verifica se ao digitar um username válido, o input fica com estilos verdes', async () => {
       const usernameInput = await screen.findByPlaceholderText('Digite seu username');
 
       userEvent.type(usernameInput, 'Iorns');
@@ -65,7 +71,7 @@ describe('Testes da página de registro', () => {
       `);
     });
 
-    it('Verifica se ao digitar um email inválido, o input fica com características vermelhas', async () => {
+    it('Verifica se ao digitar um email inválido, o input fica com estilos vermelhos', async () => {
       const emailInput = await screen.findByPlaceholderText('Digite seu email');
 
       userEvent.type(emailInput, 'email.com');
@@ -76,7 +82,7 @@ describe('Testes da página de registro', () => {
       `);
     });
 
-    it('Verifica se ao digitar um email válido, o input fica com características verdes', async () => {
+    it('Verifica se ao digitar um email válido, o input fica com estilos verdes', async () => {
       const emailInput = await screen.findByPlaceholderText('Digite seu email');
 
       userEvent.type(emailInput, 'emailtest@gmail.com');
@@ -87,7 +93,7 @@ describe('Testes da página de registro', () => {
       `);
     });
 
-    it('Verifica se ao digitar uma senha inválida, o input fica com características vermelhas', async () => {
+    it('Verifica se ao digitar uma senha inválida, o input fica com estilos vermelhos', async () => {
       const passwordInput = await screen.findByPlaceholderText('Digite sua senha');
 
       userEvent.type(passwordInput, 'Lkjdnfje12');
@@ -98,12 +104,38 @@ describe('Testes da página de registro', () => {
       `);
     });
 
-    it('Verifica se ao digitar uma senha válida, o input fica com características verdes', async () => {
+    it('Verifica se ao digitar uma senha válida, o input fica com estilos verdes', async () => {
       const passwordInput = await screen.findByPlaceholderText('Digite sua senha');
 
       userEvent.type(passwordInput, 'Lkgjhte13!');
 
       expect(passwordInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
+
+    it('Verifica se com a senha de confirmação errada, o input fica com estilos vermelhos', async () => {
+      const passwordInput = await screen.findByPlaceholderText('Digite sua senha');
+      const passwordConfirmationInput = await screen.findByPlaceholderText('Confirme sua senha');
+
+      userEvent.type(passwordInput, 'Senha1!');
+      userEvent.type(passwordConfirmationInput, 'Senha2!');
+
+      expect(passwordConfirmationInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Verifica se com a senha de confirmação certa, o input fica com estilos verdes', async () => {
+      const passwordInput = await screen.findByPlaceholderText('Digite sua senha');
+      const passwordConfirmationInput = await screen.findByPlaceholderText('Confirme sua senha');
+
+      userEvent.type(passwordInput, 'Senha1!');
+      userEvent.type(passwordConfirmationInput, 'Senha1!');
+
+      expect(passwordConfirmationInput).toHaveStyle(`
         border: 1px solid green;
         box-shadow: 0 0 10px green;
       `);
