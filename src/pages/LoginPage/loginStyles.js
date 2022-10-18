@@ -1,11 +1,16 @@
 import styled from 'styled-components';
+import Background from '../../images/Background.jpg';
 
 export const LoginMainSection = styled.section`
   align-items: center;
+  background-image: url(${Background});
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   height: 100vh;
   justify-content: center;
   max-width: 100%;
+  padding: 10px;
   width: 100%;
 
   @media (max-width: 480px) {
@@ -49,7 +54,12 @@ export const LoginLogoContainer = styled.div`
 `;
 
 export const LoginLogo = styled.img`
+  border-radius: 3rem;
   width: 80%;
+
+  @media (max-width: 480px) {
+    width: 60%;
+  }
 `;
 
 export const LoginInputsContainer = styled.div`
@@ -71,6 +81,7 @@ export const LoginButtonsContainer = styled.div`
 `;
 
 export const CreditsLink = styled.a`
+  color: white;
   position: fixed;
   top: 95%;
 

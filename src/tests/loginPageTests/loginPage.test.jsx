@@ -7,17 +7,26 @@ import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import { usersAPI } from '../../pages/LoginPage';
 import logoImage from '../../images/Logo.jpg';
+import backgroundImage from '../../images/Background.jpg';
 
 const emailInputTestId = 'email-input-login';
 const passwordInputTestId = 'password-input-login';
 const feedbackTestId = 'feedback-login';
 const loginLogoTestId = 'login-logo';
-const loginParagraph = 'login-paragraph';
+const loginParagraphTestId = 'login-paragraph';
+const backgroundTestId = 'login-background';
 
 describe('Testes da página de login', () => {
   describe('Verifica a existência dos elementos', () => {
     beforeEach(() => {
       renderWithRouter(<pages.LoginPage />);
+    });
+
+    it('Verifica se a imagem de background aparece na página', async () => {
+      const background = await screen.findByTestId(backgroundTestId);
+
+      expect(background).toBeInTheDocument();
+      expect(background).toHaveStyle(`background-image: url(${backgroundImage})`);
     });
 
     it('Verifica se a logo aparece na página', async () => {
@@ -34,7 +43,7 @@ describe('Testes da página de login', () => {
     });
 
     it('Verifica se existe um parágrafo escrito "Por favor, faça login ou registre-se!"', async () => {
-      const paragraph = await screen.findByTestId(loginParagraph);
+      const paragraph = await screen.findByTestId(loginParagraphTestId);
 
       expect(paragraph).toBeInTheDocument();
       expect(paragraph.textContent).toBe('Por favor, faça login ou registre-se!');
@@ -65,7 +74,7 @@ describe('Testes da página de login', () => {
     });
 
     it('Verifica se existe o link de créditos da logo', async () => {
-      const creditsLink = await screen.findByRole('link', { name: 'Logo designed by pch.vector / Freepik' });
+      const creditsLink = await screen.findByRole('link', { name: 'Designed by pch.vector / Freepik' });
 
       expect(creditsLink).toBeInTheDocument();
       expect(creditsLink).toHaveAttribute('href', 'http://www.freepik.com');

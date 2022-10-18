@@ -73,7 +73,9 @@ function LoginPage() {
   };
 
   return (
-    <LoginMainSection>
+    <LoginMainSection
+      data-testid="login-background"
+    >
       <LoginLogoContainer>
         <LoginLogo
           src={Logo}
@@ -85,6 +87,8 @@ function LoginPage() {
         <LoginFormInfo>
           <Title
             textAlign="center"
+            fontColor="white"
+            mobileFontSize="8vw"
           >
             Bem vindo ao Games Library!
           </Title>
@@ -92,6 +96,8 @@ function LoginPage() {
             testId="login-paragraph"
             textAlign="center"
             margin="1rem 0"
+            fontColor="white"
+            mobileFontSize="4.8vw"
           >
             Por favor, faça login ou registre-se!
           </Paragraph>
@@ -149,7 +155,7 @@ function LoginPage() {
         href="http://www.freepik.com"
         target="_blank"
       >
-        Logo designed by pch.vector / Freepik
+        Designed by pch.vector / Freepik
       </CreditsLink>
     </LoginMainSection>
   );
