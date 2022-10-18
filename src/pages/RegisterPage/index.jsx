@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RegisterMainSection from './registerPageStyles';
 import components from '../../components';
+import { validationObject } from '../../validations/registrationValidation';
 
 function RegisterPage() {
   const {
@@ -8,6 +9,46 @@ function RegisterPage() {
     Input,
     Button,
   } = components;
+
+  const [registerInfo, setRegisterInfo] = useState({
+    username: {
+      value: '',
+      validationColor: '',
+    },
+    email: {
+      value: '',
+      validationColor: '',
+    },
+    password: {
+      value: '',
+      validationColor: '',
+    },
+
+    passwordConfirmation: {
+      value: '',
+      validationColor: '',
+    },
+  });
+
+  const {
+    username,
+    email,
+    password,
+    passwordConfirmation,
+  } = registerInfo;
+
+  const handleInputChange = ({ target: { name, value } }) => {
+    let validationColor;
+
+    if (name === 'passwordConfirmation') {
+      const passwords = [password.value, value];
+      validationColor = validationObject[name](passwords);
+    } else {
+      validationColor = validationObject[name](value);
+    }
+
+    setRegisterInfo({ ...registerInfo, [name]: { value, validationColor } });
+  };
 
   return (
     <RegisterMainSection>
@@ -25,6 +66,10 @@ function RegisterPage() {
         name="username"
         margin="10px 0"
         padding="10px"
+        value={username.value}
+        onChange={handleInputChange}
+        border={`1px solid ${username.validationColor}`}
+        boxShadow={`0 0 10px ${username.validationColor}`}
       />
       <Input
         placeholder="Digite seu email"
@@ -34,6 +79,10 @@ function RegisterPage() {
         type="email"
         margin="10px 0"
         padding="10px"
+        value={email.value}
+        onChange={handleInputChange}
+        border={`1px solid ${email.validationColor}`}
+        boxShadow={`0 0 10px ${email.validationColor}`}
       />
       <Input
         placeholder="Digite sua senha"
@@ -43,20 +92,31 @@ function RegisterPage() {
         type="password"
         margin="10px 0"
         padding="10px"
+        value={password.value}
+        onChange={handleInputChange}
+        border={`1px solid ${password.validationColor}`}
+        boxShadow={`0 0 10px ${password.validationColor}`}
       />
       <Input
         placeholder="Confirme sua senha"
         width="30%"
         borderRadius="15px"
-        name="password"
+        name="passwordConfirmation"
         type="password"
         margin="10px 0"
         padding="10px"
+        value={passwordConfirmation.value}
+        onChange={handleInputChange}
+        border={`1px solid ${passwordConfirmation.validationColor}`}
+        boxShadow={`0 0 10px ${passwordConfirmation.validationColor}`}
       />
       <Button
         width="15%"
         margin="10px 0"
         borderRadius="15px"
+        hoverCursor="pointer"
+        hoverTransform="scale(1.1, 1.1)"
+        transition="0.2s"
       >
         Registrar
       </Button>

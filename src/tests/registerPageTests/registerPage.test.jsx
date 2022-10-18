@@ -49,6 +49,10 @@ describe('Testes da página de registro', () => {
   });
 
   describe('Verifica o comportamento da página', () => {
+    beforeEach(() => {
+      renderWithRouter(<pages.RegisterPage />);
+    });
+
     it('Verifica se ao digitar um username inválido, o input fica com estilos vermelhos', async () => {
       const usernameInput = await screen.findByPlaceholderText('Digite seu username');
 
