@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import RegisterMainSection from './registerPageStyles';
 import components from '../../components';
@@ -16,6 +17,7 @@ function RegisterPage() {
     Input,
     Button,
     Paragraph,
+    BackButton,
   } = components;
 
   const [feedbackMessage, setFeedbackMessage] = useState({ message: '', show: false, color: 'green' });
@@ -91,6 +93,8 @@ function RegisterPage() {
           testId="register-feedback-message"
           textAlign="center"
           fontSize="2vw"
+          margin="10px 0"
+          momobileMargin="10px 0"
         >
           { feedbackMessage.message }
         </Paragraph>
@@ -100,12 +104,34 @@ function RegisterPage() {
     return null;
   };
 
+  const getBackArrow = () => {
+    if (isMobile) {
+      return (
+        <BackButton
+          backRoute="/"
+          position="fixed"
+          width="20%"
+          top="20px"
+          left="20px"
+          border="none"
+          borderRadius="15px"
+          padding="5px"
+          arrowSize="50%"
+        />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <RegisterMainSection>
+      { getBackArrow() }
       <Title
         fontColor="white"
         textAlign="center"
         margin="10px 0"
+        mobileMargin="10px 0"
       >
         Registre-se
       </Title>
@@ -115,6 +141,7 @@ function RegisterPage() {
         borderRadius="15px"
         name="username"
         margin="10px 0"
+        mobileMargin="10px 0"
         padding="10px"
         value={username.value}
         onChange={handleInputChange}
@@ -128,6 +155,7 @@ function RegisterPage() {
         name="email"
         type="email"
         margin="10px 0"
+        mobileMargin="10px 0"
         padding="10px"
         value={email.value}
         onChange={handleInputChange}
@@ -141,6 +169,7 @@ function RegisterPage() {
         name="password"
         type="password"
         margin="10px 0"
+        mobileMargin="10px 0"
         padding="10px"
         value={password.value}
         onChange={handleInputChange}
@@ -154,6 +183,7 @@ function RegisterPage() {
         name="passwordConfirmation"
         type="password"
         margin="10px 0"
+        mobileMargin="10px 0"
         padding="10px"
         value={passwordConfirmation.value}
         onChange={handleInputChange}
@@ -163,6 +193,7 @@ function RegisterPage() {
       <Button
         width="15%"
         margin="10px 0"
+        mobileMargin="10px 0"
         borderRadius="15px"
         hoverCursor="pointer"
         hoverTransform="scale(1.1, 1.1)"
