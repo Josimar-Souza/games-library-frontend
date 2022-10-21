@@ -12,7 +12,10 @@ function RegisterPage() {
     Title,
     Input,
     Button,
+    Paragraph,
   } = components;
+
+  const [feedbackMessage, setFeedbackMessage] = useState({ message: '', show: false });
 
   const [registerInfo, setRegisterInfo] = useState({
     username: {
@@ -52,6 +55,41 @@ function RegisterPage() {
     }
 
     setRegisterInfo({ ...registerInfo, [name]: { value, validationColor } });
+  };
+
+  const onRegisterButtonClick = async () => {
+    const registerValues = {
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    };
+
+    const result = await usersAPI.register(registerValues);
+
+    if ('error' in result) {
+      setFeedbackMessage({ message: result.message, show: result.error });
+    } else {
+      setFeedbackMessage({ message: result.message, show: true });
+    }
+
+    setTimeout(() => {
+      setFeedbackMessage({ message: '', show: false });
+    }, 3000);
+  };
+
+  const getFeedbackMessage = () => {
+    if (feedbackMessage.show) {
+      return (
+        <Paragraph
+          fontColor="red"
+          testId="register-feedback-message"
+        >
+          { feedbackMessage.message }
+        </Paragraph>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -121,9 +159,11 @@ function RegisterPage() {
         hoverCursor="pointer"
         hoverTransform="scale(1.1, 1.1)"
         transition="0.2s"
+        onClick={onRegisterButtonClick}
       >
         Registrar
       </Button>
+      { getFeedbackMessage() }
     </RegisterMainSection>
   );
 }

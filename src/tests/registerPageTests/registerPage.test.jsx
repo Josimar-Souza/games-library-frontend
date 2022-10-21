@@ -2,6 +2,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import { usersAPI } from '../../pages/RegisterPage';
@@ -149,24 +150,25 @@ describe('Testes da página de registro', () => {
     it('Verifica se ao clicar no botão "Registrar" com valores inválidos, aparece a mensagem "Valores inválidos"', async () => {
       const registerButton = await screen.findByRole('button', { name: 'Registrar' });
 
-      jest.spyOn(usersAPI, 'register').mockResolvedValue('Valores inválidos');
+      jest.spyOn(usersAPI, 'register').mockResolvedValue({ message: 'Valores inválidos!', error: true });
 
       userEvent.click(registerButton);
 
-      const feedbackMessage = await screen.findByRole('paragraph', { name: 'Valores inválidos!' });
-
-      expect(feedbackMessage).toBeInTheDocument();
+      const feedbackMessage = await screen.findByTestId('register-feedback-message');
+      expect(feedbackMessage.textContent).toBe('Valores inválidos!');
     });
 
     it('Verifica se ao clicar no botão "Registrar" com valores válidos, aparece a mensagem "Usuário registrado com sucesso"', async () => {
       const registerButton = await screen.findByRole('button', { name: 'Registrar' });
 
-      jest.spyOn(usersAPI, 'register').mockResolvedValue('Valores inválidos');
+      jest.spyOn(usersAPI, 'register').mockResolvedValue({ message: 'Usuário registrado com sucesso!' });
 
-      userEvent.click(registerButton);
+      await act(async () => {
+        userEvent.click(registerButton);
+      });
 
-      const feedbackMessage = await screen.findByRole('paragraph', { name: 'Usuário registrado com sucesso!' });
-      expect(feedbackMessage).toBeInTheDocument();
+      const feedbackMessage = await screen.findByTestId('register-feedback-message');
+      expect(feedbackMessage.textContent).toBe('Usuário registrado com sucesso!');
     });
   });
 });

@@ -29,9 +29,9 @@ class UsersAPI {
     try {
       const { data } = await this.api.post('/user/register', registerValues);
 
-      return data;
+      return { message: 'Usuário registrado com sucesso!', data };
     } catch ({ response }) {
-      console.log(response);
+      return { message: erros.RegisterInvalidValues, error: true };
     }
   }
 }
