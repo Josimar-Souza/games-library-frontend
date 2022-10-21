@@ -24,6 +24,16 @@ class UsersAPI {
       return { message: erros.InvalidLoginValues, error: true };
     }
   }
+
+  async register(registerValues) {
+    try {
+      const { data } = await this.api.post('/user/register', registerValues);
+
+      return data;
+    } catch ({ response }) {
+      console.log(response);
+    }
+  }
 }
 
 export default UsersAPI;

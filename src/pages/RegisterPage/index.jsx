@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import RegisterMainSection from './registerPageStyles';
 import components from '../../components';
 import { validationObject } from '../../validations/registrationValidation';
+import UsersAPI from '../../api/usersAPI';
+
+const apiUrl = process.env.REACT_APP_API_URL;
+export const usersAPI = new UsersAPI(apiUrl, 15000);
 
 function RegisterPage() {
   const {

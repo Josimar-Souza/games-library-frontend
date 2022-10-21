@@ -4,6 +4,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
+import { usersAPI } from '../../pages/RegisterPage';
 
 describe('Testes da página de registro', () => {
   describe('Verifica a existência dos elementos', () => {
@@ -143,6 +144,18 @@ describe('Testes da página de registro', () => {
         border: 1px solid green;
         box-shadow: 0 0 10px green;
       `);
+    });
+
+    it('Verifica se ao clicar no botão "Registrar" com valores inválidos aparece uma mensagem na tela', async () => {
+      const registerButton = await screen.findByRole('button', { name: 'Registrar' });
+
+      jest.spyOn(usersAPI, 'register').mockResolvedValue('Valores inválidos');
+
+      userEvent.click(registerButton);
+
+      const feedbackMessage = await screen.findByRole('paragraph', { name: 'Valores inválidos!' });
+
+      expect(feedbackMessage).toBeInTheDocument();
     });
   });
 });
