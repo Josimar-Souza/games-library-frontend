@@ -146,7 +146,7 @@ describe('Testes da página de registro', () => {
       `);
     });
 
-    it('Verifica se ao clicar no botão "Registrar" com valores inválidos aparece uma mensagem na tela', async () => {
+    it('Verifica se ao clicar no botão "Registrar" com valores inválidos, aparece a mensagem "Valores inválidos"', async () => {
       const registerButton = await screen.findByRole('button', { name: 'Registrar' });
 
       jest.spyOn(usersAPI, 'register').mockResolvedValue('Valores inválidos');
@@ -155,6 +155,17 @@ describe('Testes da página de registro', () => {
 
       const feedbackMessage = await screen.findByRole('paragraph', { name: 'Valores inválidos!' });
 
+      expect(feedbackMessage).toBeInTheDocument();
+    });
+
+    it('Verifica se ao clicar no botão "Registrar" com valores válidos, aparece a mensagem "Usuário registrado com sucesso"', async () => {
+      const registerButton = await screen.findByRole('button', { name: 'Registrar' });
+
+      jest.spyOn(usersAPI, 'register').mockResolvedValue('Valores inválidos');
+
+      userEvent.click(registerButton);
+
+      const feedbackMessage = await screen.findByRole('paragraph', { name: 'Usuário registrado com sucesso!' });
       expect(feedbackMessage).toBeInTheDocument();
     });
   });
