@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import RegisterMainSection from './registerPageStyles';
 import components from '../../components';
 import { validationObject } from '../../validations/registrationValidation';
@@ -8,6 +9,8 @@ const apiUrl = process.env.REACT_APP_API_URL;
 export const usersAPI = new UsersAPI(apiUrl, 15000);
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
   const {
     Title,
     Input,
@@ -15,7 +18,7 @@ function RegisterPage() {
     Paragraph,
   } = components;
 
-  const [feedbackMessage, setFeedbackMessage] = useState({ message: '', show: false });
+  const [feedbackMessage, setFeedbackMessage] = useState({ message: '', show: false, color: 'green' });
 
   const [registerInfo, setRegisterInfo] = useState({
     username: {
@@ -67,13 +70,16 @@ function RegisterPage() {
     const result = await usersAPI.register(registerValues);
 
     if ('error' in result) {
-      setFeedbackMessage({ message: result.message, show: result.error });
+      setFeedbackMessage({ message: result.message, show: result.error, color: 'red' });
     } else {
-      setFeedbackMessage({ message: result.message, show: true });
+      setFeedbackMessage({ message: result.message, show: true, color: 'green' });
+      setTimeout(() => {
+        navigate('/games');
+      }, 3000);
     }
 
     setTimeout(() => {
-      setFeedbackMessage({ message: '', show: false });
+      setFeedbackMessage({ message: '', show: false, color: 'green' });
     }, 3000);
   };
 
@@ -81,8 +87,10 @@ function RegisterPage() {
     if (feedbackMessage.show) {
       return (
         <Paragraph
-          fontColor="red"
+          fontColor={feedbackMessage.color}
           testId="register-feedback-message"
+          textAlign="center"
+          fontSize="2vw"
         >
           { feedbackMessage.message }
         </Paragraph>
