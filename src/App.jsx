@@ -7,6 +7,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<pages.LoginPage />} />
+      <Route exact path="/register" element={<pages.RegisterPage />} />
     </Routes>
   );
 }

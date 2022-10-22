@@ -24,6 +24,19 @@ class UsersAPI {
       return { message: erros.InvalidLoginValues, error: true };
     }
   }
+
+  async register(registerValues) {
+    try {
+      const { data } = await this.api.post('/user/register', registerValues);
+
+      return { message: 'Usuário registrado com sucesso!', data };
+    } catch ({ response: { data } }) {
+      if (data.message === 'User already registered') {
+        return { message: erros.RegisterUserAlreadyExists, error: true };
+      }
+      return { message: erros.RegisterInvalidValues, error: true };
+    }
+  }
 }
 
 export default UsersAPI;
