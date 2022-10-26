@@ -9,10 +9,17 @@ describe('Testes da página para adicionar um novo game', () => {
     beforeEach(() => {
       renderWithRouter(<pages.AddGamePage />);
     });
+
     it('Verifica se existe um input para o título do game', async () => {
       const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
 
       expect(titleInput).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um input para a data de lançamento do game', async () => {
+      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do game no formato dd/mm/aaaa');
+
+      expect(releaseYearInput).toBeInTheDocument();
     });
   });
 });
