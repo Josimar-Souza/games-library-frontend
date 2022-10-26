@@ -8,6 +8,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<pages.LoginPage />} />
       <Route exact path="/register" element={<pages.RegisterPage />} />
+      <Route exact path="/addgame" element={<pages.AddGamePage />} />
     </Routes>
   );
 }
