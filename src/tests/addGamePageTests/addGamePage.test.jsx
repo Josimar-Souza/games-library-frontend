@@ -39,5 +39,17 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(publisherInput).toBeInTheDocument();
     });
+
+    it('Verifica se existe um input para informar a quantidade de plataformas do game', async () => {
+      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+
+      expect(platformCountInput).toBeInTheDocument();
+    });
+
+    it('Verifica se todos os inputs para as plataformas existem n página', async () => {
+      const platformsInputs = await screen.findAllByPlaceholderText('Digite a plataforma');
+
+      expect(platformsInputs.length).toBe(5);
+    });
   });
 });
