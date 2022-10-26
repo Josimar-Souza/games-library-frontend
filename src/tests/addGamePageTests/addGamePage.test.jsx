@@ -51,5 +51,11 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(platformsInputs.length).toBe(5);
     });
+
+    it('Verifica se existe um input para a url do trailer do game', async () => {
+      const urlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+
+      expect(urlInput).toBeInTheDocument();
+    });
   });
 });
