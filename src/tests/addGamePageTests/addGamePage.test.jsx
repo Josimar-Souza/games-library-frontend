@@ -21,5 +21,11 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(releaseYearInput).toBeInTheDocument();
     });
+
+    it('Verifica se existe um text area para a sinopse do game', async () => {
+      const sinopseTextArea = await screen.findByPlaceholderText('Digite a sinopse do game');
+
+      expect(sinopseTextArea).toBeInTheDocument();
+    });
   });
 });
