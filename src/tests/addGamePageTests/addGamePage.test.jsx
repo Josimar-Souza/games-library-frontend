@@ -17,15 +17,27 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Verifica se existe um input para a data de lançamento do game', async () => {
-      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do game no formato dd/mm/aaaa');
+      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
 
       expect(releaseYearInput).toBeInTheDocument();
     });
 
     it('Verifica se existe um text area para a sinopse do game', async () => {
-      const sinopseTextArea = await screen.findByPlaceholderText('Digite a sinopse do game');
+      const sinopseTextArea = await screen.findByPlaceholderText('Digite a sinopse do jogo');
 
       expect(sinopseTextArea).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um input para a desenvolvedora do game', async () => {
+      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+
+      expect(developerInput).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um input para a publicadora do game', async () => {
+      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+
+      expect(publisherInput).toBeInTheDocument();
     });
   });
 });
