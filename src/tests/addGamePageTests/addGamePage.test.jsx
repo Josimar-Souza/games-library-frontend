@@ -69,5 +69,17 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(userscoreInput).toBeInTheDocument();
     });
+
+    it('Verifica se existe um input para a imagem do game', async () => {
+      const imageInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+
+      expect(imageInput).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um input para a imagem de backdrop do game', async () => {
+      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+
+      expect(backdropImageInput).toBeInTheDocument();
+    });
   });
 });
