@@ -8,6 +8,10 @@ const DropDownStyle = styled.select`
   font-size: ${({ fontSize }) => fontSize};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
+
+  :focus {
+    outline: none;
+  }
 `;
 
 export default DropDownStyle;

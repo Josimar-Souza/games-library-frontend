@@ -17,6 +17,7 @@ function TextArea(props) {
     value,
     onChange,
     name,
+    border,
   } = props;
 
   return (
@@ -34,6 +35,7 @@ function TextArea(props) {
       value={value}
       onChange={onChange}
       name={name}
+      border={border}
     />
   );
 }
@@ -50,6 +52,7 @@ TextArea.defaultProps = {
   fontColor: 'black',
   backgroundColor: 'white',
   name: '',
+  border: '1px solid black',
 };
 
 TextArea.propTypes = {
@@ -66,6 +69,7 @@ TextArea.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string,
+  border: PropTypes.string,
 };
 
 export default TextArea;
