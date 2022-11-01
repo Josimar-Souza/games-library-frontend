@@ -9,6 +9,7 @@ function AddGamePage() {
   const {
     Input,
     TextArea,
+    DropDown,
   } = components;
   return (
     <AddGameStyle>
@@ -52,13 +53,23 @@ function AddGamePage() {
         fontSize="1.5vw"
         type="number"
       />
-      <Input
-        placeholder="Digite a url do trailer do jogo no Youtube"
-        width="45%"
-        margin="15px 0"
-        fontSize="1.5vw"
-        type="number"
-      />
+      <InputContainer>
+        <Input
+          placeholder="Digite a url do trailer do jogo no Youtube"
+          width="45%"
+          margin="15px 0"
+          fontSize="1.5vw"
+          type="number"
+        />
+        <DropDown
+          width="45%"
+        >
+          <option value="test">Test</option>
+          <option value="test">Test 1</option>
+          <option value="test">Test 2</option>
+          <option value="test">Test 3</option>
+        </DropDown>
+      </InputContainer>
       <InputContainer>
         <Input
           placeholder="Digite a nota 'metascore' do site Metacritic"

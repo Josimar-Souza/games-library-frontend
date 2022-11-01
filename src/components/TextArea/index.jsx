@@ -18,6 +18,7 @@ function TextArea(props) {
     onChange,
     name,
   } = props;
+
   return (
     <TextAreaStyle
       width={width}

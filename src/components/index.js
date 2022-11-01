@@ -4,6 +4,7 @@ import Paragraph from './Paragraph';
 import Button from './Button';
 import BackButton from './BackButton';
 import TextArea from './TextArea';
+import DropDown from './DropDown';
 
 const components = {
   Input,
@@ -12,6 +13,7 @@ const components = {
   Button,
   BackButton,
   TextArea,
+  DropDown,
 };
 
 export default components;

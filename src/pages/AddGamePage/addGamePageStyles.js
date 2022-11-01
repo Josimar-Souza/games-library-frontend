@@ -13,6 +13,7 @@ export const AddGameStyle = styled.section`
 `;
 
 export const InputContainer = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-around;
   max-width: 100%;
