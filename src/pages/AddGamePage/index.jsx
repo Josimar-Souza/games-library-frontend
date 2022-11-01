@@ -27,7 +27,10 @@ function AddGamePage() {
     Input,
     TextArea,
     DropDown,
+    Option,
   } = components;
+
+  const { game, platformCount } = gameInfo;
 
   const handleInputChange = ({ target: { name, value } }) => {
     if (name === 'platformCount') {
@@ -42,8 +45,6 @@ function AddGamePage() {
       });
     }
   };
-
-  const { game, platformCount } = gameInfo;
 
   return (
     <AddGameStyle>
@@ -121,10 +122,10 @@ function AddGamePage() {
           name="category"
           value={game.category}
         >
-          <option value="test">Test</option>
-          <option value="test 1">Test 1</option>
-          <option value="test 2">Test 2</option>
-          <option value="test 3">Test 3</option>
+          <Option value="test">Test</Option>
+          <Option value="test 1">Test 1</Option>
+          <Option value="test 2">Test 2</Option>
+          <Option value="test 3">Test 3</Option>
         </DropDown>
       </InputContainer>
       <InputContainer>
