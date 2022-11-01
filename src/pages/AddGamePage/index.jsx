@@ -8,6 +8,7 @@ import {
 function AddGamePage() {
   const {
     Input,
+    TextArea,
   } = components;
   return (
     <AddGameStyle>
@@ -25,6 +26,11 @@ function AddGamePage() {
           fontSize="1.5vw"
         />
       </InputContainer>
+      <TextArea
+        margin="15px 0"
+        placeholder="Digite a sinopse do jogo"
+        width="76%"
+      />
       <InputContainer>
         <Input
           placeholder="Digite a desenvolvedora do jogo"
