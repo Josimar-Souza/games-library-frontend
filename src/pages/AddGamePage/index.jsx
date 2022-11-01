@@ -122,14 +122,15 @@ function AddGamePage() {
       />
       <PlatformInputsContainer>
         {
-          platformsInputs.map(() => (
+          platformsInputs.map((count) => (
             <Input
               placeholder="Digite a plataforma"
               width="45%"
               margin="15px 0"
               fontSize="1.5vw"
               onChange={handleInputChange}
-              name="platformCount"
+              name="platform"
+              key={count}
             />
           ))
         }
