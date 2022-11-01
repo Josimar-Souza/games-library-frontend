@@ -1,7 +1,20 @@
 import styled from 'styled-components';
+import background from '../../images/Background.jpg';
 
-const AddGameStyle = styled.section`
-
+export const AddGameStyle = styled.section`
+  align-items: center;
+  background-image: url(${background});
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  max-width: 100%;
 `;
 
-export default AddGameStyle;
+export const InputContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  max-width: 100%;
+  width: 80%;
+`;

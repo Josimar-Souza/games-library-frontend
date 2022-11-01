@@ -59,13 +59,13 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Verifica se existe um input para a nota "metascore" do site Metacriic', async () => {
-      const metascoreInput = await screen.findByPlaceholderText('Digite a nota "metascore" do Metacriic');
+      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
 
       expect(metascoreInput).toBeInTheDocument();
     });
 
     it('Verifica se existe um input para a nota "userscore" do site Metacriic', async () => {
-      const userscoreInput = await screen.findByPlaceholderText('Digite a nota "userscore" do site Metacriic');
+      const userscoreInput = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
 
       expect(userscoreInput).toBeInTheDocument();
     });
