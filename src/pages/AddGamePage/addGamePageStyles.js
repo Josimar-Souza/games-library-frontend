@@ -7,7 +7,6 @@ export const AddGameStyle = styled.section`
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   max-width: 100%;
 `;
@@ -17,5 +16,16 @@ export const InputContainer = styled.div`
   display: flex;
   justify-content: space-around;
   max-width: 100%;
+  margin: 15px 0;
+  width: 80%;
+`;
+
+export const PlatformInputsContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 100%;
+  margin: 15px 0;
   width: 80%;
 `;

@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 
@@ -47,6 +48,10 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Verifica se todos os inputs para as plataformas existem n página', async () => {
+      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+
+      userEvent.type(platformCountInput, '5');
+
       const platformsInputs = await screen.findAllByPlaceholderText('Digite a plataforma');
 
       expect(platformsInputs.length).toBe(5);
