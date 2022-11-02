@@ -6,6 +6,7 @@ import BackButton from './BackButton';
 import TextArea from './TextArea';
 import DropDown from './DropDown';
 import Option from './Option';
+import Line from './Line';
 
 const components = {
   Input,
@@ -16,6 +17,7 @@ const components = {
   TextArea,
   DropDown,
   Option,
+  Line,
 };
 
 export default components;

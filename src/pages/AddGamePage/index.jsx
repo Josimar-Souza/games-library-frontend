@@ -27,6 +27,7 @@ function AddGamePage() {
     TextArea,
     DropDown,
     Option,
+    Line,
   } = components;
 
   const { game } = gameInfo;
@@ -63,6 +64,10 @@ function AddGamePage() {
           value={game.releaseDate}
         />
       </InputContainer>
+      <Line
+        width="76%"
+        height="3px"
+      />
       <TextArea
         margin="15px 0"
         placeholder="Digite a sinopse do jogo"
@@ -70,6 +75,10 @@ function AddGamePage() {
         onChange={handleInputChange}
         name="sinopse"
         value={game.sinopse}
+      />
+      <Line
+        width="76%"
+        height="3px"
       />
       <InputContainer>
         <Input
@@ -91,6 +100,10 @@ function AddGamePage() {
           value={game.publisher}
         />
       </InputContainer>
+      <Line
+        width="76%"
+        height="3px"
+      />
       <Input
         placeholder="Digite a quantidade de plataformas para qual o jogo foi lançado"
         width="45%"
@@ -99,6 +112,10 @@ function AddGamePage() {
         type="number"
         onChange={handleInputChange}
         name="platformCount"
+      />
+      <Line
+        width="76%"
+        height="3px"
       />
       <InputContainer>
         <Input
@@ -122,6 +139,10 @@ function AddGamePage() {
           <Option value="test 3">Test 3</Option>
         </DropDown>
       </InputContainer>
+      <Line
+        width="76%"
+        height="3px"
+      />
       <InputContainer>
         <Input
           placeholder="Digite a nota 'metascore' do site Metacritic"
@@ -142,6 +163,10 @@ function AddGamePage() {
           value={game.userscore}
         />
       </InputContainer>
+      <Line
+        width="76%"
+        height="3px"
+      />
       <InputContainer>
         <Input
           placeholder="Digite a url da imagem do game"
