@@ -38,13 +38,17 @@ function AddGamePage() {
   const { game } = gameInfo;
 
   const handleInputChange = ({ target: { name, value } }) => {
-    setGameInfo({
-      ...gameInfo,
-      game: {
-        ...gameInfo.game,
-        [name]: value,
-      },
-    });
+    if (name.includes('platform') && name !== 'platformCount') {
+      setPlatforms({ ...platforms, [name]: value });
+    } else {
+      setGameInfo({
+        ...gameInfo,
+        game: {
+          ...gameInfo.game,
+          [name]: value,
+        },
+      });
+    }
   };
 
   const onAddInputsButtonClick = () => {
