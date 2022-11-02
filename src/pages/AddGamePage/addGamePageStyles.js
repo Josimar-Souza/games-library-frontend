@@ -9,6 +9,7 @@ export const AddGameStyle = styled.section`
   flex-direction: column;
   justify-content: center;
   max-width: 100%;
+  min-height: 100vh;
 `;
 
 export const InputContainer = styled.div`

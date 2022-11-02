@@ -3,11 +3,9 @@ import components from '../../components';
 import {
   AddGameStyle,
   InputContainer,
-  PlatformInputsContainer,
 } from './addGamePageStyles';
 
 function AddGamePage() {
-  let platformsInputs = [];
   const [gameInfo, setGameInfo] = useState({
     game: {
       title: '',
@@ -22,7 +20,6 @@ function AddGamePage() {
       image: '',
       backdrop: '',
     },
-    platformCount: 0,
   });
 
   const {
@@ -32,33 +29,17 @@ function AddGamePage() {
     Option,
   } = components;
 
-  const { game, platformCount } = gameInfo;
+  const { game } = gameInfo;
 
   const handleInputChange = ({ target: { name, value } }) => {
-    if (name === 'platformCount') {
-      setGameInfo({ ...gameInfo, [name]: value });
-    } else {
-      setGameInfo({
-        ...gameInfo,
-        game: {
-          ...gameInfo.game,
-          [name]: value,
-        },
-      });
-    }
+    setGameInfo({
+      ...gameInfo,
+      game: {
+        ...gameInfo.game,
+        [name]: value,
+      },
+    });
   };
-
-  const getPlatformsInputs = () => {
-    if (platformCount !== '0') {
-      for (let index = 0; index < +platformCount; index += 1) {
-        platformsInputs.push(index);
-      }
-    } else {
-      platformsInputs = [];
-    }
-  };
-
-  getPlatformsInputs();
 
   return (
     <AddGameStyle>
@@ -118,23 +99,7 @@ function AddGamePage() {
         type="number"
         onChange={handleInputChange}
         name="platformCount"
-        value={platformCount}
       />
-      <PlatformInputsContainer>
-        {
-          platformsInputs.map((count) => (
-            <Input
-              placeholder="Digite a plataforma"
-              width="45%"
-              margin="15px 0"
-              fontSize="1.5vw"
-              onChange={handleInputChange}
-              name="platform"
-              key={count}
-            />
-          ))
-        }
-      </PlatformInputsContainer>
       <InputContainer>
         <Input
           placeholder="Digite a url do trailer do jogo no Youtube"
