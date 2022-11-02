@@ -23,6 +23,8 @@ export const InputContainer = styled.div`
 
 export const PlatformInputsContainer = styled.div`
   align-items: center;
+  background-color: #c6c6c6;
+  border-radius: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

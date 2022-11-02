@@ -167,6 +167,7 @@ function AddGamePage() {
               value={platforms[platform[0]]}
               borderRadius="15px"
               key={platform[0]}
+              border="none"
             />
           ))
         }
