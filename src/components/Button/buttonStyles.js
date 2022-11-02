@@ -11,6 +11,7 @@ const ButtonStyle = styled.button`
   transition: ${({ transition }) => transition};
 
   :hover {
+    background-color: ${({ hoverBackgroundColor }) => hoverBackgroundColor};
     cursor: ${({ hoverCursor }) => hoverCursor};
     transform: ${({ hoverTransform }) => hoverTransform};
   }

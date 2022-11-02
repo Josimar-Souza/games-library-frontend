@@ -3,6 +3,7 @@ import components from '../../components';
 import {
   AddGameStyle,
   InputContainer,
+  PlatformInputsContainer,
 } from './addGamePageStyles';
 
 function AddGamePage() {
@@ -19,8 +20,11 @@ function AddGamePage() {
       userscore: '',
       image: '',
       backdrop: '',
+      platformCount: 1,
     },
   });
+
+  const [platforms, setPlatforms] = useState({ platform0: '' });
 
   const {
     Input,
@@ -28,6 +32,7 @@ function AddGamePage() {
     DropDown,
     Option,
     Line,
+    Button,
   } = components;
 
   const { game } = gameInfo;
@@ -40,6 +45,15 @@ function AddGamePage() {
         [name]: value,
       },
     });
+  };
+
+  const onAddInputsButtonClick = () => {
+    const currentPlatforms = {};
+    for (let index = 0; index < +game.platformCount; index += 1) {
+      currentPlatforms[`platform${index}`] = '';
+    }
+
+    setPlatforms(currentPlatforms);
   };
 
   return (
@@ -119,8 +133,44 @@ function AddGamePage() {
           onChange={handleInputChange}
           name="platformCount"
           borderRadius="15px"
+          value={game.platformCount}
         />
+        <Button
+          width="45%"
+          borderRadius="15px"
+          fontSize="1.3vw"
+          backgroundColor="white"
+          padding="5px"
+          hoverCursor="pointer"
+          hoverTransform="scale(1.05, 1.05)"
+          transition="0.2s"
+          hoverBackgroundColor="#5cff59"
+          onClick={onAddInputsButtonClick}
+        >
+          Adicionar inputs para plataformas
+        </Button>
       </InputContainer>
+      <Line
+        width="76%"
+        height="3px"
+      />
+      <PlatformInputsContainer>
+        {
+          Object.entries(platforms).map((platform) => (
+            <Input
+              placeholder="Digite a plataforma"
+              width="45%"
+              margin="15px 0"
+              fontSize="1.2vw"
+              onChange={handleInputChange}
+              name={platform[0]}
+              value={platforms[platform[0]]}
+              borderRadius="15px"
+              key={platform[0]}
+            />
+          ))
+        }
+      </PlatformInputsContainer>
       <Line
         width="76%"
         height="3px"

@@ -22,6 +22,7 @@ function Button(props) {
     hoverCursor,
     hoverTransform,
     transition,
+    hoverBackgroundColor,
   } = props;
 
   return (
@@ -43,6 +44,7 @@ function Button(props) {
       mobileWidth={mobileWidth}
       mobilePadding={mobilePadding}
       mobileMargin={mobileMargin}
+      hoverBackgroundColor={hoverBackgroundColor}
     >
       {children}
     </ButtonStyle>
@@ -66,6 +68,7 @@ Button.defaultProps = {
   hoverCursor: 'auto',
   hoverTransform: 'none',
   transition: 'none',
+  hoverBackgroundColor: '#dbdbdb',
 };
 
 Button.propTypes = {
@@ -87,6 +90,7 @@ Button.propTypes = {
   mobileWidth: PropTypes.string,
   mobilePadding: PropTypes.string,
   mobileMargin: PropTypes.string,
+  hoverBackgroundColor: PropTypes.string,
 };
 
 export default Button;
