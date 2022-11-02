@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import components from '../../components';
+import GamesAPI from '../../api/gamesAPI';
+import { getItem } from '../../helpers/localStorageManager';
 import {
   AddGameStyle,
   InputContainer,
   PlatformInputsContainer,
 } from './addGamePageStyles';
+
+const apiURL = process.env.REACT_APP_API_URL;
+export const gamesAPI = new GamesAPI(apiURL, 15000);
 
 function AddGamePage() {
   const [gameInfo, setGameInfo] = useState({
@@ -25,6 +30,17 @@ function AddGamePage() {
   });
 
   const [platforms, setPlatforms] = useState({ platform0: '' });
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const token = getItem('token');
+      const categoriesFounded = await gamesAPI.getAllCategories(token);
+      setCategories(categoriesFounded);
+    };
+
+    getCategories();
+  }, []);
 
   const {
     Input,
