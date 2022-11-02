@@ -20,7 +20,7 @@ function AddGamePage() {
       userscore: '',
       image: '',
       backdrop: '',
-      platformCount: 1,
+      platformCount: '',
     },
   });
 

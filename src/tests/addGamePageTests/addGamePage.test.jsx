@@ -47,10 +47,18 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(platformCountInput).toBeInTheDocument();
     });
 
+    it('Verifica se existe um botão para adicionar os inputs para as pataformas', async () => {
+      const addPlatformsButton = await screen.findByRole('button', { name: 'Adicionar inputs para plataformas' });
+
+      expect(addPlatformsButton).toBeInTheDocument();
+    });
+
     it('Verifica se todos os inputs para as plataformas existem n página', async () => {
       const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const addPlatformsButton = await screen.findByRole('button', { name: 'Adicionar inputs para plataformas' });
 
       userEvent.type(platformCountInput, '5');
+      userEvent.click(addPlatformsButton);
 
       const platformsInputs = await screen.findAllByPlaceholderText('Digite a plataforma');
 
