@@ -10,7 +10,7 @@ class GamesAPI {
 
   async getAllCategories(token) {
     try {
-      const categories = await this.api.get('/category', {
+      const { data: { categories } } = await this.api.get('/category', {
         headers: {
           authorization: token,
         },

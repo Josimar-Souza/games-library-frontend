@@ -36,6 +36,7 @@ function AddGamePage() {
     const getCategories = async () => {
       const token = getItem('token');
       const categoriesFounded = await gamesAPI.getAllCategories(token);
+
       setCategories(categoriesFounded);
     };
 
@@ -214,10 +215,11 @@ function AddGamePage() {
           value={game.category}
           borderRadius="15px"
         >
-          <Option value="test">Test</Option>
-          <Option value="test 1">Test 1</Option>
-          <Option value="test 2">Test 2</Option>
-          <Option value="test 3">Test 3</Option>
+          {
+            categories.map(({ category }) => (
+              <Option value={category}>{category}</Option>
+            ))
+          }
         </DropDown>
       </InputContainer>
       <Line
