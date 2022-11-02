@@ -41,6 +41,12 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(publisherInput).toBeInTheDocument();
     });
 
+    it('Verifica se existe um select para as categorias', async () => {
+      const categorySelect = await screen.findByRole('combobox');
+
+      expect(categorySelect).toBeInTheDocument();
+    });
+
     it('Verifica se existe um input para informar a quantidade de plataformas do game', async () => {
       const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
 
