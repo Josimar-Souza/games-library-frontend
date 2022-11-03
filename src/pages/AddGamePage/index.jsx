@@ -216,8 +216,14 @@ function AddGamePage() {
           borderRadius="15px"
         >
           {
-            categories.map(({ category }) => (
-              <Option value={category}>{category}</Option>
+            categories.map(({ category, _id }, index) => (
+              <Option
+                value={category}
+                key={_id}
+                testId={`category-option-${index}`}
+              >
+                {category}
+              </Option>
             ))
           }
         </DropDown>

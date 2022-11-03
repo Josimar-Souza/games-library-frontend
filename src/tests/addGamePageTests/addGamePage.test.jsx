@@ -1,14 +1,24 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
+import { gamesAPI } from '../../pages/AddGamePage';
+import mockCategories from '../mocks/mockCategories';
 
 describe('Testes da página para adicionar um novo game', () => {
   describe('Verifica a existência dos elementos na página', () => {
-    beforeEach(() => {
-      renderWithRouter(<pages.AddGamePage />);
+    beforeEach(async () => {
+      jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
+
+      await act(async () => {
+        renderWithRouter(<pages.AddGamePage />);
+      });
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
     });
 
     it('Verifica se existe um input para o título do game', async () => {
@@ -41,12 +51,6 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(publisherInput).toBeInTheDocument();
     });
 
-    it('Verifica se existe um select para as categorias', async () => {
-      const categorySelect = await screen.findByRole('combobox');
-
-      expect(categorySelect).toBeInTheDocument();
-    });
-
     it('Verifica se existe um input para informar a quantidade de plataformas do game', async () => {
       const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
 
@@ -75,6 +79,27 @@ describe('Testes da página para adicionar um novo game', () => {
       const urlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
 
       expect(urlInput).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um select para as categorias', async () => {
+      const categorySelect = await screen.findByRole('combobox');
+
+      expect(categorySelect).toBeInTheDocument();
+    });
+
+    it('Verifica se todas as categorias aparecem como opções do dropdown', async () => {
+      const categoriesOptionsPromises = [];
+      mockCategories.forEach((category, index) => {
+        const categoryOption = screen.findByTestId(`category-option-${index}`);
+
+        categoriesOptionsPromises.push(categoryOption);
+      });
+
+      const categoriesOptions = await Promise.all(categoriesOptionsPromises);
+
+      categoriesOptions.forEach((category, index) => {
+        expect(category.textContent).toBe(mockCategories[index].category);
+      });
     });
 
     it('Verifica se existe um input para a nota "metascore" do site Metacriic', async () => {
