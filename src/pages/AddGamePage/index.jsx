@@ -244,6 +244,7 @@ function AddGamePage() {
       />
       <InputContainer>
         <Input
+          type="number"
           placeholder="Digite a nota 'metascore' do site Metacritic"
           width="45%"
           margin="15px 0"
@@ -254,6 +255,7 @@ function AddGamePage() {
           borderRadius="15px"
         />
         <Input
+          type="number"
           placeholder="Digite a nota 'userscore' do site Metacritic"
           width="45%"
           margin="15px 0"
