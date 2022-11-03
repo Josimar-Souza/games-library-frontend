@@ -50,6 +50,7 @@ function AddGamePage() {
     Option,
     Line,
     Button,
+    Title,
   } = components;
 
   const { game } = gameInfo;
@@ -79,6 +80,13 @@ function AddGamePage() {
 
   return (
     <AddGameStyle>
+      <Title
+        fontColor="white"
+        textAlign="center"
+        fontSize="4vw"
+      >
+        Adicione um novo jogo
+      </Title>
       <InputContainer>
         <Input
           placeholder="Digite o nome do jogo"
