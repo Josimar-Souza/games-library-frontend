@@ -232,11 +232,16 @@ function AddGamePage() {
           labelFontColor="white"
         />
         <DropDown
-          width="45%"
+          dropdownWidth="80%"
           onChange={handleInputChange}
           name="category"
           value={game.category}
-          borderRadius="15px"
+          dropdownBorderRadius="15px"
+          labelText="Categoria"
+          labelFontColor="white"
+          dropdownMargin="15px 0"
+          dropdownHeight="2rem"
+          dropdownFontSize="1.5vw"
         >
           {
             categories.map(({ category, _id }, index) => (
