@@ -344,13 +344,15 @@ function AddGamePage() {
       <InputContainer>
         <Input
           placeholder="Digite a nova categoria"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="backdrop"
           value={game.backdrop}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Nova categoria"
+          labelFontColor="white"
         />
         <Button
           width="35%"
