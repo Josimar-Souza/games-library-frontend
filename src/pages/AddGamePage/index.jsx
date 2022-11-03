@@ -288,6 +288,20 @@ function AddGamePage() {
           borderRadius="15px"
         />
       </InputContainer>
+      <Button
+        width="25%"
+        borderRadius="15px"
+        fontSize="2vw"
+        fontColor="white"
+        backgroundColor="#22cc16"
+        padding="5px"
+        hoverCursor="pointer"
+        hoverTransform="scale(1.05, 1.05)"
+        transition="0.2s"
+        hoverBackgroundColor="#199610"
+      >
+        Adicionar jogo
+      </Button>
     </AddGameStyle>
   );
 }

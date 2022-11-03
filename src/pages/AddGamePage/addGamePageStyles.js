@@ -10,7 +10,7 @@ export const AddGameStyle = styled.section`
   justify-content: center;
   max-width: 100%;
   min-height: 100vh;
-  padding: 10px;
+  padding: 3rem;
 `;
 
 export const InputContainer = styled.div`

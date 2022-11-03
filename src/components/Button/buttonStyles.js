@@ -4,6 +4,7 @@ const ButtonStyle = styled.button`
   background-color: ${({ backgroundColor }) => backgroundColor};
   border: ${({ border }) => border};
   border-radius: ${({ borderRadius }) => borderRadius};
+  color: ${({ fontColor }) => fontColor};
   font-size: ${({ fontSize }) => fontSize};
   margin: ${({ margin }) => margin};
   width: ${({ width }) => width};
