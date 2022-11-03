@@ -51,6 +51,7 @@ function AddGamePage() {
     Line,
     Button,
     Title,
+    Paragraph,
   } = components;
 
   const { game } = gameInfo;
@@ -165,15 +166,16 @@ function AddGamePage() {
           value={game.platformCount}
         />
         <Button
-          width="45%"
+          width="35%"
           borderRadius="15px"
-          fontSize="1.3vw"
-          backgroundColor="white"
+          fontSize="1.5vw"
+          fontColor="white"
+          backgroundColor="#22cc16"
           padding="5px"
           hoverCursor="pointer"
           hoverTransform="scale(1.05, 1.05)"
           transition="0.2s"
-          hoverBackgroundColor="#5cff59"
+          hoverBackgroundColor="#199610"
           onClick={onAddInputsButtonClick}
         >
           Adicionar inputs para plataformas
@@ -302,6 +304,46 @@ function AddGamePage() {
       >
         Adicionar jogo
       </Button>
+      <Paragraph
+        fontColor="white"
+        textAlign="center"
+        fontSize="2vw"
+        width="80%"
+        margin="15px 0"
+        testId="add-category-message"
+      >
+        Não achou a categoria que deseja? Adicione-a no formulário abaixo!
+      </Paragraph>
+      <Line
+        width="76%"
+        height="3px"
+      />
+      <InputContainer>
+        <Input
+          placeholder="Digite a nova categoria"
+          width="45%"
+          margin="15px 0"
+          fontSize="1.2vw"
+          onChange={handleInputChange}
+          name="backdrop"
+          value={game.backdrop}
+          borderRadius="15px"
+        />
+        <Button
+          width="35%"
+          borderRadius="15px"
+          fontSize="2vw"
+          fontColor="white"
+          backgroundColor="#22cc16"
+          padding="5px"
+          hoverCursor="pointer"
+          hoverTransform="scale(1.05, 1.05)"
+          transition="0.2s"
+          hoverBackgroundColor="#199610"
+        >
+          Adicionar categoria
+        </Button>
+      </InputContainer>
     </AddGameStyle>
   );
 }
