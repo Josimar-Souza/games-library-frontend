@@ -15,7 +15,7 @@ export const DropDownStyle = styled.select`
   border: ${({ dropdownBorder }) => dropdownBorder};
   color: ${({ dropdownFontColor }) => dropdownFontColor};
   font-size: ${({ dropdownFontSize }) => dropdownFontSize};
-  height: ${({ dropdownHeight }) => dropdownHeight};
+  min-height: ${({ dropdownMinHeight }) => dropdownMinHeight};
   margin: ${({ dropdownMargin }) => dropdownMargin};
   width: ${({ dropdownWidth }) => dropdownWidth};
 

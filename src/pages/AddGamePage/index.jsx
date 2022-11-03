@@ -240,7 +240,7 @@ function AddGamePage() {
           labelText="Categoria"
           labelFontColor="white"
           dropdownMargin="15px 0"
-          dropdownHeight="2rem"
+          dropdownMinHeight="2rem"
           dropdownFontSize="1.5vw"
         >
           {

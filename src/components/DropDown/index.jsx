@@ -12,7 +12,7 @@ function DropDown(props) {
     dropdownWidth,
     dropdownFontSize,
     dropdownFontColor,
-    dropdownHeight,
+    dropdownMinHeight,
     dropdownBackgroundColor,
     dropdownBorderRadius,
     dropdownBorder,
@@ -45,7 +45,7 @@ function DropDown(props) {
       <DropDownStyle
         dropdownWidth={dropdownWidth}
         dropdownFontSize={dropdownFontSize}
-        dropdownHeight={dropdownHeight}
+        dropdownMinHeight={dropdownMinHeight}
         dropdownFontColor={dropdownFontColor}
         dropdownBackgroundColor={dropdownBackgroundColor}
         dropdownBorderRadius={dropdownBorderRadius}
@@ -65,7 +65,7 @@ function DropDown(props) {
 DropDown.defaultProps = {
   dropdownWidth: '50%',
   dropdownFontSize: '1.2vw',
-  dropdownHeight: '2.5rem',
+  dropdownMinHeight: '2.5rem',
   dropdownFontColor: 'black',
   dropdownBackgroundColor: 'white',
   dropdownBorderRadius: '0',
@@ -85,7 +85,7 @@ DropDown.propTypes = {
   children: PropTypes.node.isRequired,
   dropdownWidth: PropTypes.string,
   dropdownFontSize: PropTypes.string,
-  dropdownHeight: PropTypes.string,
+  dropdownMinHeight: PropTypes.string,
   dropdownFontColor: PropTypes.string,
   dropdownBackgroundColor: PropTypes.string,
   dropdownBorderRadius: PropTypes.string,
