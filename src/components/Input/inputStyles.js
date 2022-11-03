@@ -1,16 +1,25 @@
 import styled from 'styled-components';
 
-const InputStyle = styled.input`
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  border: ${({ border }) => border};
-  border-radius: ${({ borderRadius }) => borderRadius};
-  box-shadow: ${({ boxShadow }) => boxShadow};
+export const InputContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 100%;
+  width: ${({ containerWidth }) => containerWidth};
+`;
+
+export const InputStyle = styled.input`
+  background-color: ${({ inputBackgroundColor }) => inputBackgroundColor};
+  border: ${({ inputBorder }) => inputBorder};
+  border-radius: ${({ inputBorderRadius }) => inputBorderRadius};
+  box-shadow: ${({ inputBoxShadow }) => inputBoxShadow};
   color: ${({ fontColor }) => fontColor};
   font-size: ${({ fontSize }) => fontSize};
-  margin: ${({ margin }) => margin};
+  margin: ${({ inputMargin }) => inputMargin};
   max-width: 100%;
-  padding: ${({ padding }) => padding};
-  width: ${({ width }) => width};
+  padding: ${({ inputPadding }) => inputPadding};
+  width: ${({ inputWidth }) => inputWidth};
 
   :focus {
     outline: none;
@@ -18,9 +27,15 @@ const InputStyle = styled.input`
 
   @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
-    margin: ${({ mobileMargin }) => mobileMargin};
-    width: ${({ mobileWidth }) => mobileWidth};
+    margin: ${({ mobileInputMargin }) => mobileInputMargin};
+    width: ${({ mobileInputWidth }) => mobileInputWidth};
   }
 `;
 
-export default InputStyle;
+export const InputLabel = styled.label`
+  color: ${({ labelFontColor }) => labelFontColor};
+  font-size: ${({ labelFontSize }) => labelFontSize};
+  max-width: 100%;
+  text-align: ${({ labelTextAlign }) => labelTextAlign};
+  width: ${({ labelWidth }) => labelWidth};
+`;

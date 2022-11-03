@@ -1,95 +1,134 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputStyle from './inputStyles';
+import {
+  InputContainer,
+  InputStyle,
+  InputLabel,
+} from './inputStyles';
 
 function Input(props) {
   const {
-    width,
-    mobileWidth,
+    inputWidth,
+    mobileInputWidth,
     testId,
-    border,
-    borderRadius,
+    inputBorder,
+    inputBorderRadius,
     fontColor,
     fontSize,
     mobileFontSize,
-    backgroundColor,
-    padding,
-    mobilePadding,
-    boxShadow,
+    inputBackgroundColor,
+    inputPadding,
+    mobileInputPadding,
+    inputBoxShadow,
     value,
     onChange,
-    margin,
-    mobileMargin,
+    inputMargin,
+    mobileInputMargin,
     placeholder,
     name,
     type,
+    containerWidth,
+    id,
+    labelText,
+    labelFontColor,
+    labelWidth,
+    labelTextAlign,
+    labelFontSize,
   } = props;
 
   return (
-    <InputStyle
-      width={width}
-      data-testid={testId}
-      border={border}
-      fontColor={fontColor}
-      backgroundColor={backgroundColor}
-      fontSize={fontSize}
-      borderRadius={borderRadius}
-      padding={padding}
-      boxShadow={boxShadow}
-      value={value}
-      onChange={onChange}
-      margin={margin}
-      placeholder={placeholder}
-      name={name}
-      type={type}
-      mobileWidth={mobileWidth}
-      mobileFontSize={mobileFontSize}
-      mobilePadding={mobilePadding}
-      mobileMargin={mobileMargin}
-    />
+    <InputContainer
+      containerWidth={containerWidth}
+    >
+      <InputLabel
+        id={id}
+        labelFontColor={labelFontColor}
+        labelWidth={labelWidth}
+        labelTextAlign={labelTextAlign}
+        labelFontSize={labelFontSize}
+      >
+        {labelText}
+      </InputLabel>
+      <InputStyle
+        inputWidth={inputWidth}
+        data-testid={testId}
+        inputBorder={inputBorder}
+        fontColor={fontColor}
+        inputBackgroundColor={inputBackgroundColor}
+        fontSize={fontSize}
+        inputBorderRadius={inputBorderRadius}
+        inputPadding={inputPadding}
+        inputBoxShadow={inputBoxShadow}
+        value={value}
+        onChange={onChange}
+        inputMargin={inputMargin}
+        placeholder={placeholder}
+        name={name}
+        type={type}
+        mobileInputWidth={mobileInputWidth}
+        mobileFontSize={mobileFontSize}
+        mobileInputPadding={mobileInputPadding}
+        mobileInputMargin={mobileInputMargin}
+        id={id}
+      />
+    </InputContainer>
   );
 }
 
 Input.defaultProps = {
-  width: '50%',
-  mobileWidth: '80%',
+  inputWidth: '50%',
+  mobileInputWidth: '80%',
   testId: '',
-  border: '1px solid black',
+  inputBorder: '1px solid black',
   fontColor: 'black',
   fontSize: '2vw',
   mobileFontSize: '6vw',
-  backgroundColor: 'white',
-  borderRadius: '0',
-  padding: '5px',
-  mobilePadding: '5px',
-  boxShadow: 'none',
-  margin: '0',
-  mobileMargin: '0',
+  inputBackgroundColor: 'white',
+  inputBorderRadius: '0',
+  inputPadding: '5px',
+  mobileInputPadding: '5px',
+  inputBoxShadow: 'none',
+  inputMargin: '0',
+  mobileInputMargin: '0',
   placeholder: '',
   name: '',
   type: 'text',
+  containerWidth: '50%',
+  id: '',
+  labelText: '',
+  labelFontColor: 'black',
+  labelWidth: '80%',
+  labelTextAlign: 'center',
+  labelFontSize: '2vw',
 };
 
 Input.propTypes = {
-  width: PropTypes.string,
+  inputWidth: PropTypes.string,
   testId: PropTypes.string,
-  border: PropTypes.string,
+  inputBorder: PropTypes.string,
   fontColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  inputBackgroundColor: PropTypes.string,
   fontSize: PropTypes.string,
-  borderRadius: PropTypes.string,
-  padding: PropTypes.string,
-  boxShadow: PropTypes.string,
+  inputBorderRadius: PropTypes.string,
+  inputPadding: PropTypes.string,
+  inputBoxShadow: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
-  margin: PropTypes.string,
-  mobileMargin: PropTypes.string,
+  inputMargin: PropTypes.string,
+  mobileInputMargin: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
-  mobileWidth: PropTypes.string,
+  mobileInputWidth: PropTypes.string,
   mobileFontSize: PropTypes.string,
-  mobilePadding: PropTypes.string,
+  mobileInputPadding: PropTypes.string,
+  containerWidth: PropTypes.string,
+  id: PropTypes.string,
+  labelText: PropTypes.string,
+  labelFontColor: PropTypes.string,
+  labelWidth: PropTypes.string,
+  labelTextAlign: PropTypes.string,
+  labelFontSize: PropTypes.string,
 };
 
 export default Input;

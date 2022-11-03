@@ -91,23 +91,27 @@ function AddGamePage() {
       <InputContainer>
         <Input
           placeholder="Digite o nome do jogo"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="title"
           value={game.title}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Nome"
+          labelFontColor="white"
         />
         <Input
           placeholder="Digite a data de lançamento do jogo no formato dd/mm/aaaa"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="releaseDate"
           value={game.releaseDate}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Data de lançamento"
+          labelFontColor="white"
         />
       </InputContainer>
       <Line
@@ -130,23 +134,27 @@ function AddGamePage() {
       <InputContainer>
         <Input
           placeholder="Digite a desenvolvedora do jogo"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="developer"
           value={game.developer}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Desenvolvedora"
+          labelFontColor="white"
         />
         <Input
           placeholder="Digite a publicadora do jogo"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="publisher"
           value={game.publisher}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Publicadora"
+          labelFontColor="white"
         />
       </InputContainer>
       <Line
@@ -156,14 +164,16 @@ function AddGamePage() {
       <InputContainer>
         <Input
           placeholder="Digite a quantidade de plataformas para qual o jogo foi lançado"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           type="number"
           onChange={handleInputChange}
           name="platformCount"
-          borderRadius="15px"
+          inputBorderRadius="15px"
           value={game.platformCount}
+          labelText="Quantidade de plataformas"
+          labelFontColor="white"
         />
         <Button
           width="35%"
@@ -187,18 +197,19 @@ function AddGamePage() {
       />
       <PlatformInputsContainer>
         {
-          Object.entries(platforms).map((platform) => (
+          Object.entries(platforms).map((platform, index) => (
             <Input
               placeholder="Digite a plataforma"
-              width="45%"
-              margin="15px 0"
+              inputWidth="80%"
+              inputMargin="15px 0"
               fontSize="1.2vw"
               onChange={handleInputChange}
               name={platform[0]}
               value={platforms[platform[0]]}
-              borderRadius="15px"
+              inputBorderRadius="15px"
               key={platform[0]}
               border="none"
+              labelText={`Plataforma ${index + 1}`}
             />
           ))
         }
@@ -210,13 +221,15 @@ function AddGamePage() {
       <InputContainer>
         <Input
           placeholder="Digite a url do trailer do jogo no Youtube"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="trailer"
           value={game.trailer}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Trailer URL"
+          labelFontColor="white"
         />
         <DropDown
           width="45%"
@@ -246,24 +259,28 @@ function AddGamePage() {
         <Input
           type="number"
           placeholder="Digite a nota 'metascore' do site Metacritic"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="metascore"
           value={game.metascore}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Metascore"
+          labelFontColor="white"
         />
         <Input
           type="number"
           placeholder="Digite a nota 'userscore' do site Metacritic"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="userscore"
           value={game.userscore}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Userscore"
+          labelFontColor="white"
         />
       </InputContainer>
       <Line
@@ -273,23 +290,27 @@ function AddGamePage() {
       <InputContainer>
         <Input
           placeholder="Digite a url da imagem do game"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="image"
           value={game.image}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Imagem"
+          labelFontColor="white"
         />
         <Input
           placeholder="Digite a url da imagem de backdrop do game"
-          width="45%"
-          margin="15px 0"
+          inputWidth="80%"
+          inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="backdrop"
           value={game.backdrop}
-          borderRadius="15px"
+          inputBorderRadius="15px"
+          labelText="Imagem de backdrop"
+          labelFontColor="white"
         />
       </InputContainer>
       <Button
