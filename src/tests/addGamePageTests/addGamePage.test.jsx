@@ -21,6 +21,12 @@ describe('Testes da página para adicionar um novo game', () => {
       jest.clearAllMocks();
     });
 
+    it('Verifica se existe um título escriot "Adicione um novo jogo"', async () => {
+      const pageTitle = await screen.findByRole('heading', { name: 'Adicione um novo jogo' });
+
+      expect(pageTitle).toBeInTheDocument();
+    });
+
     it('Verifica se existe um input para o título do game', async () => {
       const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
 
@@ -124,6 +130,12 @@ describe('Testes da página para adicionar um novo game', () => {
       const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
 
       expect(backdropImageInput).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um botão para adicionar o jogo', async () => {
+      const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
+
+      expect(addGameButton).toBeInTheDocument();
     });
   });
 });
