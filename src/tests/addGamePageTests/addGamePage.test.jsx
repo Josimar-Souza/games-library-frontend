@@ -137,5 +137,24 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(addGameButton).toBeInTheDocument();
     });
+
+    it('Verifica se existe uma mensagem escrito "Não achou a categoria que deseja? Adicione-a no formulário abaixo!"', async () => {
+      const addCategoryMessage = await screen.findByTestId('add-category-message');
+
+      expect(addCategoryMessage).toBeInTheDocument();
+      expect(addCategoryMessage.textContent).toBe('Não achou a categoria que deseja? Adicione-a no formulário abaixo!');
+    });
+
+    it('Verifica se existe um input para digitar a nova categoria', async () => {
+      const newCategoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+
+      expect(newCategoryInput).toBeInTheDocument();
+    });
+
+    it('Verifica se existe um botão para adicionar a nova categoria', async () => {
+      const addCategoryButton = await screen.findByRole('button', { name: 'Adicionar categoria' });
+
+      expect(addCategoryButton).toBeInTheDocument();
+    });
   });
 });
