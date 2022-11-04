@@ -100,6 +100,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Nome"
           labelFontColor="white"
+          id="name"
         />
         <Input
           placeholder="Digite a data de lançamento do jogo no formato dd/mm/aaaa"
@@ -112,6 +113,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Data de lançamento"
           labelFontColor="white"
+          id="release-date"
         />
       </InputContainer>
       <Line
@@ -146,6 +148,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Desenvolvedora"
           labelFontColor="white"
+          id="developer"
         />
         <Input
           placeholder="Digite a publicadora do jogo"
@@ -158,6 +161,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Publicadora"
           labelFontColor="white"
+          id="publisher"
         />
       </InputContainer>
       <Line
@@ -177,6 +181,7 @@ function AddGamePage() {
           value={game.platformCount}
           labelText="Quantidade de plataformas"
           labelFontColor="white"
+          id="platformCount"
         />
         <Button
           width="35%"
@@ -213,6 +218,7 @@ function AddGamePage() {
               key={platform[0]}
               border="none"
               labelText={`Plataforma ${index + 1}`}
+              id={`platform-${index}`}
             />
           ))
         }
@@ -233,6 +239,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Trailer URL"
           labelFontColor="white"
+          id="trailer-url"
         />
         <DropDown
           dropdownWidth="80%"
@@ -276,6 +283,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Metascore"
           labelFontColor="white"
+          id="metascore"
         />
         <Input
           type="number"
@@ -289,6 +297,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Userscore"
           labelFontColor="white"
+          id="userscore"
         />
       </InputContainer>
       <Line
@@ -307,6 +316,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Imagem"
           labelFontColor="white"
+          id="image-url"
         />
         <Input
           placeholder="Digite a url da imagem de backdrop do game"
@@ -319,6 +329,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Imagem de backdrop"
           labelFontColor="white"
+          id="backdrop-image-url"
         />
       </InputContainer>
       <Button
@@ -361,6 +372,7 @@ function AddGamePage() {
           inputBorderRadius="15px"
           labelText="Nova categoria"
           labelFontColor="white"
+          id="new-category"
         />
         <Button
           width="35%"

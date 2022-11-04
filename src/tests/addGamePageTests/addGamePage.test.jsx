@@ -33,6 +33,12 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(titleInput).toBeInTheDocument();
     });
 
+    it('Verifica se existe uma label escrito "Nome"', async () => {
+      const titleLabel = await screen.findByLabelText('Nome');
+
+      expect(titleLabel).toBeInTheDocument();
+    });
+
     it('Verifica se existe um input para a data de lançamento do game', async () => {
       const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
 

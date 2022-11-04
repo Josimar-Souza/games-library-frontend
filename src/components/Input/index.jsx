@@ -41,7 +41,7 @@ function Input(props) {
       containerWidth={containerWidth}
     >
       <InputLabel
-        id={id}
+        htmlFor={id}
         labelFontColor={labelFontColor}
         labelWidth={labelWidth}
         labelTextAlign={labelTextAlign}
