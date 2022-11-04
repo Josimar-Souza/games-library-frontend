@@ -1,75 +1,112 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextAreaStyle from './textAreaStyles';
+import {
+  TextAreaContainer,
+  TextAreaStyle,
+  TextAreaLabel,
+} from './textAreaStyles';
 
 function TextArea(props) {
   const {
-    width,
+    textAreaWidth,
     rows,
     cols,
     placeholder,
-    margin,
-    padding,
-    fontSize,
-    borderRadius,
-    fontColor,
-    backgroundColor,
+    textAreaMargin,
+    textAreaPadding,
+    textAreaFontSize,
+    textAreaBorderRadius,
+    textAreaFontColor,
+    textAreaBackgroundColor,
     value,
     onChange,
     name,
-    border,
+    textAreaBorder,
+    containerWidth,
+    containerMargin,
+    labelText,
+    labelFontSize,
+    labelFontColor,
+    labelBorder,
+    labelWidth,
   } = props;
 
   return (
-    <TextAreaStyle
-      width={width}
-      rows={rows}
-      cols={cols}
-      placeholder={placeholder}
-      margin={margin}
-      padding={padding}
-      fontSize={fontSize}
-      borderRadius={borderRadius}
-      fontColor={fontColor}
-      backgroundColor={backgroundColor}
-      value={value}
-      onChange={onChange}
-      name={name}
-      border={border}
-    />
+    <TextAreaContainer
+      containerWidth={containerWidth}
+      containerMargin={containerMargin}
+    >
+      <TextAreaLabel
+        labelFontSize={labelFontSize}
+        labelFontColor={labelFontColor}
+        labelBorder={labelBorder}
+        labelWidth={labelWidth}
+      >
+        {labelText}
+      </TextAreaLabel>
+      <TextAreaStyle
+        textAreaWidth={textAreaWidth}
+        rows={rows}
+        cols={cols}
+        placeholder={placeholder}
+        textAreaMargin={textAreaMargin}
+        textAreaPadding={textAreaPadding}
+        textAreaFontSize={textAreaFontSize}
+        textAreaBorderRadius={textAreaBorderRadius}
+        textAreaFontColor={textAreaFontColor}
+        textAreaBackgroundColor={textAreaBackgroundColor}
+        value={value}
+        onChange={onChange}
+        name={name}
+        textAreaBorder={textAreaBorder}
+      />
+    </TextAreaContainer>
   );
 }
 
 TextArea.defaultProps = {
-  width: '50%',
+  textAreaWidth: '50%',
   rows: '8',
   cols: '50',
   placeholder: '',
-  margin: '0',
-  padding: '5px',
-  fontSize: '1.2vw',
-  borderRadius: '0',
-  fontColor: 'black',
-  backgroundColor: 'white',
+  textAreaMargin: '0',
+  textAreaPadding: '5px',
+  textAreaFontSize: '1.2vw',
+  textAreaBorderRadius: '0',
+  textAreaFontColor: 'black',
+  textAreaBackgroundColor: 'white',
   name: '',
-  border: '1px solid black',
+  textAreaBorder: '1px solid black',
+  containerWidth: '80%',
+  containerMargin: '0',
+  labelFontSize: '2vw',
+  labelFontColor: 'black',
+  labelBorder: 'none',
+  labelWidth: 'labelWidth',
 };
 
 TextArea.propTypes = {
-  width: PropTypes.string,
+  textAreaWidth: PropTypes.string,
   rows: PropTypes.string,
   cols: PropTypes.string,
   placeholder: PropTypes.string,
-  margin: PropTypes.string,
-  padding: PropTypes.string,
-  fontSize: PropTypes.string,
-  borderRadius: PropTypes.string,
-  fontColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  textAreaMargin: PropTypes.string,
+  textAreaPadding: PropTypes.string,
+  textAreaFontSize: PropTypes.string,
+  textAreaBorderRadius: PropTypes.string,
+  textAreaFontColor: PropTypes.string,
+  textAreaBackgroundColor: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string,
-  border: PropTypes.string,
+  textAreaBorder: PropTypes.string,
+  containerWidth: PropTypes.string,
+  containerMargin: PropTypes.string,
+  labelText: PropTypes.string.isRequired,
+  labelFontSize: PropTypes.string,
+  labelFontColor: PropTypes.string,
+  labelBorder: PropTypes.string,
+  labelWidth: PropTypes.string,
 };
 
 export default TextArea;

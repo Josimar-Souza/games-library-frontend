@@ -119,13 +119,16 @@ function AddGamePage() {
         height="3px"
       />
       <TextArea
-        margin="15px 0"
+        textAreaMargin="15px 0"
         placeholder="Digite a sinopse do jogo"
-        width="76%"
+        textAreaWidth="80%"
         onChange={handleInputChange}
         name="sinopse"
         value={game.sinopse}
-        borderRadius="15px"
+        textAreaBorderRadius="15px"
+        labelText="Sinopse"
+        labelFontColor="white"
+        containerMargin="1.5rem 0"
       />
       <Line
         width="76%"
