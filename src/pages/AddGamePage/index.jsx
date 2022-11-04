@@ -131,6 +131,7 @@ function AddGamePage() {
         labelText="Sinopse"
         labelFontColor="white"
         containerMargin="1.5rem 0"
+        id="sinopse"
       />
       <Line
         width="76%"
@@ -252,6 +253,7 @@ function AddGamePage() {
           dropdownMargin="15px 0"
           dropdownMinHeight="2rem"
           dropdownFontSize="1.5vw"
+          id="category"
         >
           {
             categories.map(({ category, _id }, index) => (
