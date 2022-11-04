@@ -29,6 +29,7 @@ function TextArea(props) {
     labelFontColor,
     labelBorder,
     labelWidth,
+    id,
   } = props;
 
   return (
@@ -41,6 +42,7 @@ function TextArea(props) {
         labelFontColor={labelFontColor}
         labelBorder={labelBorder}
         labelWidth={labelWidth}
+        htmlFor={id}
       >
         {labelText}
       </TextAreaLabel>
@@ -59,6 +61,7 @@ function TextArea(props) {
         onChange={onChange}
         name={name}
         textAreaBorder={textAreaBorder}
+        id={id}
       />
     </TextAreaContainer>
   );
@@ -107,6 +110,7 @@ TextArea.propTypes = {
   labelFontColor: PropTypes.string,
   labelBorder: PropTypes.string,
   labelWidth: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 export default TextArea;

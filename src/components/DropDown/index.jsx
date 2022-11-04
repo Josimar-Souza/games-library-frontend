@@ -34,7 +34,7 @@ function DropDown(props) {
       dropdownContainerWidth={dropdownContainerWidth}
     >
       <DropDownLabel
-        id={id}
+        htmlFor={id}
         labelFontColor={labelFontColor}
         labelWidth={labelWidth}
         labelTextAlign={labelTextAlign}
@@ -78,7 +78,6 @@ DropDown.defaultProps = {
   labelWidth: '80%',
   labelTextAlign: 'center',
   labelFontSize: '2vw',
-  id: '',
 };
 
 DropDown.propTypes = {
@@ -100,7 +99,7 @@ DropDown.propTypes = {
   labelWidth: PropTypes.string,
   labelTextAlign: PropTypes.string,
   labelFontSize: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 export default DropDown;
