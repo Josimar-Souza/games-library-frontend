@@ -422,5 +422,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar um metascore inválido, o input deverá ficar com características vermelhas', async () => {
+      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
+
+      userEvent.type(metascoreInput, '12');
+
+      expect(metascoreInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar um metascore válido, o input deverá ficar com características verdes', async () => {
+      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
+
+      userEvent.type(metascoreInput, '9.8');
+
+      expect(metascoreInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
