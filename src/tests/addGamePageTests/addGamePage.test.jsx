@@ -378,5 +378,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar uma quantidade de plataformas menor que 0, o input deverá ficar com características vermelhas', async () => {
+      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+
+      userEvent.type(platformCountInput, '-1');
+
+      expect(platformCountInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma quantidade de plataformas maior que 0, o input deverá ficar com características verdes', async () => {
+      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+
+      userEvent.type(platformCountInput, '4');
+
+      expect(platformCountInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
