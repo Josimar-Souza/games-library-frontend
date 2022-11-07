@@ -488,5 +488,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar uma url de imagem de backdrop inválida, o input deverá ficar com características vermelhas', async () => {
+      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+
+      userEvent.type(backdropImageInput, 'asdninawd857asd');
+
+      expect(backdropImageInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma url de imagem de backdrop válida, o input deverá ficar com características verdes', async () => {
+      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+
+      userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
+
+      expect(backdropImageInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
