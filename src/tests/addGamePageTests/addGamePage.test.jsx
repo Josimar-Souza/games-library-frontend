@@ -312,5 +312,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar uma sinopse inválida, o input deverá ficar com características vermelhas', async () => {
+      const sinopseInput = await screen.findByPlaceholderText('Digite a sinopse do jogo');
+
+      userEvent.type(sinopseInput, 'sinopse');
+
+      expect(sinopseInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma sinopse válida, o input deverá ficar com características verdes', async () => {
+      const sinopseInput = await screen.findByPlaceholderText('Digite a sinopse do jogo');
+
+      userEvent.type(sinopseInput, 'Essa é minha sinpse do jogo!');
+
+      expect(sinopseInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
