@@ -283,7 +283,7 @@ describe('Testes da página para adicionar um novo game', () => {
     it('Ao digitar um nome válido, o input deverá ficar com características verdes', async () => {
       const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
 
-      userEvent.type(titleInput, 'Resident Evil 4');
+      userEvent.type(titleInput, 'Meu jogo 2');
 
       expect(titleInput).toHaveStyle(`
         border: 1px solid green;
@@ -330,6 +330,28 @@ describe('Testes da página para adicionar um novo game', () => {
       userEvent.type(sinopseInput, 'Essa é minha sinpse do jogo!');
 
       expect(sinopseInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
+
+    it('Ao digitar uma desenvolvedora inválida, o input deverá ficar com características vermelhas', async () => {
+      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+
+      userEvent.type(developerInput, 'kju8');
+
+      expect(developerInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma desenvolvedora válida, o input deverá ficar com características verdes', async () => {
+      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+
+      userEvent.type(developerInput, 'Game Studio');
+
+      expect(developerInput).toHaveStyle(`
         border: 1px solid green;
         box-shadow: 0 0 10px green;
       `);
