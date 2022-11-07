@@ -400,5 +400,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar uma url de trailer inválida, o input deverá ficar com características vermelhas', async () => {
+      const trailerUrlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+
+      userEvent.type(trailerUrlInput, 'Kjdfghiasjxnhfgkawq');
+
+      expect(trailerUrlInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma url de trailer válida, o input deverá ficar com características verdes', async () => {
+      const trailerUrlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+
+      userEvent.type(trailerUrlInput, 'https://www.youtube.com/watch?v=GFd25aGfsER');
+
+      expect(trailerUrlInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
