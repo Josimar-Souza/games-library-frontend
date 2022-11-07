@@ -257,6 +257,16 @@ describe('Testes da página para adicionar um novo game', () => {
   });
 
   describe('Testes do comportamento da página', () => {
+    const invalidStyle = `
+      border: 1px solid red;
+      box-shadow: 0 0 10px red;
+    `;
+
+    const validStyle = `
+      border: 1px solid green;
+      box-shadow: 0 0 10px green;
+    `;
+
     beforeEach(async () => {
       jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
 
@@ -274,10 +284,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(titleInput, 'Lk');
 
-      expect(titleInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(titleInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar um nome válido, o input deverá ficar com características verdes', async () => {
@@ -285,10 +292,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(titleInput, 'Meu jogo 2');
 
-      expect(titleInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(titleInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma data inválida, o input deverá ficar com características vermelhas', async () => {
@@ -296,10 +300,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(releaseYearInput, '10-09-2022');
 
-      expect(releaseYearInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(releaseYearInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma data válida, o input deverá ficar com características verdes', async () => {
@@ -307,10 +308,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(releaseYearInput, '10/09/2022');
 
-      expect(releaseYearInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(releaseYearInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma sinopse inválida, o input deverá ficar com características vermelhas', async () => {
@@ -318,10 +316,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(sinopseInput, 'sinopse');
 
-      expect(sinopseInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(sinopseInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma sinopse válida, o input deverá ficar com características verdes', async () => {
@@ -329,10 +324,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(sinopseInput, 'Essa é minha sinpse do jogo!');
 
-      expect(sinopseInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(sinopseInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma desenvolvedora inválida, o input deverá ficar com características vermelhas', async () => {
@@ -340,10 +332,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(developerInput, 'kju8');
 
-      expect(developerInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(developerInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma desenvolvedora válida, o input deverá ficar com características verdes', async () => {
@@ -351,10 +340,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(developerInput, 'Game Studio');
 
-      expect(developerInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(developerInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma publicadora inválida, o input deverá ficar com características vermelhas', async () => {
@@ -362,10 +348,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(publisherInput, 'Kjvs');
 
-      expect(publisherInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(publisherInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma publicadora válida, o input deverá ficar com características verders', async () => {
@@ -373,10 +356,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(publisherInput, 'Minha publicadora');
 
-      expect(publisherInput).toHaveStyle(`
-        border: 1px solid greem;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(publisherInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma quantidade de plataformas menor que 0, o input deverá ficar com características vermelhas', async () => {
@@ -384,10 +364,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(platformCountInput, '-1');
 
-      expect(platformCountInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(platformCountInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma quantidade de plataformas maior que 0, o input deverá ficar com características verdes', async () => {
@@ -395,10 +372,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(platformCountInput, '4');
 
-      expect(platformCountInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(platformCountInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma url de trailer inválida, o input deverá ficar com características vermelhas', async () => {
@@ -406,10 +380,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(trailerUrlInput, 'Kjdfghiasjxnhfgkawq');
 
-      expect(trailerUrlInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(trailerUrlInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma url de trailer válida, o input deverá ficar com características verdes', async () => {
@@ -417,10 +388,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(trailerUrlInput, 'https://www.youtube.com/watch?v=GFd25aGfsER');
 
-      expect(trailerUrlInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(trailerUrlInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma nota metascore inválido, o input deverá ficar com características vermelhas', async () => {
@@ -428,10 +396,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(metascoreInput, '12');
 
-      expect(metascoreInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(metascoreInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma nota metascore válido, o input deverá ficar com características verdes', async () => {
@@ -439,10 +404,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(metascoreInput, '9.8');
 
-      expect(metascoreInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(metascoreInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma nota userscore inválida, o input deverá ficar com características vermelhas', async () => {
@@ -450,10 +412,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(userScoreInput, '14');
 
-      expect(userScoreInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(userScoreInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma nota userscore válida, o input deverá ficar com características verdes', async () => {
@@ -461,10 +420,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(userScoreInput, '5.6');
 
-      expect(userScoreInput).toHaveStyle(`
-        border: 1px solid green,
-        box-shadow: 0 0 10px green;
-      `);
+      expect(userScoreInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma url de imagem inválida, o input deverá ficar com características vermelhas', async () => {
@@ -472,10 +428,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(imageUrlInput, 'fklakdd5a4w78erkn');
 
-      expect(imageUrlInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(imageUrlInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma url de imagem válida, o input deverá ficar com características verdes', async () => {
@@ -483,10 +436,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(imageUrlInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
 
-      expect(imageUrlInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(imageUrlInput).toHaveStyle(validStyle);
     });
 
     it('Ao digitar uma url de imagem de backdrop inválida, o input deverá ficar com características vermelhas', async () => {
@@ -494,10 +444,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(backdropImageInput, 'asdninawd857asd');
 
-      expect(backdropImageInput).toHaveStyle(`
-        border: 1px solid red;
-        box-shadow: 0 0 10px red;
-      `);
+      expect(backdropImageInput).toHaveStyle(invalidStyle);
     });
 
     it('Ao digitar uma url de imagem de backdrop válida, o input deverá ficar com características verdes', async () => {
@@ -505,10 +452,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
       userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
 
-      expect(backdropImageInput).toHaveStyle(`
-        border: 1px solid green;
-        box-shadow: 0 0 10px green;
-      `);
+      expect(backdropImageInput).toHaveStyle(validStyle);
     });
   });
 });
