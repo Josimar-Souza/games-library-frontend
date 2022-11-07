@@ -269,6 +269,7 @@ describe('Testes da página para adicionar um novo game', () => {
 
     beforeEach(async () => {
       jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
+      gamesAPI.addNewCategory = jest.fn();
 
       await act(async () => {
         renderWithRouter(<pages.AddGamePage />);
@@ -469,6 +470,14 @@ describe('Testes da página para adicionar um novo game', () => {
       userEvent.type(categoryInput, 'RPG');
 
       expect(categoryInput).toHaveStyle(validStyle);
+    });
+
+    it('Ao clicar no botão "Adicionar categoria", o método "addNewCategory em GamesAPI deverá ser chamado uma vez"', async () => {
+      const addCategoryButton = await screen.findByRole('button', { name: 'Adicionar categoria' });
+
+      userEvent.click(addCategoryButton);
+
+      expect(gamesAPI.addNewCategory).toHaveBeenCalled();
     });
   });
 });
