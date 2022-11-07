@@ -356,5 +356,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar uma publicadora inválida, o input deverá ficar com características vermelhas', async () => {
+      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+
+      userEvent.type(publisherInput, 'Kjvs');
+
+      expect(publisherInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma publicadora válida, o input deverá ficar com características verders', async () => {
+      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+
+      userEvent.type(publisherInput, 'Minha publicadora');
+
+      expect(publisherInput).toHaveStyle(`
+        border: 1px solid greem;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
