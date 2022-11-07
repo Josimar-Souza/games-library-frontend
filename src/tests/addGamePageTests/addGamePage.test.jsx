@@ -7,6 +7,20 @@ import pages from '../../pages';
 import { gamesAPI } from '../../pages/AddGamePage';
 import mockCategories from '../mocks/mockCategories';
 
+const gameTitlePlaceHolder = 'Digite o nome do jogo';
+const gameReleaseDatePlaceHolder = 'Digite a data de lançamento do jogo no formato dd/mm/aaaa';
+const gameSinopsePlaceHolder = 'Digite a sinopse do jogo';
+const gameDeveloperPlaceHolder = 'Digite a desenvolvedora do jogo';
+const gamePublisherPlaceHolder = 'Digite a publicadora do jogo';
+const gamePlatformCountPlaceHolder = 'Digite a quantidade de plataformas para qual o jogo foi lançado';
+const gamePlatformPlaceHolder = 'Digite a plataforma';
+const gameTrailerUrlPlaceHolder = 'Digite a url do trailer do jogo no Youtube';
+const gameMetascorePlaceHolder = 'Digite a nota \'metascore\' do site Metacritic';
+const gameUserscorePlaceHolder = 'Digite a nota \'userscore\' do site Metacritic';
+const gameImagePlaceHolder = 'Digite a url da imagem do game';
+const gameBackdropImagePlaceHolder = 'Digite a url da imagem de backdrop do game';
+const gameNewCategoryPlaceHolder = 'Digite a nova categoria';
+
 describe('Testes da página para adicionar um novo game', () => {
   describe('Verifica a existência dos elementos na página', () => {
     beforeEach(async () => {
@@ -28,7 +42,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para o título do game', async () => {
-      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
+      const titleInput = await screen.findByPlaceholderText(gameTitlePlaceHolder);
 
       expect(titleInput).toBeInTheDocument();
     });
@@ -40,7 +54,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a data de lançamento do game', async () => {
-      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
+      const releaseYearInput = await screen.findByPlaceholderText(gameReleaseDatePlaceHolder);
 
       expect(releaseYearInput).toBeInTheDocument();
     });
@@ -52,7 +66,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um text area para a sinopse do game', async () => {
-      const sinopseTextArea = await screen.findByPlaceholderText('Digite a sinopse do jogo');
+      const sinopseTextArea = await screen.findByPlaceholderText(gameSinopsePlaceHolder);
 
       expect(sinopseTextArea).toBeInTheDocument();
     });
@@ -64,7 +78,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a desenvolvedora do game', async () => {
-      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+      const developerInput = await screen.findByPlaceholderText(gameDeveloperPlaceHolder);
 
       expect(developerInput).toBeInTheDocument();
     });
@@ -76,7 +90,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a publicadora do game', async () => {
-      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+      const publisherInput = await screen.findByPlaceholderText(gamePublisherPlaceHolder);
 
       expect(publisherInput).toBeInTheDocument();
     });
@@ -88,7 +102,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para informar a quantidade de plataformas do game', async () => {
-      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const platformCountInput = await screen.findByPlaceholderText(gamePlatformCountPlaceHolder);
 
       expect(platformCountInput).toBeInTheDocument();
     });
@@ -106,19 +120,19 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Todos os inputs para as plataformas devem existir na página', async () => {
-      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const platformCountInput = await screen.findByPlaceholderText(gamePlatformCountPlaceHolder);
       const addPlatformsButton = await screen.findByRole('button', { name: 'Adicionar inputs para plataformas' });
 
       userEvent.type(platformCountInput, '5');
       userEvent.click(addPlatformsButton);
 
-      const platformsInputs = await screen.findAllByPlaceholderText('Digite a plataforma');
+      const platformsInputs = await screen.findAllByPlaceholderText(gamePlatformPlaceHolder);
 
       expect(platformsInputs.length).toBe(5);
     });
 
     it('Todas as labels com escrita nesse exemplo "Plataforma 1" devem existir na página', async () => {
-      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const platformCountInput = await screen.findByPlaceholderText(gamePlatformCountPlaceHolder);
       const addPlatformsButton = await screen.findByRole('button', { name: 'Adicionar inputs para plataformas' });
 
       userEvent.type(platformCountInput, '5');
@@ -138,7 +152,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a url do trailer do game', async () => {
-      const urlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+      const urlInput = await screen.findByPlaceholderText(gameTrailerUrlPlaceHolder);
 
       expect(urlInput).toBeInTheDocument();
     });
@@ -177,7 +191,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a nota "metascore" do site Metacriic', async () => {
-      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
+      const metascoreInput = await screen.findByPlaceholderText(gameMetascorePlaceHolder);
 
       expect(metascoreInput).toBeInTheDocument();
     });
@@ -189,7 +203,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a nota "userscore" do site Metacriic', async () => {
-      const userscoreInput = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
+      const userscoreInput = await screen.findByPlaceholderText(gameUserscorePlaceHolder);
 
       expect(userscoreInput).toBeInTheDocument();
     });
@@ -201,7 +215,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a imagem do game', async () => {
-      const imageInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+      const imageInput = await screen.findByPlaceholderText(gameImagePlaceHolder);
 
       expect(imageInput).toBeInTheDocument();
     });
@@ -213,7 +227,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para a imagem de backdrop do game', async () => {
-      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+      const backdropImageInput = await screen.findByPlaceholderText(gameBackdropImagePlaceHolder);
 
       expect(backdropImageInput).toBeInTheDocument();
     });
@@ -238,7 +252,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Um input para digitar a nova categoria', async () => {
-      const newCategoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+      const newCategoryInput = await screen.findByPlaceholderText(gameNewCategoryPlaceHolder);
 
       expect(newCategoryInput).toBeInTheDocument();
     });
@@ -281,7 +295,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar um nome inválido, o input deverá ficar com características vermelhas', async () => {
-      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
+      const titleInput = await screen.findByPlaceholderText(gameTitlePlaceHolder);
 
       userEvent.type(titleInput, 'Lk');
 
@@ -289,7 +303,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar um nome válido, o input deverá ficar com características verdes', async () => {
-      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
+      const titleInput = await screen.findByPlaceholderText(gameTitlePlaceHolder);
 
       userEvent.type(titleInput, 'Meu jogo 2');
 
@@ -297,7 +311,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma data inválida, o input deverá ficar com características vermelhas', async () => {
-      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
+      const releaseYearInput = await screen.findByPlaceholderText(gameReleaseDatePlaceHolder);
 
       userEvent.type(releaseYearInput, '10-09-2022');
 
@@ -305,7 +319,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma data válida, o input deverá ficar com características verdes', async () => {
-      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
+      const releaseYearInput = await screen.findByPlaceholderText(gameReleaseDatePlaceHolder);
 
       userEvent.type(releaseYearInput, '10/09/2022');
 
@@ -313,7 +327,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma sinopse inválida, o input deverá ficar com características vermelhas', async () => {
-      const sinopseInput = await screen.findByPlaceholderText('Digite a sinopse do jogo');
+      const sinopseInput = await screen.findByPlaceholderText(gameSinopsePlaceHolder);
 
       userEvent.type(sinopseInput, 'sinopse');
 
@@ -321,7 +335,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma sinopse válida, o input deverá ficar com características verdes', async () => {
-      const sinopseInput = await screen.findByPlaceholderText('Digite a sinopse do jogo');
+      const sinopseInput = await screen.findByPlaceholderText(gameSinopsePlaceHolder);
 
       userEvent.type(sinopseInput, 'Essa é minha sinpse do jogo!');
 
@@ -329,7 +343,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma desenvolvedora inválida, o input deverá ficar com características vermelhas', async () => {
-      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+      const developerInput = await screen.findByPlaceholderText(gameDeveloperPlaceHolder);
 
       userEvent.type(developerInput, 'kju8');
 
@@ -337,7 +351,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma desenvolvedora válida, o input deverá ficar com características verdes', async () => {
-      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+      const developerInput = await screen.findByPlaceholderText(gameDeveloperPlaceHolder);
 
       userEvent.type(developerInput, 'Game Studio');
 
@@ -345,7 +359,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma publicadora inválida, o input deverá ficar com características vermelhas', async () => {
-      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+      const publisherInput = await screen.findByPlaceholderText(gamePublisherPlaceHolder);
 
       userEvent.type(publisherInput, 'Kjvs');
 
@@ -353,7 +367,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma publicadora válida, o input deverá ficar com características verders', async () => {
-      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+      const publisherInput = await screen.findByPlaceholderText(gamePublisherPlaceHolder);
 
       userEvent.type(publisherInput, 'Minha publicadora');
 
@@ -361,7 +375,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma quantidade de plataformas menor que 0, o input deverá ficar com características vermelhas', async () => {
-      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const platformCountInput = await screen.findByPlaceholderText(gamePlatformCountPlaceHolder);
 
       userEvent.type(platformCountInput, '-1');
 
@@ -369,7 +383,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma quantidade de plataformas maior que 0, o input deverá ficar com características verdes', async () => {
-      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const platformCountInput = await screen.findByPlaceholderText(gamePlatformCountPlaceHolder);
 
       userEvent.type(platformCountInput, '4');
 
@@ -377,7 +391,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma url de trailer inválida, o input deverá ficar com características vermelhas', async () => {
-      const trailerUrlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+      const trailerUrlInput = await screen.findByPlaceholderText(gameTrailerUrlPlaceHolder);
 
       userEvent.type(trailerUrlInput, 'Kjdfghiasjxnhfgkawq');
 
@@ -385,7 +399,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma url de trailer válida, o input deverá ficar com características verdes', async () => {
-      const trailerUrlInput = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+      const trailerUrlInput = await screen.findByPlaceholderText(gameTrailerUrlPlaceHolder);
 
       userEvent.type(trailerUrlInput, 'https://www.youtube.com/watch?v=GFd25aGfsER');
 
@@ -393,7 +407,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma nota metascore inválido, o input deverá ficar com características vermelhas', async () => {
-      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
+      const metascoreInput = await screen.findByPlaceholderText(gameMetascorePlaceHolder);
 
       userEvent.type(metascoreInput, '12');
 
@@ -401,7 +415,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma nota metascore válido, o input deverá ficar com características verdes', async () => {
-      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
+      const metascoreInput = await screen.findByPlaceholderText(gameMetascorePlaceHolder);
 
       userEvent.type(metascoreInput, '9.8');
 
@@ -409,7 +423,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma nota userscore inválida, o input deverá ficar com características vermelhas', async () => {
-      const userScoreInput = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
+      const userScoreInput = await screen.findByPlaceholderText(gameUserscorePlaceHolder);
 
       userEvent.type(userScoreInput, '14');
 
@@ -417,7 +431,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma nota userscore válida, o input deverá ficar com características verdes', async () => {
-      const userScoreInput = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
+      const userScoreInput = await screen.findByPlaceholderText(gameUserscorePlaceHolder);
 
       userEvent.type(userScoreInput, '5.6');
 
@@ -425,7 +439,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma url de imagem inválida, o input deverá ficar com características vermelhas', async () => {
-      const imageUrlInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+      const imageUrlInput = await screen.findByPlaceholderText(gameImagePlaceHolder);
 
       userEvent.type(imageUrlInput, 'fklakdd5a4w78erkn');
 
@@ -433,7 +447,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma url de imagem válida, o input deverá ficar com características verdes', async () => {
-      const imageUrlInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+      const imageUrlInput = await screen.findByPlaceholderText(gameImagePlaceHolder);
 
       userEvent.type(imageUrlInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
 
@@ -441,7 +455,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma url de imagem de backdrop inválida, o input deverá ficar com características vermelhas', async () => {
-      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+      const backdropImageInput = await screen.findByPlaceholderText(gameBackdropImagePlaceHolder);
 
       userEvent.type(backdropImageInput, 'asdninawd857asd');
 
@@ -449,7 +463,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma url de imagem de backdrop válida, o input deverá ficar com características verdes', async () => {
-      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+      const backdropImageInput = await screen.findByPlaceholderText(gameBackdropImagePlaceHolder);
 
       userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
 
@@ -457,7 +471,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma categoria inválida, o input deverá ficar com características vermelhas', async () => {
-      const categoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+      const categoryInput = await screen.findByPlaceholderText(gameNewCategoryPlaceHolder);
 
       userEvent.type(categoryInput, 'RT');
 
@@ -465,7 +479,7 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Ao digitar uma categoria válida, o input deverá ficar com características verdes', async () => {
-      const categoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+      const categoryInput = await screen.findByPlaceholderText(gameNewCategoryPlaceHolder);
 
       userEvent.type(categoryInput, 'RPG');
 
@@ -487,21 +501,21 @@ describe('Testes da página para adicionar um novo game', () => {
     });
 
     it('Verifica se ao digitar todas as informações corretas, o botão "Adicionar jogo" é habilitado', async () => {
-      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
-      const releaseDateInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
-      const sinopseInput = await screen.findByPlaceholderText('Digite a sinopse do jogo');
-      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
-      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
-      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const titleInput = await screen.findByPlaceholderText(gameTitlePlaceHolder);
+      const releaseDateInput = await screen.findByPlaceholderText(gameReleaseDatePlaceHolder);
+      const sinopseInput = await screen.findByPlaceholderText(gameSinopsePlaceHolder);
+      const developerInput = await screen.findByPlaceholderText(gameDeveloperPlaceHolder);
+      const publisherInput = await screen.findByPlaceholderText(gamePublisherPlaceHolder);
+      const platformCountInput = await screen.findByPlaceholderText(gamePlatformCountPlaceHolder);
       const addPlatformsInputsButton = await screen.findByRole('button', { name: 'Adicionar inputs para plataformas' });
-      const platformsInputs = await screen.findAllByPlaceholderText('Digite a plataforma');
-      const trailerUrlInputs = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+      const platformsInputs = await screen.findAllByPlaceholderText(gamePlatformPlaceHolder);
+      const trailerUrlInputs = await screen.findByPlaceholderText(gameTrailerUrlPlaceHolder);
       const categorySelect = await screen.findByRole('combobox');
-      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
-      const userscore = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
-      const gameImageInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
-      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
-      const newCategoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+      const metascoreInput = await screen.findByPlaceholderText(gameMetascorePlaceHolder);
+      const userscore = await screen.findByPlaceholderText(gameUserscorePlaceHolder);
+      const gameImageInput = await screen.findByPlaceholderText(gameImagePlaceHolder);
+      const backdropImageInput = await screen.findByPlaceholderText(gameBackdropImagePlaceHolder);
+      const newCategoryInput = await screen.findByPlaceholderText(gameNewCategoryPlaceHolder);
 
       userEvent.type(titleInput, 'Meu jogo 3');
       userEvent.type(releaseDateInput, '16/06/2019');
