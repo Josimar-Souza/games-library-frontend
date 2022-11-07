@@ -466,5 +466,27 @@ describe('Testes da página para adicionar um novo game', () => {
         box-shadow: 0 0 10px green;
       `);
     });
+
+    it('Ao digitar uma url de imagem inválida, o input deverá ficar com características vermelhas', async () => {
+      const imageUrlInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+
+      userEvent.type(imageUrlInput, 'fklakdd5a4w78erkn');
+
+      expect(imageUrlInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma url de imagem válida, o input deverá ficar com características verdes', async () => {
+      const imageUrlInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+
+      userEvent.type(imageUrlInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
+
+      expect(imageUrlInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
   });
 });
