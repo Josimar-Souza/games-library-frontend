@@ -21,6 +21,16 @@ class GamesAPI {
       console.log(error);
     }
   }
+
+  async addNewCategory(newCategory, token) {
+    try {
+      const { data: { category } } = await this.api.post('/category', newCategory, { headers: { authorization: token } });
+
+      return category;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export default GamesAPI;
