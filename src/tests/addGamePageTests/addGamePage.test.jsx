@@ -479,5 +479,49 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(gamesAPI.addNewCategory).toHaveBeenCalled();
     });
+
+    it('Verifica se ao início, o botão "Adicionar jogo" está desabilitado', async () => {
+      const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
+
+      expect(addGameButton).toBeDisabled();
+    });
+
+    it('Verifica se ao digitar todas as informações corretas, o botão "Adicionar jogo" é habilitado', async () => {
+      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
+      const releaseDateInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
+      const sinopseInput = await screen.findByPlaceholderText('Digite a sinopse do jogo');
+      const developerInput = await screen.findByPlaceholderText('Digite a desenvolvedora do jogo');
+      const publisherInput = await screen.findByPlaceholderText('Digite a publicadora do jogo');
+      const platformCountInput = await screen.findByPlaceholderText('Digite a quantidade de plataformas para qual o jogo foi lançado');
+      const addPlatformsInputsButton = await screen.findByRole('button', { name: 'Adicionar inputs para plataformas' });
+      const platformsInputs = await screen.findAllByPlaceholderText('Digite a plataforma');
+      const trailerUrlInputs = await screen.findByPlaceholderText('Digite a url do trailer do jogo no Youtube');
+      const categorySelect = await screen.findByRole('combobox');
+      const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
+      const userscore = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
+      const gameImageInput = await screen.findByPlaceholderText('Digite a url da imagem do game');
+      const backdropImageInput = await screen.findByPlaceholderText('Digite a url da imagem de backdrop do game');
+      const newCategoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+
+      userEvent.type(titleInput, 'Meu jogo 3');
+      userEvent.type(releaseDateInput, '16/06/2019');
+      userEvent.type(sinopseInput, 'Essa é a sinopse do meu game!');
+      userEvent.type(developerInput, 'Minha desenvolvedora');
+      userEvent.type(publisherInput, 'Minha publicadora');
+      userEvent.type(platformCountInput, '1');
+      userEvent.click(addPlatformsInputsButton);
+      userEvent.type(platformsInputs[0], 'Minha plataforma');
+      userEvent.type(trailerUrlInputs, 'https://www.youtube.com/watch?v=GFd25aGfsER');
+      userEvent.selectOptions(categorySelect, 'Ação');
+      userEvent.type(metascoreInput, '6.4');
+      userEvent.type(userscore, '7.4');
+      userEvent.type(gameImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
+      userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
+      userEvent.type(newCategoryInput, 'Terror');
+
+      const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
+
+      expect(addGameButton).not.toBeDisabled();
+    });
   });
 });
