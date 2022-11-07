@@ -269,7 +269,7 @@ describe('Testes da página para adicionar um novo game', () => {
       jest.clearAllMocks();
     });
 
-    it('Ao digitar um nome inválido o input deverá ficar com caracteristicas vermelhas', async () => {
+    it('Ao digitar um nome inválido, o input deverá ficar com características vermelhas', async () => {
       const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
 
       userEvent.type(titleInput, 'Lk');
@@ -277,6 +277,39 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(titleInput).toHaveStyle(`
         border: 1px solid red;
         box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar um nome válido, o input deverá ficar com características verdes', async () => {
+      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
+
+      userEvent.type(titleInput, 'Resident Evil 4');
+
+      expect(titleInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
+
+    it('Ao digitar uma data inválida, o input deverá ficar com características vermelhas', async () => {
+      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
+
+      userEvent.type(releaseYearInput, '10-09-2022');
+
+      expect(releaseYearInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma data válida, o input deverá ficar com características verdes', async () => {
+      const releaseYearInput = await screen.findByPlaceholderText('Digite a data de lançamento do jogo no formato dd/mm/aaaa');
+
+      userEvent.type(releaseYearInput, '10/09/2022');
+
+      expect(releaseYearInput).toHaveStyle(`
+        border: 1px solid green;
+        box-shadow: 0 0 10px green;
       `);
     });
   });
