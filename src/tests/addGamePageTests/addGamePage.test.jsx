@@ -255,4 +255,29 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(addCategoryButton).toBeInTheDocument();
     });
   });
+
+  describe('Testes do comportamento da página', () => {
+    beforeEach(async () => {
+      jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
+
+      await act(async () => {
+        renderWithRouter(<pages.AddGamePage />);
+      });
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('Ao digitar um nome inválido o input deverá ficar com caracteristicas vermelhas', async () => {
+      const titleInput = await screen.findByPlaceholderText('Digite o nome do jogo');
+
+      userEvent.type(titleInput, 'Lk');
+
+      expect(titleInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+  });
 });
