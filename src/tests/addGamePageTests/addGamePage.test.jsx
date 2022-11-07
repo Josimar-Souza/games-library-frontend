@@ -423,7 +423,7 @@ describe('Testes da página para adicionar um novo game', () => {
       `);
     });
 
-    it('Ao digitar um metascore inválido, o input deverá ficar com características vermelhas', async () => {
+    it('Ao digitar uma nota metascore inválido, o input deverá ficar com características vermelhas', async () => {
       const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
 
       userEvent.type(metascoreInput, '12');
@@ -434,13 +434,35 @@ describe('Testes da página para adicionar um novo game', () => {
       `);
     });
 
-    it('Ao digitar um metascore válido, o input deverá ficar com características verdes', async () => {
+    it('Ao digitar uma nota metascore válido, o input deverá ficar com características verdes', async () => {
       const metascoreInput = await screen.findByPlaceholderText('Digite a nota \'metascore\' do site Metacritic');
 
       userEvent.type(metascoreInput, '9.8');
 
       expect(metascoreInput).toHaveStyle(`
         border: 1px solid green;
+        box-shadow: 0 0 10px green;
+      `);
+    });
+
+    it('Ao digitar uma nota userscore inválida, o input deverá ficar com características vermelhas', async () => {
+      const userScoreInput = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
+
+      userEvent.type(userScoreInput, '14');
+
+      expect(userScoreInput).toHaveStyle(`
+        border: 1px solid red;
+        box-shadow: 0 0 10px red;
+      `);
+    });
+
+    it('Ao digitar uma nota userscore válida, o input deverá ficar com características verdes', async () => {
+      const userScoreInput = await screen.findByPlaceholderText('Digite a nota \'userscore\' do site Metacritic');
+
+      userEvent.type(userScoreInput, '5.6');
+
+      expect(userScoreInput).toHaveStyle(`
+        border: 1px solid green,
         box-shadow: 0 0 10px green;
       `);
     });
