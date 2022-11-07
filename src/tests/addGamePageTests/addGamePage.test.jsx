@@ -454,5 +454,21 @@ describe('Testes da página para adicionar um novo game', () => {
 
       expect(backdropImageInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma categoria inválida, o input deverá ficar com características vermelhas', async () => {
+      const categoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+
+      userEvent.type(categoryInput, 'RT');
+
+      expect(categoryInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma categoria válida, o input deverá ficar com características verdes', async () => {
+      const categoryInput = await screen.findByPlaceholderText('Digite a nova categoria');
+
+      userEvent.type(categoryInput, 'RPG');
+
+      expect(categoryInput).toHaveStyle(validStyle);
+    });
   });
 });
