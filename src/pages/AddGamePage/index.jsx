@@ -14,22 +14,22 @@ export const gamesAPI = new GamesAPI(apiURL, 15000);
 function AddGamePage() {
   const [gameInfo, setGameInfo] = useState({
     game: {
-      title: '',
-      releaseDate: '',
-      sinopse: '',
-      developer: '',
-      publisher: '',
-      trailer: '',
-      category: '',
-      metascore: '',
-      userscore: '',
-      image: '',
-      backdrop: '',
-      platformCount: '',
+      title: { value: '', color: '' },
+      releaseDate: { value: '', color: '' },
+      sinopse: { value: '', color: '' },
+      developer: { value: '', color: '' },
+      publisher: { value: '', color: '' },
+      trailer: { value: '', color: '' },
+      category: { value: '', color: '' },
+      metascore: { value: '', color: '' },
+      userscore: { value: '', color: '' },
+      image: { value: '', color: '' },
+      backdrop: { value: '', color: '' },
+      platformCount: { value: '', color: '' },
     },
   });
 
-  const [platforms, setPlatforms] = useState({ platform0: '' });
+  const [platforms, setPlatforms] = useState({ platform0: { value: '', color: '' } });
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -58,13 +58,13 @@ function AddGamePage() {
 
   const handleInputChange = ({ target: { name, value } }) => {
     if (name.includes('platform') && name !== 'platformCount') {
-      setPlatforms({ ...platforms, [name]: value });
+      setPlatforms({ ...platforms, [name]: { value, color: '' } });
     } else {
       setGameInfo({
         ...gameInfo,
         game: {
           ...gameInfo.game,
-          [name]: value,
+          [name]: { value, color: '' },
         },
       });
     }
@@ -73,7 +73,7 @@ function AddGamePage() {
   const onAddInputsButtonClick = () => {
     const currentPlatforms = {};
     for (let index = 0; index < +game.platformCount; index += 1) {
-      currentPlatforms[`platform${index}`] = '';
+      currentPlatforms[`platform${index}`] = { value: '', color: '' };
     }
 
     setPlatforms(currentPlatforms);
@@ -96,7 +96,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="title"
-          value={game.title}
+          value={game.title.value}
           inputBorderRadius="15px"
           labelText="Nome"
           labelFontColor="white"
@@ -109,7 +109,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="releaseDate"
-          value={game.releaseDate}
+          value={game.releaseDate.value}
           inputBorderRadius="15px"
           labelText="Data de lançamento"
           labelFontColor="white"
@@ -126,7 +126,7 @@ function AddGamePage() {
         textAreaWidth="80%"
         onChange={handleInputChange}
         name="sinopse"
-        value={game.sinopse}
+        value={game.sinopse.value}
         textAreaBorderRadius="15px"
         labelText="Sinopse"
         labelFontColor="white"
@@ -145,7 +145,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="developer"
-          value={game.developer}
+          value={game.developer.value}
           inputBorderRadius="15px"
           labelText="Desenvolvedora"
           labelFontColor="white"
@@ -158,7 +158,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="publisher"
-          value={game.publisher}
+          value={game.publisher.value}
           inputBorderRadius="15px"
           labelText="Publicadora"
           labelFontColor="white"
@@ -179,7 +179,7 @@ function AddGamePage() {
           onChange={handleInputChange}
           name="platformCount"
           inputBorderRadius="15px"
-          value={game.platformCount}
+          value={game.platformCount.value}
           labelText="Quantidade de plataformas"
           labelFontColor="white"
           id="platformCount"
@@ -214,7 +214,7 @@ function AddGamePage() {
               fontSize="1.2vw"
               onChange={handleInputChange}
               name={platform[0]}
-              value={platforms[platform[0]]}
+              value={platforms[platform[0]].value}
               inputBorderRadius="15px"
               key={platform[0]}
               border="none"
@@ -236,7 +236,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="trailer"
-          value={game.trailer}
+          value={game.trailer.value}
           inputBorderRadius="15px"
           labelText="Trailer URL"
           labelFontColor="white"
@@ -246,7 +246,7 @@ function AddGamePage() {
           dropdownWidth="80%"
           onChange={handleInputChange}
           name="category"
-          value={game.category}
+          value={game.category.value}
           dropdownBorderRadius="15px"
           labelText="Categoria"
           labelFontColor="white"
@@ -281,7 +281,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="metascore"
-          value={game.metascore}
+          value={game.metascore.value}
           inputBorderRadius="15px"
           labelText="Metascore"
           labelFontColor="white"
@@ -295,7 +295,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="userscore"
-          value={game.userscore}
+          value={game.userscore.value}
           inputBorderRadius="15px"
           labelText="Userscore"
           labelFontColor="white"
@@ -314,7 +314,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="image"
-          value={game.image}
+          value={game.image.value}
           inputBorderRadius="15px"
           labelText="Imagem"
           labelFontColor="white"
@@ -327,7 +327,7 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="backdrop"
-          value={game.backdrop}
+          value={game.backdrop.value}
           inputBorderRadius="15px"
           labelText="Imagem de backdrop"
           labelFontColor="white"
@@ -371,7 +371,6 @@ function AddGamePage() {
           fontSize="1.2vw"
           onChange={handleInputChange}
           name="backdrop"
-          value={game.backdrop}
           inputBorderRadius="15px"
           labelText="Nova categoria"
           labelFontColor="white"
