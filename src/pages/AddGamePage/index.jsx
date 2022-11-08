@@ -15,23 +15,24 @@ export const gamesAPI = new GamesAPI(apiURL, 15000);
 function AddGamePage() {
   const [gameInfo, setGameInfo] = useState({
     game: {
-      title: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      releaseDate: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      sinopse: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      developer: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      publisher: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      trailer: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      category: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      metascore: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      userscore: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      image: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      backdrop: { value: '', color: 'rgba(0, 0, 0, 0)' },
-      platformCount: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      title: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      releaseDate: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      sinopse: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      developer: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      publisher: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      trailer: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      category: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      metascore: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      userscore: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      image: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      backdrop: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      platformCount: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
     },
   });
 
-  const [platforms, setPlatforms] = useState({ platform0: { value: '', color: 'rgba(0, 0, 0, 0)' } });
+  const [platforms, setPlatforms] = useState({ platform0: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false } });
   const [categories, setCategories] = useState([]);
+  const [addGameButton, setAddGameButton] = useState({ disabled: true });
 
   useEffect(() => {
     const getCategories = async () => {
@@ -57,11 +58,34 @@ function AddGamePage() {
 
   const { game } = gameInfo;
 
+  const checkGameInformations = () => {
+    let allValidValues = true;
+
+    Object.entries(game).forEach(([, values]) => {
+      if (!values.valid) allValidValues = false;
+    });
+
+    Object.entries(platforms).forEach(([, values]) => {
+      if (!values.valid) allValidValues = false;
+    });
+
+    if (allValidValues) {
+      setAddGameButton({ ...addGameButton, disabled: false });
+    }
+  };
+
   const handleInputChange = ({ target: { name, value } }) => {
     if (name.includes('platform') && name !== 'platformCount') {
       const validationResults = addGameValidation({ platform: value });
 
-      setPlatforms({ ...platforms, [name]: { value, color: validationResults[0].color } });
+      setPlatforms({
+        ...platforms,
+        [name]: {
+          value,
+          color: validationResults[0].color,
+          valid: !validationResults[0].error,
+        },
+      });
     } else {
       const validationResults = addGameValidation({ [name]: value });
 
@@ -69,16 +93,22 @@ function AddGamePage() {
         ...gameInfo,
         game: {
           ...gameInfo.game,
-          [name]: { value, color: validationResults[0].color },
+          [name]: {
+            value,
+            color: validationResults[0].color,
+            valid: !validationResults[0].error,
+          },
         },
       });
     }
+
+    checkGameInformations();
   };
 
   const onAddInputsButtonClick = () => {
     const currentPlatforms = {};
     for (let index = 0; index < +game.platformCount.value; index += 1) {
-      currentPlatforms[`platform${index}`] = { value: '', color: 'rgba(0, 0, 0, 0)' };
+      currentPlatforms[`platform${index}`] = { value: '', color: 'rgba(0, 0, 0, 0)', valid: false };
     }
 
     setPlatforms(currentPlatforms);
@@ -374,7 +404,7 @@ function AddGamePage() {
         hoverTransform="scale(1.05, 1.05)"
         transition="0.2s"
         hoverBackgroundColor="#199610"
-        disabled
+        disabled={addGameButton.disabled}
       >
         Adicionar jogo
       </Button>
@@ -399,6 +429,7 @@ function AddGamePage() {
           inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
+          value={game.category.value}
           name="category"
           inputBorderRadius="15px"
           labelText="Nova categoria"
