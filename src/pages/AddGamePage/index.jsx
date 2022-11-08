@@ -345,6 +345,7 @@ function AddGamePage() {
         hoverTransform="scale(1.05, 1.05)"
         transition="0.2s"
         hoverBackgroundColor="#199610"
+        disabled
       >
         Adicionar jogo
       </Button>

@@ -17,6 +17,13 @@ const ButtonStyle = styled.button`
     transform: ${({ hoverTransform }) => hoverTransform};
   }
 
+  :disabled {
+    background-color: ${({ disableBackgroundColor }) => disableBackgroundColor};
+    color: ${({ disableFontColor }) => disableFontColor};
+    cursor: auto;
+    transform: none;
+  }
+
   @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
     margin: ${({ mobileMargin }) => mobileMargin};

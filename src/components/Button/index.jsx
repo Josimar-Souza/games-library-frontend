@@ -23,6 +23,9 @@ function Button(props) {
     hoverTransform,
     transition,
     hoverBackgroundColor,
+    disabled,
+    disableBackgroundColor,
+    disableFontColor,
   } = props;
 
   return (
@@ -45,6 +48,9 @@ function Button(props) {
       mobilePadding={mobilePadding}
       mobileMargin={mobileMargin}
       hoverBackgroundColor={hoverBackgroundColor}
+      disabled={disabled}
+      disableBackgroundColor={disableBackgroundColor}
+      disableFontColor={disableFontColor}
     >
       {children}
     </ButtonStyle>
@@ -69,6 +75,9 @@ Button.defaultProps = {
   hoverTransform: 'none',
   transition: 'none',
   hoverBackgroundColor: '#dbdbdb',
+  disabled: false,
+  disableBackgroundColor: 'gray',
+  disableFontColor: '#444444',
 };
 
 Button.propTypes = {
@@ -91,6 +100,9 @@ Button.propTypes = {
   mobilePadding: PropTypes.string,
   mobileMargin: PropTypes.string,
   hoverBackgroundColor: PropTypes.string,
+  disabled: PropTypes.bool,
+  disableBackgroundColor: PropTypes.string,
+  disableFontColor: PropTypes.string,
 };
 
 export default Button;
