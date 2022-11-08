@@ -15,22 +15,22 @@ export const gamesAPI = new GamesAPI(apiURL, 15000);
 function AddGamePage() {
   const [gameInfo, setGameInfo] = useState({
     game: {
-      title: { value: '', color: '' },
-      releaseDate: { value: '', color: '' },
-      sinopse: { value: '', color: '' },
-      developer: { value: '', color: '' },
-      publisher: { value: '', color: '' },
-      trailer: { value: '', color: '' },
-      category: { value: '', color: '' },
-      metascore: { value: '', color: '' },
-      userscore: { value: '', color: '' },
-      image: { value: '', color: '' },
-      backdrop: { value: '', color: '' },
-      platformCount: { value: '', color: '' },
+      title: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      releaseDate: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      sinopse: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      developer: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      publisher: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      trailer: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      category: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      metascore: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      userscore: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      image: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      backdrop: { value: '', color: 'rgba(0, 0, 0, 0)' },
+      platformCount: { value: '', color: 'rgba(0, 0, 0, 0)' },
     },
   });
 
-  const [platforms, setPlatforms] = useState({ platform0: { value: '', color: '' } });
+  const [platforms, setPlatforms] = useState({ platform0: { value: '', color: 'rgba(0, 0, 0, 0)' } });
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -58,11 +58,13 @@ function AddGamePage() {
   const { game } = gameInfo;
 
   const handleInputChange = ({ target: { name, value } }) => {
-    const validationResults = addGameValidation({ [name]: value });
-
     if (name.includes('platform') && name !== 'platformCount') {
+      const validationResults = addGameValidation({ platform: value });
+
       setPlatforms({ ...platforms, [name]: { value, color: validationResults[0].color } });
     } else {
+      const validationResults = addGameValidation({ [name]: value });
+
       setGameInfo({
         ...gameInfo,
         game: {
@@ -76,7 +78,7 @@ function AddGamePage() {
   const onAddInputsButtonClick = () => {
     const currentPlatforms = {};
     for (let index = 0; index < +game.platformCount.value; index += 1) {
-      currentPlatforms[`platform${index}`] = { value: '', color: '' };
+      currentPlatforms[`platform${index}`] = { value: '', color: 'rgba(0, 0, 0, 0)' };
     }
 
     setPlatforms(currentPlatforms);
@@ -119,6 +121,8 @@ function AddGamePage() {
           labelText="Data de lançamento"
           labelFontColor="white"
           id="release-date"
+          inputBorder={`1px solid ${game.releaseDate.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.releaseDate.color}`}
         />
       </InputContainer>
       <Line
@@ -155,6 +159,8 @@ function AddGamePage() {
           labelText="Desenvolvedora"
           labelFontColor="white"
           id="developer"
+          inputBorder={`1px solid ${game.developer.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.developer.color}`}
         />
         <Input
           placeholder="Digite a publicadora do jogo"
@@ -168,6 +174,8 @@ function AddGamePage() {
           labelText="Publicadora"
           labelFontColor="white"
           id="publisher"
+          inputBorder={`1px solid ${game.publisher.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.publisher.color}`}
         />
       </InputContainer>
       <Line
@@ -188,6 +196,8 @@ function AddGamePage() {
           labelText="Quantidade de plataformas"
           labelFontColor="white"
           id="platformCount"
+          inputBorder={`1px solid ${game.platformCount.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.platformCount.color}`}
         />
         <Button
           width="35%"
@@ -225,6 +235,8 @@ function AddGamePage() {
               border="none"
               labelText={`Plataforma ${index + 1}`}
               id={`platform-${index}`}
+              inputBorder={`1px solid ${platforms[platform[0]].color}`}
+              inputBoxShadow={`0 0 8px 4px ${platforms[platform[0]].color}`}
             />
           ))
         }
@@ -246,6 +258,8 @@ function AddGamePage() {
           labelText="Trailer URL"
           labelFontColor="white"
           id="trailer-url"
+          inputBorder={`1px solid ${game.trailer.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.trailer.color}`}
         />
         <DropDown
           dropdownWidth="80%"
@@ -291,6 +305,8 @@ function AddGamePage() {
           labelText="Metascore"
           labelFontColor="white"
           id="metascore"
+          inputBorder={`1px solid ${game.metascore.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.metascore.color}`}
         />
         <Input
           type="number"
@@ -305,6 +321,8 @@ function AddGamePage() {
           labelText="Userscore"
           labelFontColor="white"
           id="userscore"
+          inputBorder={`1px solid ${game.userscore.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.userscore.color}`}
         />
       </InputContainer>
       <Line
@@ -324,6 +342,8 @@ function AddGamePage() {
           labelText="Imagem"
           labelFontColor="white"
           id="image-url"
+          inputBorder={`1px solid ${game.image.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.image.color}`}
         />
         <Input
           placeholder="Digite a url da imagem de backdrop do game"
@@ -337,6 +357,8 @@ function AddGamePage() {
           labelText="Imagem de backdrop"
           labelFontColor="white"
           id="backdrop-image-url"
+          inputBorder={`1px solid ${game.backdrop.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.backdrop.color}`}
         />
       </InputContainer>
       <Button
@@ -375,11 +397,13 @@ function AddGamePage() {
           inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
-          name="backdrop"
+          name="category"
           inputBorderRadius="15px"
           labelText="Nova categoria"
           labelFontColor="white"
           id="new-category"
+          inputBorder={`1px solid ${game.category.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.category.color}`}
         />
         <Button
           width="35%"

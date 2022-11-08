@@ -7,12 +7,13 @@ const gameValidationSchema = joi.object({
   developer: joi.string().min(5),
   publisher: joi.string().min(5),
   platform: joi.string().min(5),
-  trailerUrl: joi.string().uri(),
-  metascore: joi.number(),
-  usersocre: joi.number(),
+  trailer: joi.string().uri(),
+  metascore: joi.number().max(10),
+  userscore: joi.number().max(10),
   image: joi.string().uri(),
-  backdropImage: joi.string().uri(),
+  backdrop: joi.string().uri(),
   category: joi.string().min(3).max(20),
+  platformCount: joi.number().min(1),
 });
 
 const gameValidation = (entries) => {
