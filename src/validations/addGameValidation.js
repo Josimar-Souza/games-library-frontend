@@ -14,6 +14,7 @@ const gameValidationSchema = joi.object({
   backdrop: joi.string().uri(),
   category: joi.string().min(3).max(20),
   platformCount: joi.number().min(1),
+  newCategory: joi.string().min(3).max(20),
 });
 
 const gameValidation = (entries) => {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import ErrorCreator from '../helpers/ErrorCreator';
 
 class GamesAPI {
   constructor(baseURL, timeout) {
@@ -26,9 +27,9 @@ class GamesAPI {
     try {
       const { data: { category } } = await this.api.post('/category', newCategory, { headers: { authorization: token } });
 
-      return category;
+      return { category };
     } catch (error) {
-      console.log(error);
+      return new ErrorCreator('Não foi possível adicionar a categoria, por favor, tente mais tarde!');
     }
   }
 }

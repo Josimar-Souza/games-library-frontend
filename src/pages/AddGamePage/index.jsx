@@ -3,6 +3,7 @@ import components from '../../components';
 import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
 import addGameValidation from '../../validations/addGameValidation';
+import ErrorCreator from '../../helpers/ErrorCreator';
 import {
   AddGameStyle,
   InputContainer,
@@ -27,17 +28,29 @@ function AddGamePage() {
       image: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       backdrop: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       platformCount: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      newCategory: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
     },
   });
 
   const [platforms, setPlatforms] = useState({ platform0: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false } });
   const [categories, setCategories] = useState([]);
   const [addGameButton, setAddGameButton] = useState({ disabled: true });
+  const [feedbackMessage, setfeedbackMessage] = useState({ newCategory: { show: false, value: '' } });
 
   useEffect(() => {
     const getCategories = async () => {
       const token = getItem('token');
       const categoriesFounded = await gamesAPI.getAllCategories(token);
+
+      if (categoriesFounded.length > 0) {
+        setGameInfo({
+          ...gameInfo,
+          game: {
+            ...gameInfo.game,
+            category: { value: categoriesFounded[0].category, color: 'rgba(0, 0, 0, 0)', valid: true },
+          },
+        });
+      }
 
       setCategories(categoriesFounded);
     };
@@ -112,6 +125,50 @@ function AddGamePage() {
     }
 
     setPlatforms(currentPlatforms);
+  };
+
+  const onAddCategoryClick = async () => {
+    const token = getItem('token');
+
+    const result = await gamesAPI.addNewCategory({ category: game.newCategory.value }, token);
+
+    if (result instanceof ErrorCreator) {
+      setfeedbackMessage({
+        ...feedbackMessage,
+        newCategory: {
+          show: true,
+          value: result.message,
+        },
+      });
+
+      setTimeout(() => {
+        setfeedbackMessage({
+          ...feedbackMessage,
+          newCategory: {
+            show: false,
+            value: '',
+          },
+        });
+      }, 3000);
+    } else {
+      window.location.reload();
+    }
+  };
+
+  const getFeedBackMessage = (message) => {
+    if (feedbackMessage[message].show) {
+      return (
+        <Paragraph
+          fontColor="red"
+          fontSize="2vw"
+          textAlign="center"
+        >
+          { feedbackMessage[message].value }
+        </Paragraph>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -429,14 +486,14 @@ function AddGamePage() {
           inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
-          value={game.category.value}
-          name="category"
+          value={game.newCategory.value}
+          name="newCategory"
           inputBorderRadius="15px"
           labelText="Nova categoria"
           labelFontColor="white"
           id="new-category"
-          inputBorder={`1px solid ${game.category.color}`}
-          inputBoxShadow={`0 0 8px 4px ${game.category.color}`}
+          inputBorder={`1px solid ${game.newCategory.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.newCategory.color}`}
         />
         <Button
           width="35%"
@@ -449,10 +506,14 @@ function AddGamePage() {
           hoverTransform="scale(1.05, 1.05)"
           transition="0.2s"
           hoverBackgroundColor="#199610"
+          onClick={onAddCategoryClick}
         >
           Adicionar categoria
         </Button>
       </InputContainer>
+      {
+        getFeedBackMessage('newCategory')
+      }
     </AddGameStyle>
   );
 }
