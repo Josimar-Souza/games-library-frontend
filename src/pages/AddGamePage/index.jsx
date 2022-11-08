@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import components from '../../components';
 import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
+import addGameValidation from '../../validations/addGameValidation';
 import {
   AddGameStyle,
   InputContainer,
@@ -57,14 +58,16 @@ function AddGamePage() {
   const { game } = gameInfo;
 
   const handleInputChange = ({ target: { name, value } }) => {
+    const validationResults = addGameValidation({ [name]: value });
+
     if (name.includes('platform') && name !== 'platformCount') {
-      setPlatforms({ ...platforms, [name]: { value, color: '' } });
+      setPlatforms({ ...platforms, [name]: { value, color: validationResults[0].color } });
     } else {
       setGameInfo({
         ...gameInfo,
         game: {
           ...gameInfo.game,
-          [name]: { value, color: '' },
+          [name]: { value, color: validationResults[0].color },
         },
       });
     }
@@ -72,7 +75,7 @@ function AddGamePage() {
 
   const onAddInputsButtonClick = () => {
     const currentPlatforms = {};
-    for (let index = 0; index < +game.platformCount; index += 1) {
+    for (let index = 0; index < +game.platformCount.value; index += 1) {
       currentPlatforms[`platform${index}`] = { value: '', color: '' };
     }
 
@@ -101,6 +104,8 @@ function AddGamePage() {
           labelText="Nome"
           labelFontColor="white"
           id="name"
+          inputBorder={`1px solid ${game.title.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.title.color}`}
         />
         <Input
           placeholder="Digite a data de lançamento do jogo no formato dd/mm/aaaa"

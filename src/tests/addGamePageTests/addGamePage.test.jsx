@@ -273,12 +273,12 @@ describe('Testes da página para adicionar um novo game', () => {
   describe('Testes do comportamento da página', () => {
     const invalidStyle = `
       border: 1px solid red;
-      box-shadow: 0 0 10px red;
+      box-shadow: 0 0 8px 4px red;
     `;
 
     const validStyle = `
       border: 1px solid green;
-      box-shadow: 0 0 10px green;
+      box-shadow: 0 0 8px 4px green;
     `;
 
     beforeEach(async () => {
