@@ -30,6 +30,7 @@ function TextArea(props) {
     labelBorder,
     labelWidth,
     id,
+    textAreaBoxShadow,
   } = props;
 
   return (
@@ -62,6 +63,7 @@ function TextArea(props) {
         name={name}
         textAreaBorder={textAreaBorder}
         id={id}
+        textAreaBoxShadow={textAreaBoxShadow}
       />
     </TextAreaContainer>
   );
@@ -86,6 +88,7 @@ TextArea.defaultProps = {
   labelFontColor: 'black',
   labelBorder: 'none',
   labelWidth: 'labelWidth',
+  textAreaBoxShadow: 'none',
 };
 
 TextArea.propTypes = {
@@ -111,6 +114,7 @@ TextArea.propTypes = {
   labelBorder: PropTypes.string,
   labelWidth: PropTypes.string,
   id: PropTypes.string.isRequired,
+  textAreaBoxShadow: PropTypes.string,
 };
 
 export default TextArea;

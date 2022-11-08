@@ -141,6 +141,8 @@ function AddGamePage() {
         labelFontColor="white"
         containerMargin="1.5rem 0"
         id="sinopse"
+        textAreaBorder={`1px solid ${game.sinopse.color}`}
+        textAreaBoxShadow={`0 0 8px 4px ${game.sinopse.color}`}
       />
       <Line
         width="76%"

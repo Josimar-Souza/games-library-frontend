@@ -12,6 +12,7 @@ export const TextAreaContainer = styled.div`
 
 export const TextAreaStyle = styled.textarea`
   background-color: ${({ textAreaBackgroundColor }) => textAreaBackgroundColor};
+  box-shadow: ${({ textAreaBoxShadow }) => textAreaBoxShadow};
   border-radius: ${({ textAreaBorderRadius }) => textAreaBorderRadius};
   border: ${({ textAreaBorder }) => textAreaBorder};
   color: ${({ textAreaFontColor }) => textAreaFontColor};
