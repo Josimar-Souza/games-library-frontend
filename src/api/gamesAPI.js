@@ -19,7 +19,7 @@ class GamesAPI {
 
       return categories;
     } catch (error) {
-      console.log(error);
+      return new ErrorCreator('Não foi possível listar todas as categorias, por favor, tente mais tarde!');
     }
   }
 
@@ -30,6 +30,16 @@ class GamesAPI {
       return { category };
     } catch (error) {
       return new ErrorCreator('Não foi possível adicionar a categoria, por favor, tente mais tarde!');
+    }
+  }
+
+  async addNewGame(game, token) {
+    try {
+      const { data: { newGame } } = await this.api.post('/games', game, { headers: { authorization: token } });
+
+      return newGame;
+    } catch (error) {
+      return new ErrorCreator('Não foi possível adicionar o game!');
     }
   }
 }

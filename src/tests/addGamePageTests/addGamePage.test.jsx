@@ -284,6 +284,7 @@ describe('Testes da página para adicionar um novo game', () => {
     beforeEach(async () => {
       jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
       gamesAPI.addNewCategory = jest.fn();
+      gamesAPI.addNewGame = jest.fn();
 
       await act(async () => {
         renderWithRouter(<pages.AddGamePage />);
@@ -536,6 +537,14 @@ describe('Testes da página para adicionar um novo game', () => {
       const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
 
       expect(addGameButton).not.toBeDisabled();
+    });
+
+    it('Verifica se ao clicar no botão "Adicionar jogo", o método "addNewGame" na api GamesAPI é chamado uma vez', async () => {
+      const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
+
+      userEvent.click(addGameButton);
+
+      expect(gamesAPI.addNewGame).toHaveBeenCalled();
     });
   });
 });
