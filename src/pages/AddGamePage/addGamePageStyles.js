@@ -40,4 +40,10 @@ export const PlatformInputsContainer = styled.div`
   max-width: 100%;
   margin: 15px 0;
   width: 80%;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+  }
 `;
