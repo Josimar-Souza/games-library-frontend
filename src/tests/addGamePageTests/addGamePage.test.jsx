@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
 import React from 'react';
 import { screen, act } from '@testing-library/react';
@@ -297,6 +298,8 @@ describe('Testes da página para adicionar um novo game', () => {
 
     afterEach(() => {
       jest.clearAllMocks();
+
+      window.location = location;
     });
 
     it('Ao digitar um nome inválido, o input deverá ficar com características vermelhas', async () => {
