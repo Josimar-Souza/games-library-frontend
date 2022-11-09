@@ -607,6 +607,7 @@ function AddGamePage() {
         width="80%"
         margin="15px 0"
         testId="add-category-message"
+        mobileFontSize="4.5vw"
       >
         Não achou a categoria que deseja? Adicione-a no formulário abaixo!
       </Paragraph>
