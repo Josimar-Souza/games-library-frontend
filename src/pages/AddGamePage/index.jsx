@@ -38,7 +38,18 @@ function AddGamePage() {
   const [platforms, setPlatforms] = useState({ platform0: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false } });
   const [categories, setCategories] = useState([]);
   const [addGameButton, setAddGameButton] = useState({ disabled: true });
-  const [feedbackMessage, setfeedbackMessage] = useState({ newCategory: { show: false, value: '' } });
+  const [feedbackMessage, setfeedbackMessage] = useState({
+    newCategory: {
+      show: false,
+      value: '',
+      color: 'red',
+    },
+    addGame: {
+      show: false,
+      value: '',
+      color: 'red',
+    },
+  });
 
   useEffect(() => {
     const getCategories = async () => {
@@ -146,6 +157,7 @@ function AddGamePage() {
         newCategory: {
           show: true,
           value: result.message,
+          color: 'red',
         },
       });
 
@@ -155,6 +167,7 @@ function AddGamePage() {
           newCategory: {
             show: false,
             value: '',
+            color: 'red',
           },
         });
       }, 3000);
@@ -170,6 +183,7 @@ function AddGamePage() {
           fontColor={color}
           fontSize="2vw"
           textAlign="center"
+          margin="10px 0"
         >
           { feedbackMessage[message].value }
         </Paragraph>
@@ -220,13 +234,13 @@ function AddGamePage() {
     const result = await gamesAPI.addNewGame(newGame, getItem('token'));
 
     if (result instanceof ErrorCreator) {
-      setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: result.message } });
+      setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: result.message, color: 'red' } });
     } else {
-      setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: 'Game adicionado com sucesso!' } });
+      setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: 'Game adicionado com sucesso!', color: 'green' } });
     }
 
     setTimeout(() => {
-      setfeedbackMessage({ ...feedbackMessage, addGame: { show: false, value: '' } });
+      setfeedbackMessage({ ...feedbackMessage, addGame: { show: false, value: '', color: 'red' } });
       navigate('/games');
     }, 3000);
   };
@@ -526,6 +540,7 @@ function AddGamePage() {
       >
         Adicionar jogo
       </Button>
+      { getFeedBackMessage('addGame', feedbackMessage.addGame.color) }
       <Paragraph
         fontColor="white"
         textAlign="center"
@@ -573,7 +588,7 @@ function AddGamePage() {
         </Button>
       </InputContainer>
       {
-        getFeedBackMessage('newCategory')
+        getFeedBackMessage('newCategory', feedbackMessage.newCategory.color)
       }
     </AddGameStyle>
   );
