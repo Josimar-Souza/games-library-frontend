@@ -7,7 +7,7 @@ const gameValidationSchema = joi.object({
   developer: joi.string().min(5),
   publisher: joi.string().min(5),
   platform: joi.string().min(5),
-  trailer: joi.string().uri(),
+  trailerURL: joi.string().uri(),
   metascore: joi.number().max(10),
   userscore: joi.number().max(10),
   image: joi.string().uri(),

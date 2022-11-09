@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import components from '../../components';
 import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
@@ -14,6 +15,8 @@ const apiURL = process.env.REACT_APP_API_URL;
 export const gamesAPI = new GamesAPI(apiURL, 15000);
 
 function AddGamePage() {
+  const navigate = useNavigate();
+
   const [gameInfo, setGameInfo] = useState({
     game: {
       title: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
@@ -21,7 +24,7 @@ function AddGamePage() {
       sinopse: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       developer: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       publisher: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
-      trailer: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
+      trailerURL: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       category: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       metascore: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
       userscore: { value: '', color: 'rgba(0, 0, 0, 0)', valid: false },
@@ -73,8 +76,9 @@ function AddGamePage() {
 
   const checkGameInformations = () => {
     let allValidValues = true;
+    const { newCategory, ...rest } = game;
 
-    Object.entries(game).forEach(([, values]) => {
+    Object.entries(rest).forEach(([, values]) => {
       if (!values.valid) allValidValues = false;
     });
 
@@ -84,6 +88,8 @@ function AddGamePage() {
 
     if (allValidValues) {
       setAddGameButton({ ...addGameButton, disabled: false });
+    } else {
+      setAddGameButton({ ...addGameButton, disabled: true });
     }
   };
 
@@ -155,11 +161,11 @@ function AddGamePage() {
     }
   };
 
-  const getFeedBackMessage = (message) => {
+  const getFeedBackMessage = (message, color = 'red') => {
     if (feedbackMessage[message].show) {
       return (
         <Paragraph
-          fontColor="red"
+          fontColor={color}
           fontSize="2vw"
           textAlign="center"
         >
@@ -169,6 +175,58 @@ function AddGamePage() {
     }
 
     return null;
+  };
+
+  const onAddGameClick = async () => {
+    const {
+      title,
+      releaseDate,
+      backdrop,
+      category,
+      developer,
+      image,
+      metascore,
+      publisher,
+      sinopse,
+      trailerURL,
+      userscore,
+    } = game;
+
+    const platformsList = [];
+
+    Object.values(platforms).forEach(({ value }) => {
+      platformsList.push(value);
+    });
+
+    const newGame = {
+      title: title.value,
+      releaseYear: releaseDate.value,
+      sinopse: sinopse.value,
+      developer: developer.value,
+      publisher: publisher.value,
+      platforms: platformsList,
+      trailerURL: trailerURL.value,
+      metacritic: {
+        metascore: metascore.value,
+        userscore: userscore.value,
+      },
+      image: image.value,
+      backdrop: backdrop.value,
+      category: category.value,
+    };
+
+    const result = await gamesAPI.addNewGame(newGame, getItem('token'));
+
+    if (result instanceof ErrorCreator) {
+      setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: result.message } });
+    } else {
+      setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: 'Game adicionado com sucesso!' } });
+    }
+
+    setTimeout(() => {
+      setfeedbackMessage({ ...feedbackMessage, addGame: { show: false, value: '' } });
+      navigate('/games');
+    }, 3000);
   };
 
   return (
@@ -341,14 +399,14 @@ function AddGamePage() {
           inputMargin="15px 0"
           fontSize="1.2vw"
           onChange={handleInputChange}
-          name="trailer"
-          value={game.trailer.value}
+          name="trailerURL"
+          value={game.trailerURL.value}
           inputBorderRadius="15px"
           labelText="Trailer URL"
           labelFontColor="white"
           id="trailer-url"
-          inputBorder={`1px solid ${game.trailer.color}`}
-          inputBoxShadow={`0 0 8px 4px ${game.trailer.color}`}
+          inputBorder={`1px solid ${game.trailerURL.color}`}
+          inputBoxShadow={`0 0 8px 4px ${game.trailerURL.color}`}
         />
         <DropDown
           dropdownWidth="80%"
@@ -462,6 +520,7 @@ function AddGamePage() {
         transition="0.2s"
         hoverBackgroundColor="#199610"
         disabled={addGameButton.disabled}
+        onClick={onAddGameClick}
       >
         Adicionar jogo
       </Button>

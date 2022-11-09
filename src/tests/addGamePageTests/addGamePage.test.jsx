@@ -286,6 +286,10 @@ describe('Testes da página para adicionar um novo game', () => {
       gamesAPI.addNewCategory = jest.fn();
       gamesAPI.addNewGame = jest.fn();
 
+      delete window.location;
+
+      window.location = { reload: jest.fn() };
+
       await act(async () => {
         renderWithRouter(<pages.AddGamePage />);
       });
@@ -501,7 +505,7 @@ describe('Testes da página para adicionar um novo game', () => {
       expect(addGameButton).toBeDisabled();
     });
 
-    it('Verifica se ao digitar todas as informações corretas, o botão "Adicionar jogo" é habilitado', async () => {
+    it('Verifica se ao digitar todas as informações corretas, o botão "Adicionar jogo" é habilitado e se o método correto é chamado uma vez', async () => {
       const titleInput = await screen.findByPlaceholderText(gameTitlePlaceHolder);
       const releaseDateInput = await screen.findByPlaceholderText(gameReleaseDatePlaceHolder);
       const sinopseInput = await screen.findByPlaceholderText(gameSinopsePlaceHolder);
@@ -537,10 +541,6 @@ describe('Testes da página para adicionar um novo game', () => {
       const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
 
       expect(addGameButton).not.toBeDisabled();
-    });
-
-    it('Verifica se ao clicar no botão "Adicionar jogo", o método "addNewGame" na api GamesAPI é chamado uma vez', async () => {
-      const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
 
       userEvent.click(addGameButton);
 
