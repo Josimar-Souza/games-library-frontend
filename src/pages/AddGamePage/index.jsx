@@ -93,6 +93,10 @@ function AddGamePage() {
     }
   };
 
+  useEffect(() => {
+    checkGameInformations();
+  }, [game]);
+
   const handleInputChange = ({ target: { name, value } }) => {
     if (name.includes('platform') && name !== 'platformCount') {
       const validationResults = addGameValidation({ platform: value });
@@ -120,8 +124,6 @@ function AddGamePage() {
         },
       });
     }
-
-    checkGameInformations();
   };
 
   const onAddInputsButtonClick = () => {
