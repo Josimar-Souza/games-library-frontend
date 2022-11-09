@@ -269,6 +269,11 @@ function AddGamePage() {
           id="name"
           inputBorder={`1px solid ${game.title.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.title.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <Input
           placeholder="Digite a data de lançamento do jogo no formato dd/mm/aaaa"
@@ -284,6 +289,11 @@ function AddGamePage() {
           id="release-date"
           inputBorder={`1px solid ${game.releaseDate.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.releaseDate.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
       </InputContainer>
       <Line
@@ -324,6 +334,11 @@ function AddGamePage() {
           id="developer"
           inputBorder={`1px solid ${game.developer.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.developer.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <Input
           placeholder="Digite a publicadora do jogo"
@@ -339,6 +354,11 @@ function AddGamePage() {
           id="publisher"
           inputBorder={`1px solid ${game.publisher.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.publisher.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
       </InputContainer>
       <Line
@@ -361,6 +381,11 @@ function AddGamePage() {
           id="platformCount"
           inputBorder={`1px solid ${game.platformCount.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.platformCount.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <Button
           width="35%"
@@ -400,6 +425,11 @@ function AddGamePage() {
               id={`platform-${index}`}
               inputBorder={`1px solid ${platforms[platform[0]].color}`}
               inputBoxShadow={`0 0 8px 4px ${platforms[platform[0]].color}`}
+              mobileInputWidth="100%"
+              mobileContainerWidth="100%"
+              mobileFontSize="5.2vw"
+              mobileContainerMargin="1rem 0"
+              mobileLabelFontSize="6.5vw"
             />
           ))
         }
@@ -423,6 +453,11 @@ function AddGamePage() {
           id="trailer-url"
           inputBorder={`1px solid ${game.trailerURL.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.trailerURL.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <DropDown
           dropdownWidth="80%"
@@ -470,6 +505,11 @@ function AddGamePage() {
           id="metascore"
           inputBorder={`1px solid ${game.metascore.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.metascore.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <Input
           type="number"
@@ -486,6 +526,11 @@ function AddGamePage() {
           id="userscore"
           inputBorder={`1px solid ${game.userscore.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.userscore.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
       </InputContainer>
       <Line
@@ -507,6 +552,11 @@ function AddGamePage() {
           id="image-url"
           inputBorder={`1px solid ${game.image.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.image.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <Input
           placeholder="Digite a url da imagem de backdrop do game"
@@ -522,6 +572,11 @@ function AddGamePage() {
           id="backdrop-image-url"
           inputBorder={`1px solid ${game.backdrop.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.backdrop.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
       </InputContainer>
       <Button
@@ -570,6 +625,11 @@ function AddGamePage() {
           id="new-category"
           inputBorder={`1px solid ${game.newCategory.color}`}
           inputBoxShadow={`0 0 8px 4px ${game.newCategory.color}`}
+          mobileInputWidth="100%"
+          mobileContainerWidth="100%"
+          mobileFontSize="5.2vw"
+          mobileContainerMargin="1rem 0"
+          mobileLabelFontSize="6.5vw"
         />
         <Button
           width="35%"

@@ -28,17 +28,24 @@ function Input(props) {
     name,
     type,
     containerWidth,
+    containerMargin,
+    mobileContainerMargin,
+    mobileContainerWidth,
     id,
     labelText,
     labelFontColor,
     labelWidth,
     labelTextAlign,
     labelFontSize,
+    mobileLabelFontSize,
   } = props;
 
   return (
     <InputContainer
       containerWidth={containerWidth}
+      mobileContainerWidth={mobileContainerWidth}
+      containerMargin={containerMargin}
+      mobileContainerMargin={mobileContainerMargin}
     >
       <InputLabel
         htmlFor={id}
@@ -46,6 +53,7 @@ function Input(props) {
         labelWidth={labelWidth}
         labelTextAlign={labelTextAlign}
         labelFontSize={labelFontSize}
+        mobileLabelFontSize={mobileLabelFontSize}
       >
         {labelText}
       </InputLabel>
@@ -94,11 +102,15 @@ Input.defaultProps = {
   name: '',
   type: 'text',
   containerWidth: '50%',
+  containerMargin: '0',
+  mobileContainerMargin: '0',
+  mobileContainerWidth: '80%',
   labelText: '',
   labelFontColor: 'black',
   labelWidth: '80%',
   labelTextAlign: 'center',
   labelFontSize: '2vw',
+  mobileLabelFontSize: '5vw',
 };
 
 Input.propTypes = {
@@ -122,12 +134,16 @@ Input.propTypes = {
   mobileFontSize: PropTypes.string,
   mobileInputPadding: PropTypes.string,
   containerWidth: PropTypes.string,
+  containerMargin: PropTypes.string,
+  mobileContainerMargin: PropTypes.string,
+  mobileContainerWidth: PropTypes.string,
   id: PropTypes.string.isRequired,
   labelText: PropTypes.string,
   labelFontColor: PropTypes.string,
   labelWidth: PropTypes.string,
   labelTextAlign: PropTypes.string,
   labelFontSize: PropTypes.string,
+  mobileLabelFontSize: PropTypes.string,
 };
 
 export default Input;

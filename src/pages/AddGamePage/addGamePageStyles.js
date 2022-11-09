@@ -11,6 +11,10 @@ export const AddGameStyle = styled.section`
   max-width: 100%;
   min-height: 100vh;
   padding: 3rem;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -20,6 +24,10 @@ export const InputContainer = styled.div`
   max-width: 100%;
   margin: 15px 0;
   width: 80%;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const PlatformInputsContainer = styled.div`

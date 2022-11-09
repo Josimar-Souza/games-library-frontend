@@ -6,7 +6,13 @@ export const InputContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   max-width: 100%;
+  margin: ${({ containerMargin }) => containerMargin};
   width: ${({ containerWidth }) => containerWidth};
+
+  @media (max-width: 480px) {
+    margin: ${({ mobileContainerMargin }) => mobileContainerMargin};
+    width: ${({ mobileContainerWidth }) => mobileContainerWidth};
+  }
 `;
 
 export const InputStyle = styled.input`
@@ -38,4 +44,8 @@ export const InputLabel = styled.label`
   max-width: 100%;
   text-align: ${({ labelTextAlign }) => labelTextAlign};
   width: ${({ labelWidth }) => labelWidth};
+
+  @media (max-width: 480px) {
+    font-size: ${({ mobileLabelFontSize }) => mobileLabelFontSize};
+  }
 `;
