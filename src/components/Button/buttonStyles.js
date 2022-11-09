@@ -29,6 +29,10 @@ const ButtonStyle = styled.button`
     margin: ${({ mobileMargin }) => mobileMargin};
     padding: ${({ mobilePadding }) => mobilePadding};
     width: ${({ mobileWidth }) => mobileWidth};
+
+    :hover {
+      transform: none;
+    }
   }
 `;
 

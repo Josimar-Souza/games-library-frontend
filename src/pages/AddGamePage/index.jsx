@@ -399,6 +399,8 @@ function AddGamePage() {
           transition="0.2s"
           hoverBackgroundColor="#199610"
           onClick={onAddInputsButtonClick}
+          mobileWidth="80%"
+          mobileFontSize="5vw"
         >
           Adicionar inputs para plataformas
         </Button>
@@ -592,6 +594,8 @@ function AddGamePage() {
         hoverBackgroundColor="#199610"
         disabled={addGameButton.disabled}
         onClick={onAddGameClick}
+        mobileWidth="80%"
+        mobileFontSize="6vw"
       >
         Adicionar jogo
       </Button>
@@ -643,6 +647,8 @@ function AddGamePage() {
           transition="0.2s"
           hoverBackgroundColor="#199610"
           onClick={onAddCategoryClick}
+          mobileWidth="80%"
+          mobileFontSize="6vw"
         >
           Adicionar categoria
         </Button>
