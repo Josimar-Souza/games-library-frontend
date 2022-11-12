@@ -623,6 +623,9 @@ function AddGamePage() {
         width="76%"
         height="3px"
       />
+      {
+        getFeedBackMessage('newCategory', feedbackMessage.newCategory.color)
+      }
       <InputContainer>
         <Input
           placeholder="Digite a nova categoria"
@@ -662,9 +665,6 @@ function AddGamePage() {
           Adicionar categoria
         </Button>
       </InputContainer>
-      {
-        getFeedBackMessage('newCategory', feedbackMessage.newCategory.color)
-      }
     </AddGameStyle>
   );
 }

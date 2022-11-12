@@ -7,6 +7,7 @@ import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import { gamesAPI } from '../../pages/AddGamePage';
 import mockCategories from '../mocks/mockCategories';
+import ErrorCreator from '../../helpers/ErrorCreator';
 
 const gameTitlePlaceHolder = 'Digite o nome do jogo';
 const gameReleaseDatePlaceHolder = 'Digite a data de lançamento do jogo no formato dd/mm/aaaa';
@@ -523,7 +524,6 @@ describe('Testes da página para adicionar um novo game', () => {
       const userscore = await screen.findByPlaceholderText(gameUserscorePlaceHolder);
       const gameImageInput = await screen.findByPlaceholderText(gameImagePlaceHolder);
       const backdropImageInput = await screen.findByPlaceholderText(gameBackdropImagePlaceHolder);
-      const newCategoryInput = await screen.findByPlaceholderText(gameNewCategoryPlaceHolder);
 
       userEvent.type(titleInput, 'Meu jogo 3');
       userEvent.type(releaseDateInput, '16/06/2019');
@@ -539,7 +539,6 @@ describe('Testes da página para adicionar um novo game', () => {
       userEvent.type(userscore, '7.4');
       userEvent.type(gameImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
       userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
-      userEvent.type(newCategoryInput, 'Terror');
 
       const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
 
@@ -548,6 +547,19 @@ describe('Testes da página para adicionar um novo game', () => {
       userEvent.click(addGameButton);
 
       expect(gamesAPI.addNewGame).toHaveBeenCalled();
+    });
+
+    it('Verifica se ao clicar not botão "Adicionar categoria" com valores incorretos, uma mensagem aparece', async () => {
+      const error = new ErrorCreator('Não foi possível adicionar a categoria, por favor, tente mais tarde');
+      jest.spyOn(gamesAPI, 'addNewCategory').mockResolvedValue(error);
+
+      const addCategoryButton = await screen.findByRole('button', { name: 'Adicionar categoria' });
+
+      userEvent.click(addCategoryButton);
+
+      const feedbackMessage = await screen.findByText('Não foi possível adicionar a categoria, por favor, tente mais tarde');
+
+      expect(feedbackMessage).toBeInTheDocument();
     });
   });
 });
