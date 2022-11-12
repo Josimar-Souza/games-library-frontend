@@ -8,6 +8,11 @@ export const TextAreaContainer = styled.div`
   max-wdith: 100%;
   margin: ${({ containerMargin }) => containerMargin};
   width: ${({ containerWidth }) => containerWidth};
+
+  @media (max-width: 480px) {
+    margin: ${({ mobileContainerMargin }) => mobileContainerMargin};
+    width: ${({ mobileContainerWidth }) => mobileContainerWidth};
+  }
 `;
 
 export const TextAreaStyle = styled.textarea`
@@ -25,6 +30,11 @@ export const TextAreaStyle = styled.textarea`
   :focus {
     outline: none;
   }
+
+  @media (max-width: 480px) {
+    font-size: ${({ mobileTextAreaFontSize }) => mobileTextAreaFontSize};
+    width: ${({ mobileTextAreaWidth }) => mobileTextAreaWidth};
+  }
 `;
 
 export const TextAreaLabel = styled.label`
@@ -33,4 +43,8 @@ export const TextAreaLabel = styled.label`
   font-size: ${({ labelFontSize }) => labelFontSize};
   max-width: 100%;
   width: ${({ labelWidth }) => labelWidth};
+
+  @media (max-width: 480px) {
+    font-size: ${({ mobileLabelFontSize }) => mobileLabelFontSize};
+  }
 `;

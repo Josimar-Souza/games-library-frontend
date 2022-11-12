@@ -314,6 +314,9 @@ function AddGamePage() {
         id="sinopse"
         textAreaBorder={`1px solid ${game.sinopse.color}`}
         textAreaBoxShadow={`0 0 8px 4px ${game.sinopse.color}`}
+        mobileTextAreaWidth="100%"
+        mobileLabelFontSize="6.5vw"
+        mobileContainerMargin="1rem 0"
       />
       <Line
         width="76%"

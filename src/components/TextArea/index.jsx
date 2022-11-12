@@ -9,12 +9,14 @@ import {
 function TextArea(props) {
   const {
     textAreaWidth,
+    mobileTextAreaWidth,
     rows,
     cols,
     placeholder,
     textAreaMargin,
     textAreaPadding,
     textAreaFontSize,
+    mobileTextAreaFontSize,
     textAreaBorderRadius,
     textAreaFontColor,
     textAreaBackgroundColor,
@@ -23,9 +25,12 @@ function TextArea(props) {
     name,
     textAreaBorder,
     containerWidth,
+    mobileContainerWidth,
     containerMargin,
+    mobileContainerMargin,
     labelText,
     labelFontSize,
+    mobileLabelFontSize,
     labelFontColor,
     labelBorder,
     labelWidth,
@@ -36,10 +41,13 @@ function TextArea(props) {
   return (
     <TextAreaContainer
       containerWidth={containerWidth}
+      mobileContainerWidth={mobileContainerWidth}
       containerMargin={containerMargin}
+      mobileContainerMargin={mobileContainerMargin}
     >
       <TextAreaLabel
         labelFontSize={labelFontSize}
+        mobileLabelFontSize={mobileLabelFontSize}
         labelFontColor={labelFontColor}
         labelBorder={labelBorder}
         labelWidth={labelWidth}
@@ -49,12 +57,14 @@ function TextArea(props) {
       </TextAreaLabel>
       <TextAreaStyle
         textAreaWidth={textAreaWidth}
+        mobileTextAreaWidth={mobileTextAreaWidth}
         rows={rows}
         cols={cols}
         placeholder={placeholder}
         textAreaMargin={textAreaMargin}
         textAreaPadding={textAreaPadding}
         textAreaFontSize={textAreaFontSize}
+        mobileTextAreaFontSize={mobileTextAreaFontSize}
         textAreaBorderRadius={textAreaBorderRadius}
         textAreaFontColor={textAreaFontColor}
         textAreaBackgroundColor={textAreaBackgroundColor}
@@ -71,20 +81,25 @@ function TextArea(props) {
 
 TextArea.defaultProps = {
   textAreaWidth: '50%',
+  mobileTextAreaWidth: '80%',
   rows: '8',
   cols: '50',
   placeholder: '',
   textAreaMargin: '0',
   textAreaPadding: '5px',
   textAreaFontSize: '1.2vw',
+  mobileTextAreaFontSize: '5vw',
   textAreaBorderRadius: '0',
   textAreaFontColor: 'black',
   textAreaBackgroundColor: 'white',
   name: '',
   textAreaBorder: '1px solid black',
   containerWidth: '80%',
+  mobileContainerWidth: '80%',
   containerMargin: '0',
+  mobileContainerMargin: '0',
   labelFontSize: '2vw',
+  mobileLabelFontSize: '5vw',
   labelFontColor: 'black',
   labelBorder: 'none',
   labelWidth: 'labelWidth',
@@ -93,12 +108,14 @@ TextArea.defaultProps = {
 
 TextArea.propTypes = {
   textAreaWidth: PropTypes.string,
+  mobileTextAreaWidth: PropTypes.string,
   rows: PropTypes.string,
   cols: PropTypes.string,
   placeholder: PropTypes.string,
   textAreaMargin: PropTypes.string,
   textAreaPadding: PropTypes.string,
   textAreaFontSize: PropTypes.string,
+  mobileTextAreaFontSize: PropTypes.string,
   textAreaBorderRadius: PropTypes.string,
   textAreaFontColor: PropTypes.string,
   textAreaBackgroundColor: PropTypes.string,
@@ -107,9 +124,12 @@ TextArea.propTypes = {
   name: PropTypes.string,
   textAreaBorder: PropTypes.string,
   containerWidth: PropTypes.string,
+  mobileContainerWidth: PropTypes.string,
   containerMargin: PropTypes.string,
+  mobileContainerMargin: PropTypes.string,
   labelText: PropTypes.string.isRequired,
   labelFontSize: PropTypes.string,
+  mobileLabelFontSize: PropTypes.string,
   labelFontColor: PropTypes.string,
   labelBorder: PropTypes.string,
   labelWidth: PropTypes.string,
