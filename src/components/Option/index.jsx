@@ -7,12 +7,16 @@ function Option(props) {
     children,
     value,
     testId,
+    mobileFontSize,
+    fontSize,
   } = props;
 
   return (
     <OptionStyle
       value={value}
       data-testid={testId}
+      mobileFontSize={mobileFontSize}
+      fontSize={fontSize}
     >
       { children }
     </OptionStyle>
@@ -21,12 +25,16 @@ function Option(props) {
 
 Option.defaultProps = {
   testId: '',
+  mobileFontSize: '5vw',
+  fontSize: '2vw',
 };
 
 Option.propTypes = {
   children: PropTypes.node.isRequired,
   value: PropTypes.string.isRequired,
   testId: PropTypes.string,
+  mobileFontSize: PropTypes.string,
+  fontSize: PropTypes.string,
 };
 
 export default Option;

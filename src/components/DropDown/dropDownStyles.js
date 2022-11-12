@@ -7,6 +7,11 @@ export const DropDownContainer = styled.div`
   justify-content: space-around;
   max-width: 100%;
   width: ${({ dropdownContainerWidth }) => dropdownContainerWidth};
+
+  @media (max-width: 480px) {
+    margin: ${({ mobileDropdownContainerMargin }) => mobileDropdownContainerMargin};
+    width: ${({ mobileDropdownContainerWidth }) => mobileDropdownContainerWidth};
+  }
 `;
 
 export const DropDownStyle = styled.select`
@@ -22,6 +27,13 @@ export const DropDownStyle = styled.select`
   :focus {
     outline: none;
   }
+
+  @media (max-width: 480px) {
+    font-size: ${({ mobileDropdownFontSize }) => mobileDropdownFontSize};
+    margin: ${({ mobileDropdownMargin }) => mobileDropdownMargin};
+    min-height: ${({ mobileDropdownMinHeight }) => mobileDropdownMinHeight};
+    width: ${({ mobileDropdownWidth }) => mobileDropdownWidth};
+  }
 `;
 
 export const DropDownLabel = styled.label`
@@ -30,4 +42,8 @@ export const DropDownLabel = styled.label`
   max-width: 100%;
   text-align: ${({ labelTextAlign }) => labelTextAlign};
   width: ${({ labelWidth }) => labelWidth};
+
+  @media (max-width: 480px) {
+    font-size: ${({ mobileLabelFontSize }) => mobileLabelFontSize};
+  }
 `;

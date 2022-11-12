@@ -476,6 +476,10 @@ function AddGamePage() {
           dropdownMinHeight="2rem"
           dropdownFontSize="1.5vw"
           id="category"
+          mobileDropdownWidth="100%"
+          mobileDropdownContainerWidth="100%"
+          mobileLabelFontSize="6.5vw"
+          mobileDropdownContainerMargin="1rem 0"
         >
           {
             categories.map(({ category, _id }, index) => (
@@ -483,6 +487,7 @@ function AddGamePage() {
                 value={category}
                 key={_id}
                 testId={`category-option-${index}`}
+                mobileFontSize="3.5vw"
               >
                 {category}
               </Option>
