@@ -27,5 +27,17 @@ describe('Testes da página principal de games', () => {
 
       expect(signOutButton).toBeInTheDocument();
     });
+
+    it('Um input para pesquisa por nome', async () => {
+      const searchInput = await screen.findByPlaceholderText('Digite o nome do jogo para pesquisar');
+
+      expect(searchInput).toBeInTheDocument();
+    });
+
+    it('Um botão escrito "Pesquisar"', async () => {
+      const searchButton = await screen.findByRole('button', { name: 'Pesquisar' });
+
+      expect(searchButton).toBeInTheDocument();
+    });
   });
 });
