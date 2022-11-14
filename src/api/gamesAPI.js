@@ -42,6 +42,16 @@ class GamesAPI {
       return new ErrorCreator('Não foi possível adicionar o game!');
     }
   }
+
+  async getAllGames(token) {
+    try {
+      const { data: { games } } = this.api.get('/games', { headers: { authorization: token } });
+
+      return games;
+    } catch (error) {
+      return new ErrorCreator('Não foi possível listar todos os jogos, por favor, tente mais tarde!');
+    }
+  }
 }
 
 export default GamesAPI;
