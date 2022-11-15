@@ -6,16 +6,29 @@ import pages from '../../pages';
 import mockCategories from '../mocks/mockCategories';
 import mockGames from '../mocks/mockGames';
 
+let getArrayRandomItem = require('../../helpers/getArrayRandomItem');
+
 const testIds = {
   gameCardImage: 'game-card-image',
   gameCardTitle: 'game-card-title',
   gameCardDetailsButton: 'game-card-detail-button',
+  gameHero: 'game-hero-container',
+  gameHeroTitle: 'game-hero-title',
+  gameHeroSinopse: 'game-hero-sinopse',
+  gameHeroMetascore: 'game-hero-metascore',
+  gameHeroUserscore: 'game-hero-userscore',
 };
 
 describe('Testes da página principal de games', () => {
   describe('Verifica a existência dos elementos', () => {
     beforeEach(() => {
+      getArrayRandomItem = jest.fn().mockReturnValue(mockGames.games[0]);
+
       renderWithRouter(<pages.GamesPage />);
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
     });
 
     it('A logo do site', async () => {
@@ -34,6 +47,35 @@ describe('Testes da página principal de games', () => {
       const signOutButton = await screen.findByRole('button', { name: 'Deslogar' });
 
       expect(signOutButton).toBeInTheDocument();
+    });
+
+    it('Todas as informações do hero, com valores corretos', async () => {
+      const game = getArrayRandomItem();
+
+      const {
+        gameHero,
+        gameHeroTitle,
+        gameHeroSinopse,
+        gameHeroMetascore,
+        gameHeroUserscore,
+      } = testIds;
+
+      const gameHeroElement = await screen.findByTestId(gameHero);
+      const gameHeroTitleElement = await screen.findByTestId(gameHeroTitle);
+      const gameHeroSinopseElement = await screen.findByTestId(gameHeroSinopse);
+      const gameHeroMetascoreElement = await screen.findByTestId(gameHeroMetascore);
+      const gameHeroUserscoreElement = await screen.findByTestId(gameHeroUserscore);
+      const gameHeroDetailsButtonElement = await screen.findByRole('button', { name: 'Ver detalhes' });
+
+      expect(gameHeroElement).toHaveStyle(`
+        background-image: url(${game.backdrop});
+      `);
+
+      expect(gameHeroTitleElement.textContent).toBe(game.title);
+      expect(gameHeroSinopseElement.textContent).toBe(game.sinopse);
+      expect(gameHeroMetascoreElement.textContent).toBe(game.metacritic.metascore);
+      expect(gameHeroUserscoreElement.textContent).toBe(game.metacritic.userscore);
+      expect(gameHeroDetailsButtonElement).toBeInTheDocument();
     });
 
     it('Um input para pesquisa por nome', async () => {
