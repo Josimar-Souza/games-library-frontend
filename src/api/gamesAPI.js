@@ -39,7 +39,6 @@ class GamesAPI {
 
       return newGame;
     } catch (error) {
-      console.log(error);
       return new ErrorCreator('Não foi possível adicionar o game!');
     }
   }
