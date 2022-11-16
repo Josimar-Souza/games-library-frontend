@@ -1,10 +1,15 @@
 import React from 'react';
 import GamesPageSection from './gamesPageStyles';
+import components from '../../components';
 
 function GamesPage() {
+  const { Header } = components;
   return (
     <GamesPageSection>
-      <h1>Games Page</h1>
+      <Header
+        headerFontColor="white"
+        headerTitle="Games Library"
+      />
     </GamesPageSection>
   );
 }

@@ -5,6 +5,7 @@ import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import mockCategories from '../mocks/mockCategories';
 import mockGames from '../mocks/mockGames';
+import Logo from '../../images/Logo.jpg';
 
 let getArrayRandomItem = require('../../helpers/getArrayRandomItem');
 
@@ -35,6 +36,7 @@ describe('Testes da página principal de games', () => {
       const pageLogo = await screen.findByAltText('Logo da página no header');
 
       expect(pageLogo).toBeInTheDocument();
+      expect(pageLogo).toHaveAttribute('src', Logo);
     });
 
     it('Um título escrito "Games Library"', async () => {
