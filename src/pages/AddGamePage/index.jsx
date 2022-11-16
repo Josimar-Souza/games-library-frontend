@@ -193,6 +193,8 @@ function AddGamePage() {
     return null;
   };
 
+  const formatTrailerUrl = (url) => url.replace('watch?v=', 'embed/');
+
   const onAddGameClick = async () => {
     const {
       title,
@@ -221,7 +223,7 @@ function AddGamePage() {
       developer: developer.value,
       publisher: publisher.value,
       platforms: platformsList,
-      trailerURL: trailerURL.value,
+      trailerURL: formatTrailerUrl(trailerURL.value),
       metacritic: {
         metascore: metascore.value,
         userscore: userscore.value,
