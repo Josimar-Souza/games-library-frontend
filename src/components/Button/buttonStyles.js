@@ -9,6 +9,7 @@ const ButtonStyle = styled.button`
   margin: ${({ margin }) => margin};
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
+  text-shadow: ${({ textShadow }) => textShadow};
   transition: ${({ transition }) => transition};
 
   :hover {

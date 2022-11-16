@@ -22,6 +22,7 @@ function Header(props) {
       <Title
         fontColor={headerFontColor}
         textAlign="center"
+        textShadow="3px 3px 4px black"
       >
         {headerTitle}
       </Title>
@@ -37,6 +38,7 @@ function Header(props) {
         hoverTransform="scale(1.05, 1.05)"
         transition="0.2s"
         onClick={onHeaderButtonClick}
+        textShadow="1px 1px 2px black"
       >
         {headerButtonText}
       </Button>
