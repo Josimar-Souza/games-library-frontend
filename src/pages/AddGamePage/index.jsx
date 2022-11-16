@@ -239,11 +239,14 @@ function AddGamePage() {
       setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: result.message, color: 'red' } });
     } else {
       setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: 'Game adicionado com sucesso!', color: 'green' } });
+
+      setTimeout(() => {
+        navigate('/games');
+      }, 3000);
     }
 
     setTimeout(() => {
       setfeedbackMessage({ ...feedbackMessage, addGame: { show: false, value: '', color: 'red' } });
-      navigate('/games');
     }, 3000);
   };
 
