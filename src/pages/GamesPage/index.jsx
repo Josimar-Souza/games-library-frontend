@@ -4,6 +4,7 @@ import components from '../../components';
 
 function GamesPage() {
   const { Header } = components;
+
   return (
     <GamesPageSection>
       <Header
