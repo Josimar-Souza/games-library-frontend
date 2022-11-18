@@ -61,14 +61,12 @@ describe('Testes da página principal de games', () => {
       const {
         gameHero,
         gameHeroTitle,
-        gameHeroSinopse,
         gameHeroMetascore,
         gameHeroUserscore,
       } = testIds;
 
       const gameHeroElement = await screen.findByTestId(gameHero);
       const gameHeroTitleElement = await screen.findByTestId(gameHeroTitle);
-      const gameHeroSinopseElement = await screen.findByTestId(gameHeroSinopse);
       const gameHeroMetascoreElement = await screen.findByTestId(gameHeroMetascore);
       const gameHeroUserscoreElement = await screen.findByTestId(gameHeroUserscore);
       const gameHeroDetailsButtonElement = await screen.findByRole('button', { name: 'Ver detalhes' });
@@ -78,7 +76,6 @@ describe('Testes da página principal de games', () => {
       `);
 
       expect(gameHeroTitleElement.textContent).toBe(games[0].title);
-      expect(gameHeroSinopseElement.textContent).toBe(games[0].sinopse);
       expect(gameHeroMetascoreElement.textContent).toBe(games[0].metacritic.metascore);
       expect(gameHeroUserscoreElement.textContent).toBe(games[0].metacritic.userscore);
       expect(gameHeroDetailsButtonElement).toBeInTheDocument();
