@@ -45,7 +45,7 @@ class GamesAPI {
 
   async getAllGames(token) {
     try {
-      const { data: { games } } = this.api.get('/games', { headers: { authorization: token } });
+      const { data: { games } } = await this.api.get('/games', { headers: { authorization: token } });
 
       return games;
     } catch (error) {
