@@ -51,6 +51,7 @@ function GamesPage() {
       <Hero
         game={heroGame}
       />
+      <h1>Teste</h1>
     </GamesPageSection>
   );
 }

@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HeroContainer from './heroStyles';
+import {
+  HeroContainer,
+  HeroLeftFade,
+  HeroBottonFade,
+} from './heroStyles';
 
 function Hero({ game }) {
   return (
     <HeroContainer
       backgroundImage={game.backdrop}
-    />
+    >
+      <HeroLeftFade />
+      <HeroBottonFade />
+    </HeroContainer>
   );
 }
 

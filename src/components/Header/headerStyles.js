@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
   min-height: 4rem;
   position: fixed;
   width: 100%;
+  z-index: 2;
 `;
 
 export const HeaderLogo = styled.img`
