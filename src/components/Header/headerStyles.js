@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
   justify-content: space-around;
   max-width: 100%;
   min-height: 4rem;
+  position: fixed;
   width: 100%;
 `;
 
