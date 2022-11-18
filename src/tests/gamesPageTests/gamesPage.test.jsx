@@ -1,13 +1,14 @@
+/* eslint-disable no-import-assign */
 /* eslint-disable no-undef */
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import mockCategories from '../mocks/mockCategories';
 import mockGames from '../mocks/mockGames';
 import Logo from '../../images/Logo.jpg';
-
-let getArrayRandomItem = require('../../helpers/getArrayRandomItem');
+import { gamesAPI } from '../../pages/GamesPage';
+import * as helper from '../../helpers/getArrayRandomItem';
 
 const testIds = {
   gameCardImage: 'game-card-image',
@@ -22,10 +23,13 @@ const testIds = {
 
 describe('Testes da página principal de games', () => {
   describe('Verifica a existência dos elementos', () => {
-    beforeEach(() => {
-      getArrayRandomItem = jest.fn().mockReturnValue(mockGames.games[0]);
+    beforeEach(async () => {
+      jest.spyOn(gamesAPI, 'getAllGames').mockResolvedValue(mockGames.games);
+      helper.default = jest.fn().mockReturnValue(mockGames.games[0]);
 
-      renderWithRouter(<pages.GamesPage />);
+      await act(async () => {
+        renderWithRouter(<pages.GamesPage />);
+      });
     });
 
     afterEach(() => {
@@ -52,7 +56,7 @@ describe('Testes da página principal de games', () => {
     });
 
     it('Todas as informações do hero, com valores corretos', async () => {
-      const game = getArrayRandomItem();
+      const { games } = mockGames;
 
       const {
         gameHero,
@@ -73,10 +77,10 @@ describe('Testes da página principal de games', () => {
         background-image: url(${game.backdrop});
       `);
 
-      expect(gameHeroTitleElement.textContent).toBe(game.title);
-      expect(gameHeroSinopseElement.textContent).toBe(game.sinopse);
-      expect(gameHeroMetascoreElement.textContent).toBe(game.metacritic.metascore);
-      expect(gameHeroUserscoreElement.textContent).toBe(game.metacritic.userscore);
+      expect(gameHeroTitleElement.textContent).toBe(games[0].title);
+      expect(gameHeroSinopseElement.textContent).toBe(games[0].sinopse);
+      expect(gameHeroMetascoreElement.textContent).toBe(games[0].metacritic.metascore);
+      expect(gameHeroUserscoreElement.textContent).toBe(games[0].metacritic.userscore);
       expect(gameHeroDetailsButtonElement).toBeInTheDocument();
     });
 

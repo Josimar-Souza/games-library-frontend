@@ -7,7 +7,7 @@ import getArrayRandomItem from '../../helpers/getArrayRandomItem';
 import GamesAPI from '../../api/gamesAPI';
 
 const apiURL = process.env.REACT_APP_API_URL;
-const gamesAPI = new GamesAPI(apiURL, 15000);
+export const gamesAPI = new GamesAPI(apiURL, 15000);
 
 function GamesPage() {
   const navigate = useNavigate();
