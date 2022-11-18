@@ -3,6 +3,7 @@ const games = {
     {
       _id: 'Skjgnchhdhwfnjasd54adikkghiHD',
       title: 'Teste game 1',
+      releaseYear: '10/04/2015',
       sinopse: 'Sinopse do game 1',
       developer: 'Desenvolvedora do game 1',
       publisher: 'Publicadora do game 1',
@@ -24,6 +25,7 @@ const games = {
     {
       _id: 'KKdfjfhhsikJKShyfn876BDkjBGhasdlnmJ',
       title: 'Teste game 2',
+      releaseYear: '11/08/2010',
       sinopse: 'Sinopse do game 2',
       developer: 'Desenvolvedora do game 2',
       publisher: 'Publicadora do game 2',
@@ -44,6 +46,7 @@ const games = {
     {
       _id: 'Kdjignasdhybbiuasd65DjhbasdhbQ',
       title: 'Teste game 3',
+      releaseYear: '31/11/2013',
       sinopse: 'Sinopse do game 3',
       developer: 'Desenvolvedora do game 3',
       publisher: 'Publicadora do game 3',
@@ -67,6 +70,7 @@ const games = {
     {
       _id: 'Lkjgnkjasdj76Hgf092Gshhfut43FG',
       title: 'Teste game 4',
+      releaseYear: '30/09/2013',
       sinopse: 'Sinopse do game 4',
       developer: 'Desenvolvedora do game 4',
       publisher: 'Publicadora do game 4',
@@ -86,6 +90,7 @@ const games = {
     {
       _id: 'SklghgjksiugyhfBghfgiknasd765asdbnua5daj',
       title: 'Teste game 5',
+      releaseYear: '20/04/2018',
       sinopse: 'Sinopse do game 5',
       developer: 'Desenvolvedora do game 5',
       publisher: 'Publicadora do game 5',
@@ -106,6 +111,7 @@ const games = {
     {
       _id: 'Jhfvbg54Gfhj76GsdjjMnhvgfkjvgS',
       title: 'Teste game 6',
+      releaseYear: '18/01/2014',
       sinopse: 'Sinopse do game 6',
       developer: 'Desenvolvedora do game 6',
       publisher: 'Publicadora do game 6',
@@ -128,6 +134,7 @@ const games = {
     {
       _id: 'GHkjghgfbJDgd76Hfgbvnhfk87Hdc',
       title: 'Teste game 7',
+      releaseYear: '30/06/2017',
       sinopse: 'Sinopse do game 7',
       developer: 'Desenvolvedora do game 7',
       publisher: 'Publicadora do game 7',
@@ -149,6 +156,7 @@ const games = {
     {
       _id: 'Kjfnhvbf87Hgfv65FdctrSD87Hv',
       title: 'Teste game 8',
+      releaseYear: '17/07/2019',
       sinopse: 'Sinopse do game 8',
       developer: 'Desenvolvedora do game 8',
       publisher: 'Publicadora do game 8',
@@ -173,6 +181,7 @@ const games = {
     {
       _id: 'UjghhSKjfbSbfjkS76SJhbf87Sbuj12',
       title: 'Teste game 9',
+      releaseYear: '01/02/2012',
       sinopse: 'Sinopse do game 9',
       developer: 'Desenvolvedora do game 9',
       publisher: 'Publicadora do game 9',
@@ -195,6 +204,7 @@ const games = {
     {
       _id: 'KljghDFH3451VHGHFyhsbhasdnjuDHbuDkjbASd',
       title: 'Teste game 10',
+      releaseYear: '04/07/2004',
       sinopse: 'Sinopse do game 10',
       developer: 'Desenvolvedora do game 10',
       publisher: 'Publicadora do game 10',
