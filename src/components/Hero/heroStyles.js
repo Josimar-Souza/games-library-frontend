@@ -44,3 +44,17 @@ export const HeroInfoContainer = styled.div`
   width: 50%;
   z-index: 1;
 `;
+
+export const MetacriticDateContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 90%;
+`;
+
+export const MetacriticContainer = styled.div`
+  display: flex;
+  max-width: 100%;
+  width: 50%;
+`;

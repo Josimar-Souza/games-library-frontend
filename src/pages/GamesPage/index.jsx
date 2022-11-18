@@ -38,7 +38,9 @@ function GamesPage() {
     navigate('/');
   };
 
-  console.log(games);
+  if (games.length === 0) {
+    return null;
+  }
 
   return (
     <GamesPageSection>
