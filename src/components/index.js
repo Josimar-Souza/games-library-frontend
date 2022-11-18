@@ -8,6 +8,7 @@ import DropDown from './DropDown';
 import Option from './Option';
 import Line from './Line';
 import Header from './Header';
+import Hero from './Hero';
 
 const components = {
   Input,
@@ -20,6 +21,7 @@ const components = {
   Option,
   Line,
   Header,
+  Hero,
 };
 
 export default components;
