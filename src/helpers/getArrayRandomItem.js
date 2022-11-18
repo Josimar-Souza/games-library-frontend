@@ -1,5 +1,5 @@
 const getArrayRandomItem = (array) => {
-  const index = Math.floor(Math.random() * (array.length - 1));
+  const index = Math.floor(Math.random() * array.length);
 
   return array[index];
 };

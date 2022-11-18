@@ -8,7 +8,7 @@ import mockCategories from '../mocks/mockCategories';
 import mockGames from '../mocks/mockGames';
 import Logo from '../../images/Logo.jpg';
 import { gamesAPI } from '../../pages/GamesPage';
-import * as helper from '../../helpers/getArrayRandomItem';
+import * as getArrayRandomItem from '../../helpers/getArrayRandomItem';
 
 const testIds = {
   gameCardImage: 'game-card-image',
@@ -25,7 +25,7 @@ describe('Testes da página principal de games', () => {
   describe('Verifica a existência dos elementos', () => {
     beforeEach(async () => {
       jest.spyOn(gamesAPI, 'getAllGames').mockResolvedValue(mockGames.games);
-      helper.default = jest.fn().mockReturnValue(mockGames.games[0]);
+      getArrayRandomItem.default = jest.fn().mockReturnValue(mockGames.games[0]);
 
       await act(async () => {
         renderWithRouter(<pages.GamesPage />);
