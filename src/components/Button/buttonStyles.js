@@ -6,6 +6,7 @@ const ButtonStyle = styled.button`
   border-radius: ${({ borderRadius }) => borderRadius};
   color: ${({ fontColor }) => fontColor};
   font-size: ${({ fontSize }) => fontSize};
+  flex-shrink: ${({ flexShrink }) => flexShrink};
   margin: ${({ margin }) => margin};
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};

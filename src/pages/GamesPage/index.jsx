@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import components from '../../components';
 import { removeItem, getItem } from '../../helpers/localStorageManager';
@@ -16,8 +16,10 @@ export const gamesAPI = new GamesAPI(apiURL, 15000);
 
 function GamesPage() {
   const navigate = useNavigate();
+  const categoriesContainerRef = createRef();
 
   const [games, setGames] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [heroGame, setHeroGame] = useState({});
 
   const {
@@ -36,13 +38,28 @@ function GamesPage() {
       setHeroGame(heroGameSelected);
     };
 
+    const getAllCategories = async () => {
+      const categoriesFounded = await gamesAPI.getAllCategories(getItem('token'));
+
+      setCategories(categoriesFounded);
+    };
+
     getAllGames();
+    getAllCategories();
   }, []);
 
   const onLogOutButtonClick = () => {
     removeItem('token');
 
     navigate('/');
+  };
+
+  const onCategoriesWheel = (e) => {
+    if (e.deltaY > 0) {
+      categoriesContainerRef.current.scrollLeft += 100;
+    } else {
+      categoriesContainerRef.current.scrollLeft -= 100;
+    }
   };
 
   if (games.length === 0) {
@@ -61,7 +78,27 @@ function GamesPage() {
         game={heroGame}
       />
       <CategoriesSearchContainer>
-        <CategoriesContainer />
+        <CategoriesContainer onWheel={onCategoriesWheel} ref={categoriesContainerRef}>
+          {
+            categories.map(({ _id, category }) => (
+              <Button
+                key={_id}
+                width="36%"
+                flexShrink="0"
+                backgroundColor="rgba(0, 0, 0, 0)"
+                fontColor="white"
+                fontSize="1.5vw"
+                border="none"
+                hoverBackgroundColor="rgba(0, 0, 0, 0)"
+                hoverCursor="pointer"
+                hoverTransform="scale(1.05, 1.05)"
+                transition="0.2s"
+              >
+                {category}
+              </Button>
+            ))
+          }
+        </CategoriesContainer>
         <SearchContainer>
           <Input
             id="search-term"

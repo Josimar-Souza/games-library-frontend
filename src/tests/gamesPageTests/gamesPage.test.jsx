@@ -25,6 +25,7 @@ describe('Testes da página principal de games', () => {
   describe('Verifica a existência dos elementos', () => {
     beforeEach(async () => {
       jest.spyOn(gamesAPI, 'getAllGames').mockResolvedValue(mockGames.games);
+      jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
       getArrayRandomItem.default = jest.fn().mockReturnValue(mockGames.games[0]);
 
       await act(async () => {

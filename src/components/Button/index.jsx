@@ -27,6 +27,7 @@ function Button(props) {
     disableBackgroundColor,
     disableFontColor,
     textShadow,
+    flexShrink,
   } = props;
 
   return (
@@ -53,6 +54,7 @@ function Button(props) {
       disableBackgroundColor={disableBackgroundColor}
       disableFontColor={disableFontColor}
       textShadow={textShadow}
+      flexShrink={flexShrink}
     >
       {children}
     </ButtonStyle>
@@ -81,6 +83,7 @@ Button.defaultProps = {
   disableBackgroundColor: 'gray',
   disableFontColor: '#444444',
   textShadow: 'none',
+  flexShrink: '1',
 };
 
 Button.propTypes = {
@@ -107,6 +110,7 @@ Button.propTypes = {
   disableBackgroundColor: PropTypes.string,
   disableFontColor: PropTypes.string,
   textShadow: PropTypes.string,
+  flexShrink: PropTypes.string,
 };
 
 export default Button;

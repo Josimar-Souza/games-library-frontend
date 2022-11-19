@@ -29,9 +29,16 @@ export const SearchContainer = styled.div`
 `;
 
 export const CategoriesContainer = styled.div`
-  border: 1px solid yellow;
+  align-items: center;
+  display: flex;
   max-width: 100%;
-  min-height: 2.8rem;
+  min-height: 3.5rem;
+  overflow-x: scroll;
+  overscroll-behavior: contain;
   padding: 8px;
   width: 63%;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
