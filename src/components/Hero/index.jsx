@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Title from '../Title';
 import Paragraph from '../Paragraph';
+import Button from '../Button';
 import {
   HeroContainer,
   HeroLeftFade,
@@ -47,10 +48,24 @@ function Hero({ game }) {
             fontSize="1.5vw"
             width="50%"
             textAlign="right"
+            testId="game-hero-date"
           >
             {`Lançamento: ${game.releaseYear}`}
           </Paragraph>
         </MetacriticDateContainer>
+        <Button
+          backgroundColor="red"
+          border="none"
+          borderRadius="15px"
+          fontColor="white"
+          hoverCursor="pointer"
+          hoverTransform="scale(1.05, 1.05)"
+          transition="0.4s"
+          hoverBackgroundColor="#bc0000"
+          textShadow="2px 2px 4px black"
+        >
+          Ver detalhes
+        </Button>
       </HeroInfoContainer>
     </HeroContainer>
   );

@@ -50,6 +50,7 @@ export const MetacriticDateContainer = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 100%;
+  margin: 1rem 0;
   width: 90%;
 `;
 

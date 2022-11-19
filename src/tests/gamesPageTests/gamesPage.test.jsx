@@ -16,9 +16,9 @@ const testIds = {
   gameCardDetailsButton: 'game-card-detail-button',
   gameHero: 'game-hero-container',
   gameHeroTitle: 'game-hero-title',
-  gameHeroSinopse: 'game-hero-sinopse',
   gameHeroMetascore: 'game-hero-metascore',
   gameHeroUserscore: 'game-hero-userscore',
+  gameHeroDate: 'game-hero-date',
 };
 
 describe('Testes da página principal de games', () => {
@@ -63,21 +63,24 @@ describe('Testes da página principal de games', () => {
         gameHeroTitle,
         gameHeroMetascore,
         gameHeroUserscore,
+        gameHeroDate,
       } = testIds;
 
       const gameHeroElement = await screen.findByTestId(gameHero);
       const gameHeroTitleElement = await screen.findByTestId(gameHeroTitle);
       const gameHeroMetascoreElement = await screen.findByTestId(gameHeroMetascore);
       const gameHeroUserscoreElement = await screen.findByTestId(gameHeroUserscore);
+      const gameHeroDateElement = await screen.findByTestId(gameHeroDate);
       const gameHeroDetailsButtonElement = await screen.findByRole('button', { name: 'Ver detalhes' });
 
       expect(gameHeroElement).toHaveStyle(`
-        background-image: url(${game.backdrop});
+        background-image: url(${games[0].backdrop});
       `);
 
       expect(gameHeroTitleElement.textContent).toBe(games[0].title);
-      expect(gameHeroMetascoreElement.textContent).toBe(games[0].metacritic.metascore);
-      expect(gameHeroUserscoreElement.textContent).toBe(games[0].metacritic.userscore);
+      expect(gameHeroMetascoreElement.textContent).toBe(`Metascore: ${games[0].metacritic.metascore}`);
+      expect(gameHeroUserscoreElement.textContent).toBe(`Userscore: ${games[0].metacritic.userscore}`);
+      expect(gameHeroDateElement.textContent).toBe(`Lançamento: ${games[0].releaseYear}`);
       expect(gameHeroDetailsButtonElement).toBeInTheDocument();
     });
 
