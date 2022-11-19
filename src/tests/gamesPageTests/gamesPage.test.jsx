@@ -85,7 +85,7 @@ describe('Testes da página principal de games', () => {
     });
 
     it('Um input para pesquisa por nome', async () => {
-      const searchInput = await screen.findByPlaceholderText('Digite o nome do jogo para pesquisar');
+      const searchInput = await screen.findByPlaceholderText('Digite o jogo para pesquisar');
 
       expect(searchInput).toBeInTheDocument();
     });

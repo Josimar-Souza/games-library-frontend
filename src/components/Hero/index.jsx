@@ -77,8 +77,8 @@ Hero.propTypes = {
     backdrop: PropTypes.string.isRequired,
     sinopse: PropTypes.string.isRequired,
     metacritic: PropTypes.shape({
-      metascore: PropTypes.string.isRequired,
-      userscore: PropTypes.string.isRequired,
+      metascore: PropTypes.number.isRequired,
+      userscore: PropTypes.number.isRequired,
     }).isRequired,
     releaseYear: PropTypes.string.isRequired,
   }).isRequired,
