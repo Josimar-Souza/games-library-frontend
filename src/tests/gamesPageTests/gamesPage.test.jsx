@@ -56,33 +56,74 @@ describe('Testes da página principal de games', () => {
       expect(signOutButton).toBeInTheDocument();
     });
 
-    it('Todas as informações do hero, com valores corretos', async () => {
-      const { games } = mockGames;
+    describe('Todas as informações do hero, com valores corretos', () => {
+      it('Hero container com background correto', async () => {
+        const { games } = mockGames;
 
-      const {
-        gameHero,
-        gameHeroTitle,
-        gameHeroMetascore,
-        gameHeroUserscore,
-        gameHeroDate,
-      } = testIds;
+        const {
+          gameHero,
+        } = testIds;
 
-      const gameHeroElement = await screen.findByTestId(gameHero);
-      const gameHeroTitleElement = await screen.findByTestId(gameHeroTitle);
-      const gameHeroMetascoreElement = await screen.findByTestId(gameHeroMetascore);
-      const gameHeroUserscoreElement = await screen.findByTestId(gameHeroUserscore);
-      const gameHeroDateElement = await screen.findByTestId(gameHeroDate);
-      const gameHeroDetailsButtonElement = await screen.findByRole('button', { name: 'Ver detalhes' });
+        const gameHeroElement = await screen.findByTestId(gameHero);
 
-      expect(gameHeroElement).toHaveStyle(`
+        expect(gameHeroElement).toHaveStyle(`
         background-image: url(${games[0].backdrop});
       `);
+      });
 
-      expect(gameHeroTitleElement.textContent).toBe(games[0].title);
-      expect(gameHeroMetascoreElement.textContent).toBe(`Metascore: ${games[0].metacritic.metascore}`);
-      expect(gameHeroUserscoreElement.textContent).toBe(`Userscore: ${games[0].metacritic.userscore}`);
-      expect(gameHeroDateElement.textContent).toBe(`Lançamento: ${games[0].releaseYear}`);
-      expect(gameHeroDetailsButtonElement).toBeInTheDocument();
+      it('O título do game correto', async () => {
+        const { games } = mockGames;
+
+        const {
+          gameHeroTitle,
+        } = testIds;
+
+        const gameHeroTitleElement = await screen.findByTestId(gameHeroTitle);
+
+        expect(gameHeroTitleElement.textContent).toBe(games[0].title);
+      });
+
+      it('A nota metascore do site Metacritic', async () => {
+        const { games } = mockGames;
+
+        const {
+          gameHeroMetascore,
+        } = testIds;
+
+        const gameHeroMetascoreElement = await screen.findByTestId(gameHeroMetascore);
+
+        expect(gameHeroMetascoreElement.textContent).toBe(`Metascore: ${games[0].metacritic.metascore}`);
+      });
+
+      it('A nota userscore do site Metacritic', async () => {
+        const { games } = mockGames;
+
+        const {
+          gameHeroUserscore,
+        } = testIds;
+
+        const gameHeroUserscoreElement = await screen.findByTestId(gameHeroUserscore);
+
+        expect(gameHeroUserscoreElement.textContent).toBe(`Userscore: ${games[0].metacritic.userscore}`);
+      });
+
+      it('A data correta do game', async () => {
+        const { games } = mockGames;
+
+        const {
+          gameHeroDate,
+        } = testIds;
+
+        const gameHeroDateElement = await screen.findByTestId(gameHeroDate);
+
+        expect(gameHeroDateElement.textContent).toBe(`Lançamento: ${games[0].releaseYear}`);
+      });
+
+      it('Um botão para detalhes do game', async () => {
+        const gameHeroDetailsButtonElement = await screen.findByRole('button', { name: 'Ver detalhes' });
+
+        expect(gameHeroDetailsButtonElement).toBeInTheDocument();
+      });
     });
 
     it('Um input para pesquisa por nome', async () => {
