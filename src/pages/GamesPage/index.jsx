@@ -85,14 +85,15 @@ function GamesPage() {
                 key={_id}
                 width="36%"
                 flexShrink="0"
-                backgroundColor="rgba(0, 0, 0, 0)"
-                fontColor="white"
+                backgroundColor="#8e8e8e"
                 fontSize="1.5vw"
                 border="none"
-                hoverBackgroundColor="rgba(0, 0, 0, 0)"
+                hoverBackgroundColor="#d8d8d8"
                 hoverCursor="pointer"
                 hoverTransform="scale(1.05, 1.05)"
                 transition="0.2s"
+                margin="0 1rem"
+                borderRadius="15px"
               >
                 {category}
               </Button>
