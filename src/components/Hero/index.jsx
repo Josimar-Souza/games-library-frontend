@@ -63,6 +63,7 @@ function Hero({ game }) {
           transition="0.4s"
           hoverBackgroundColor="#bc0000"
           textShadow="2px 2px 4px black"
+          testId="game-hero-details-button"
         >
           Ver detalhes
         </Button>

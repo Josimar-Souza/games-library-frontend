@@ -13,7 +13,8 @@ import * as getArrayRandomItem from '../../helpers/getArrayRandomItem';
 const testIds = {
   gameCardImage: 'game-card-image',
   gameCardTitle: 'game-card-title',
-  gameCardDetailsButton: 'game-card-detail-button',
+  gameCardDetailsButton: 'game-card-details-button',
+  gameHeroDetailsButton: 'game-hero-details-button',
   gameHero: 'game-hero-container',
   gameHeroTitle: 'game-hero-title',
   gameHeroMetascore: 'game-hero-metascore',
@@ -120,7 +121,9 @@ describe('Testes da página principal de games', () => {
       });
 
       it('Um botão para detalhes do game', async () => {
-        const gameHeroDetailsButtonElement = await screen.findByRole('button', { name: 'Ver detalhes' });
+        const gameHeroDetailsButtonElement = await screen.findByTestId(
+          testIds.gameHeroDetailsButton,
+        );
 
         expect(gameHeroDetailsButtonElement).toBeInTheDocument();
       });

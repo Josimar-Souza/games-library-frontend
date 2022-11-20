@@ -37,7 +37,7 @@ function GameCard({ game, index }) {
         hoverCursor="pointer"
         hoverTransform="scale(1.08, 1.08)"
         transition="0.5s"
-        testId={`game-card-detail-button-${index}`}
+        testId={`game-card-details-button-${index}`}
       >
         Ver detalhes
       </Button>
