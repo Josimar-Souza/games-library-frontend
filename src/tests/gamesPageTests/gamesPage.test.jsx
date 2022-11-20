@@ -154,31 +154,57 @@ describe('Testes da página principal de games', () => {
       });
     });
 
-    it('Todos os cards de games com as informações corretas', async () => {
-      const { games } = mockGames;
-      const gamesImagesPromises = [];
-      const gamesTitlesPromises = [];
-      const gamesDetailsButtonsPromises = [];
+    describe('Todas as informações corretas dos cards de games', () => {
+      it('Todas as images de capa', async () => {
+        const { games } = mockGames;
 
-      games.forEach((_title, index) => {
-        const gameImageElement = screen.findByTestId(`${testIds.gameCardImage}-${index}`);
-        const gameTitleElement = screen.findByTestId(`${testIds.gameCardTitle}-${index}`);
-        const gameDetailsButtonElement = screen.findByTestId(`${testIds.gameCardDetailsButton}-${index}`);
+        const gamesImagesPromises = [];
 
-        gamesImagesPromises.push(gameImageElement);
-        gamesTitlesPromises.push(gameTitleElement);
-        gamesDetailsButtonsPromises.push(gameDetailsButtonElement);
+        games.forEach((_title, index) => {
+          const gameImageElement = screen.findByTestId(`${testIds.gameCardImage}-${index}`);
+          gamesImagesPromises.push(gameImageElement);
+        });
+
+        const gamesImages = await Promise.all(gamesImagesPromises);
+
+        for (let index = 0; index < games.length; index += 1) {
+          expect(gamesImages[index]).toHaveAttribute('src', games[index].image);
+        }
       });
 
-      const gamesImages = await Promise.all(gamesImagesPromises);
-      const gamesTitles = await Promise.all(gamesTitlesPromises);
-      const gamesDetailsButtons = await Promise.all(gamesDetailsButtonsPromises);
+      it('Todos os títulos', async () => {
+        const { games } = mockGames;
 
-      for (let index = 0; index < games.length; index += 1) {
-        expect(gamesImages[index]).toHaveAttribute('src', games[index].image);
-        expect(gamesTitles[index].textContent).toBe(games[index].title);
-        expect(gamesDetailsButtons[index]).toBeInTheDocument();
-      }
+        const gamesTitlesPromises = [];
+
+        games.forEach((_title, index) => {
+          const gameTitleElement = screen.findByTestId(`${testIds.gameCardTitle}-${index}`);
+          gamesTitlesPromises.push(gameTitleElement);
+        });
+
+        const gamesTitles = await Promise.all(gamesTitlesPromises);
+
+        for (let index = 0; index < games.length; index += 1) {
+          expect(gamesTitles[index].textContent).toBe(games[index].title);
+        }
+      });
+
+      it('Todos os botões de detalhes', async () => {
+        const { games } = mockGames;
+
+        const gamesDetailsButtonsPromises = [];
+
+        games.forEach((_title, index) => {
+          const gameDetailsButtonElement = screen.findByTestId(`${testIds.gameCardDetailsButton}-${index}`);
+          gamesDetailsButtonsPromises.push(gameDetailsButtonElement);
+        });
+
+        const gamesDetailsButtons = await Promise.all(gamesDetailsButtonsPromises);
+
+        for (let index = 0; index < games.length; index += 1) {
+          expect(gamesDetailsButtons[index]).toBeInTheDocument();
+        }
+      });
     });
   });
 });
