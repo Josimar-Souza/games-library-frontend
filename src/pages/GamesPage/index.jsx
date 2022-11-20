@@ -88,7 +88,7 @@ function GamesPage() {
                 width="36%"
                 flexShrink="0"
                 backgroundColor="#8e8e8e"
-                fontSize="1.5vw"
+                fontSize="1vw"
                 border="none"
                 hoverBackgroundColor="#d8d8d8"
                 hoverCursor="pointer"
