@@ -42,3 +42,9 @@ export const CategoriesContainer = styled.div`
     display: none;
   }
 `;
+
+export const GamesContainer = styled.main`
+  max-width: 100%;
+  min-height: 100px;
+  width: 100%;
+`;

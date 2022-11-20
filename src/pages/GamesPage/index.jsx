@@ -9,6 +9,7 @@ import {
   CategoriesSearchContainer,
   SearchContainer,
   CategoriesContainer,
+  GamesContainer,
 } from './gamesPageStyles';
 
 const apiURL = process.env.REACT_APP_API_URL;
@@ -124,6 +125,7 @@ function GamesPage() {
           </Button>
         </SearchContainer>
       </CategoriesSearchContainer>
+      <GamesContainer />
     </GamesPageSection>
   );
 }
