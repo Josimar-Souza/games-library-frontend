@@ -16,11 +16,11 @@ export const GameCardContainer = styled.div`
 export const GameImageContainer = styled.div`
   height: 80%;
   max-width: 100%;
-  width: 95%;
+  width: 60%;
 `;
 
 export const GameImage = styled.img`
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.25);
   height: 100%;
   max-width: 100%;
   width: 100%;

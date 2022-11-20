@@ -20,7 +20,7 @@ function GameCard({ game, index }) {
       </GameImageContainer>
       <Title
         textAlign="center"
-        fontSize="1.4vw"
+        fontSize="1.2vw"
         width="100%"
         margin="0.8rem 0"
         testId={`game-card-title-${index}`}
@@ -34,6 +34,7 @@ function GameCard({ game, index }) {
         fontColor="white"
         borderRadius="15px"
         hoverBackgroundColor="black"
+        fontSize="1.5vw"
         hoverCursor="pointer"
         hoverTransform="scale(1.08, 1.08)"
         transition="0.5s"
