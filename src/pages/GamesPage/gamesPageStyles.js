@@ -44,7 +44,10 @@ export const CategoriesContainer = styled.div`
 `;
 
 export const GamesContainer = styled.main`
+  display: flex;
+  justify-content: space-around;
   max-width: 100%;
   min-height: 100px;
+  padding: 10px;
   width: 100%;
 `;

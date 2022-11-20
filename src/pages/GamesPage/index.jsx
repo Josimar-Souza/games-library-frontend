@@ -28,6 +28,7 @@ function GamesPage() {
     Hero,
     Input,
     Button,
+    GameCard,
   } = components;
 
   useEffect(() => {
@@ -125,7 +126,13 @@ function GamesPage() {
           </Button>
         </SearchContainer>
       </CategoriesSearchContainer>
-      <GamesContainer />
+      <GamesContainer>
+        {
+          games.map(() => (
+            <GameCard />
+          ))
+        }
+      </GamesContainer>
     </GamesPageSection>
   );
 }

@@ -9,6 +9,7 @@ import Option from './Option';
 import Line from './Line';
 import Header from './Header';
 import Hero from './Hero';
+import GameCard from './GameCard';
 
 const components = {
   Input,
@@ -22,6 +23,7 @@ const components = {
   Line,
   Header,
   Hero,
+  GameCard,
 };
 
 export default components;
