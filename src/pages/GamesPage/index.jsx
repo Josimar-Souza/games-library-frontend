@@ -128,8 +128,12 @@ function GamesPage() {
       </CategoriesSearchContainer>
       <GamesContainer>
         {
-          games.map(() => (
-            <GameCard />
+          games.map(({ _id, ...rest }, index) => (
+            <GameCard
+              game={{ _id, ...rest }}
+              index={index}
+              key={_id}
+            />
           ))
         }
       </GamesContainer>
