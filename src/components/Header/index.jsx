@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Title from '../Title';
 import Button from '../Button';
 import Logo from '../../images/Logo.jpg';
+import SideMenuButton from '../SideMenuButton';
 import {
   HeaderContainer,
   HeaderLogo,
@@ -26,6 +27,7 @@ function Header(props) {
       >
         {headerTitle}
       </Title>
+      <SideMenuButton />
       <Button
         width="8%"
         borderRadius="15px"

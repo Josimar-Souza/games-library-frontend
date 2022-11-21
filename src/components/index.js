@@ -10,6 +10,7 @@ import Line from './Line';
 import Header from './Header';
 import Hero from './Hero';
 import GameCard from './GameCard';
+import SideMenuButton from './SideMenuButton';
 
 const components = {
   Input,
@@ -24,6 +25,7 @@ const components = {
   Header,
   Hero,
   GameCard,
+  SideMenuButton,
 };
 
 export default components;
