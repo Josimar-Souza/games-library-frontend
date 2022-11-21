@@ -38,23 +38,31 @@ describe('Testes da página principal de games', () => {
       jest.clearAllMocks();
     });
 
-    it('A logo do site', async () => {
-      const pageLogo = await screen.findByAltText('Logo da página no header');
+    describe('Todos os elementos do header', () => {
+      it('A logo do site', async () => {
+        const pageLogo = await screen.findByAltText('Logo da página no header');
 
-      expect(pageLogo).toBeInTheDocument();
-      expect(pageLogo).toHaveAttribute('src', Logo);
-    });
+        expect(pageLogo).toBeInTheDocument();
+        expect(pageLogo).toHaveAttribute('src', Logo);
+      });
 
-    it('Um título escrito "Games Library"', async () => {
-      const headerTitle = await screen.findByRole('heading', { name: 'Games Library' });
+      it('Um título escrito "Games Library"', async () => {
+        const headerTitle = await screen.findByRole('heading', { name: 'Games Library' });
 
-      expect(headerTitle).toBeInTheDocument();
-    });
+        expect(headerTitle).toBeInTheDocument();
+      });
 
-    it('Um botão para deslogar da aplicação escrito "Deslogar"', async () => {
-      const signOutButton = await screen.findByRole('button', { name: 'Deslogar' });
+      it('Um botão para deslogar da aplicação escrito "Deslogar"', async () => {
+        const signOutButton = await screen.findByRole('button', { name: 'Deslogar' });
 
-      expect(signOutButton).toBeInTheDocument();
+        expect(signOutButton).toBeInTheDocument();
+      });
+
+      it('Um botão para adicionar um novo jogo escrito "Adicionar jogo"', async () => {
+        const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
+
+        expect(addGameButton).toBeInTheDocument();
+      });
     });
 
     describe('Todas as informações do hero, com valores corretos', () => {
