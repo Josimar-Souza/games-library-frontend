@@ -14,64 +14,23 @@ function Header(props) {
   const {
     headerFontColor,
     headerTitle,
-    headerButtonText,
     onHeaderButtonClick,
   } = props;
 
-  const [sideMenu, setSideMenu] = useState({ show: false });
+  const [sideMenu, setSideMenu] = useState({ show: false, rightPosition: '-200px' });
+
+  const getShowSideMenu = (checked) => {
+    if (checked) {
+      setSideMenu({ ...sideMenu, rightPosition: '10px' });
+    } else {
+      setSideMenu({ ...sideMenu, rightPosition: '-200px' });
+    }
+  };
 
   const onSideMenuButtonClick = ({ target: { checked } }) => {
     setSideMenu({ ...sideMenu, show: checked });
-  };
 
-  const getSideMenu = () => {
-    if (sideMenu.show) {
-      return (
-        <SideMenuContainer
-          rightPosition="10px"
-        >
-          <Button
-            width="100%"
-            borderRadius="15px"
-            fontSize="1.5vw"
-            border="none"
-            backgroundColor="red"
-            fontColor="white"
-            hoverCursor="pointer"
-            hoverBackgroundColor="#c90000"
-            hoverTransform="scale(1.05, 1.05)"
-            transition="0.2s"
-            onClick={onHeaderButtonClick}
-            textShadow="1px 1px 2px black"
-          >
-            {headerButtonText}
-          </Button>
-        </SideMenuContainer>
-      );
-    }
-
-    return (
-      <SideMenuContainer
-        rightPosition="-200px"
-      >
-        <Button
-          width="100%"
-          borderRadius="15px"
-          fontSize="1.5vw"
-          border="none"
-          backgroundColor="red"
-          fontColor="white"
-          hoverCursor="pointer"
-          hoverBackgroundColor="#c90000"
-          hoverTransform="scale(1.05, 1.05)"
-          transition="0.2s"
-          onClick={onHeaderButtonClick}
-          textShadow="1px 1px 2px black"
-        >
-          {headerButtonText}
-        </Button>
-      </SideMenuContainer>
-    );
+    getShowSideMenu(checked);
   };
 
   return (
@@ -87,7 +46,41 @@ function Header(props) {
       <SideMenuButton
         onChange={onSideMenuButtonClick}
       />
-      { getSideMenu() }
+      <SideMenuContainer
+        rightPosition={sideMenu.rightPosition}
+      >
+        <Button
+          width="100%"
+          borderRadius="15px"
+          fontSize="1.5vw"
+          border="none"
+          backgroundColor="red"
+          fontColor="white"
+          hoverCursor="pointer"
+          hoverBackgroundColor="#c90000"
+          hoverTransform="scale(1.05, 1.05)"
+          transition="0.2s"
+          onClick={onHeaderButtonClick}
+          textShadow="1px 1px 2px black"
+        >
+          Deslogar
+        </Button>
+        <Button
+          width="100%"
+          borderRadius="15px"
+          fontSize="1.5vw"
+          border="none"
+          backgroundColor="#00a502"
+          fontColor="white"
+          hoverCursor="pointer"
+          hoverBackgroundColor="#007700"
+          hoverTransform="scale(1.05, 1.05)"
+          transition="0.2s"
+          textShadow="1px 1px 2px black"
+        >
+          Adicionar jogo
+        </Button>
+      </SideMenuContainer>
     </HeaderContainer>
   );
 }
@@ -99,7 +92,6 @@ Header.defaultProps = {
 Header.propTypes = {
   headerFontColor: PropTypes.string,
   headerTitle: PropTypes.node.isRequired,
-  headerButtonText: PropTypes.string.isRequired,
   onHeaderButtonClick: PropTypes.func.isRequired,
 };
 

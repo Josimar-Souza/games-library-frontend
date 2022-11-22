@@ -27,6 +27,9 @@ export const HeaderLogo = styled.img`
 export const SideMenuContainer = styled.aside`
   background-color: rgba(201, 201, 201, 0.8);
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   position: fixed;
   max-width: 40%;
   min-height: 100px;

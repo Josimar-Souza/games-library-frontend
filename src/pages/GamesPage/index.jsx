@@ -73,7 +73,6 @@ function GamesPage() {
       <Header
         headerFontColor="white"
         headerTitle="Games Library"
-        headerButtonText="Deslogar"
         onHeaderButtonClick={onLogOutButtonClick}
       />
       <Hero
