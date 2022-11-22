@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Title from '../Title';
 import Button from '../Button';
@@ -17,6 +17,12 @@ function Header(props) {
     onHeaderButtonClick,
   } = props;
 
+  const [sideMenu, setSideMenu] = useState({ show: false });
+
+  const onSideMenuButtonClick = ({ target: { checked } }) => {
+    setSideMenu({ ...sideMenu, show: checked });
+  };
+
   return (
     <HeaderContainer>
       <HeaderLogo src={Logo} alt="Logo da página no header" />
@@ -27,7 +33,9 @@ function Header(props) {
       >
         {headerTitle}
       </Title>
-      <SideMenuButton />
+      <SideMenuButton
+        onChange={onSideMenuButtonClick}
+      />
       <Button
         width="8%"
         borderRadius="15px"

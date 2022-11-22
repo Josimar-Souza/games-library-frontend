@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   SideMenuStyle,
   SideMenuBarContainer,
@@ -6,7 +7,7 @@ import {
   SideMenuContainer,
 } from './sideMenuButtonStyles';
 
-function SideMenuButton() {
+function SideMenuButton({ onChange, name }) {
   return (
     <SideMenuContainer>
       <SideMenuBarContainer htmlFor="side-bar">
@@ -17,9 +18,20 @@ function SideMenuButton() {
       <SideMenuStyle
         type="checkbox"
         id="side-bar"
+        onChange={onChange}
+        name={name}
       />
     </SideMenuContainer>
   );
 }
+
+SideMenuButton.defaultProps = {
+  name: '',
+};
+
+SideMenuButton.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+};
 
 export default SideMenuButton;
