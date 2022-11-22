@@ -7,6 +7,7 @@ import SideMenuButton from '../SideMenuButton';
 import {
   HeaderContainer,
   HeaderLogo,
+  SideMenuContainer,
 } from './headerStyles';
 
 function Header(props) {
@@ -23,6 +24,56 @@ function Header(props) {
     setSideMenu({ ...sideMenu, show: checked });
   };
 
+  const getSideMenu = () => {
+    if (sideMenu.show) {
+      return (
+        <SideMenuContainer
+          rightPosition="10px"
+        >
+          <Button
+            width="100%"
+            borderRadius="15px"
+            fontSize="1.5vw"
+            border="none"
+            backgroundColor="red"
+            fontColor="white"
+            hoverCursor="pointer"
+            hoverBackgroundColor="#c90000"
+            hoverTransform="scale(1.05, 1.05)"
+            transition="0.2s"
+            onClick={onHeaderButtonClick}
+            textShadow="1px 1px 2px black"
+          >
+            {headerButtonText}
+          </Button>
+        </SideMenuContainer>
+      );
+    }
+
+    return (
+      <SideMenuContainer
+        rightPosition="-200px"
+      >
+        <Button
+          width="100%"
+          borderRadius="15px"
+          fontSize="1.5vw"
+          border="none"
+          backgroundColor="red"
+          fontColor="white"
+          hoverCursor="pointer"
+          hoverBackgroundColor="#c90000"
+          hoverTransform="scale(1.05, 1.05)"
+          transition="0.2s"
+          onClick={onHeaderButtonClick}
+          textShadow="1px 1px 2px black"
+        >
+          {headerButtonText}
+        </Button>
+      </SideMenuContainer>
+    );
+  };
+
   return (
     <HeaderContainer>
       <HeaderLogo src={Logo} alt="Logo da página no header" />
@@ -36,22 +87,7 @@ function Header(props) {
       <SideMenuButton
         onChange={onSideMenuButtonClick}
       />
-      <Button
-        width="8%"
-        borderRadius="15px"
-        fontSize="1.5vw"
-        border="none"
-        backgroundColor="red"
-        fontColor="white"
-        hoverCursor="pointer"
-        hoverBackgroundColor="#c90000"
-        hoverTransform="scale(1.05, 1.05)"
-        transition="0.2s"
-        onClick={onHeaderButtonClick}
-        textShadow="1px 1px 2px black"
-      >
-        {headerButtonText}
-      </Button>
+      { getSideMenu() }
     </HeaderContainer>
   );
 }

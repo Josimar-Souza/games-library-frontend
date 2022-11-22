@@ -23,3 +23,16 @@ export const HeaderLogo = styled.img`
   max-width: 10%;
   width: 4%;
 `;
+
+export const SideMenuContainer = styled.aside`
+  background-color: rgba(201, 201, 201, 0.8);
+  border-radius: 15px;
+  position: fixed;
+  max-width: 40%;
+  min-height: 100px;
+  padding: 10px;
+  right: ${({ rightPosition }) => rightPosition};
+  transition: 0.5s;
+  top: 60px;
+  width: 15%;
+`;
