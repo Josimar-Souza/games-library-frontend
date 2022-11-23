@@ -23,6 +23,7 @@ function GamesPage() {
   const [filteredGames, setFilteredGames] = useState([]);
   const [categories, setCategories] = useState([]);
   const [heroGame, setHeroGame] = useState({});
+  const [searchTerm, setSearchTerm] = useState({ value: '' });
 
   const {
     Header,
@@ -71,9 +72,21 @@ function GamesPage() {
   }
 
   const onCategoryButtonClick = ({ target: { name } }) => {
-    const gamesByCategory = games.filter((game) => game.category === name);
+    const gamesByCategory = games.filter(({ category }) => category === name);
 
     setFilteredGames(gamesByCategory);
+  };
+
+  const onInputChange = ({ target: { value } }) => {
+    setSearchTerm({ ...searchTerm, value });
+  };
+
+  const onSearchButtonClick = () => {
+    const { value } = searchTerm;
+    const searchedGames = games.filter(({ title }) => title
+      .toLowerCase().includes(value.toLowerCase()));
+
+    setFilteredGames(searchedGames);
   };
 
   return (
@@ -119,6 +132,8 @@ function GamesPage() {
             inputBorderRadius="8px"
             containerWidth="60%"
             inputWidth="100%"
+            onChange={onInputChange}
+            value={searchTerm.value}
           />
           <Button
             width="35%"
@@ -130,6 +145,7 @@ function GamesPage() {
             transition="0.3s"
             hoverTransform="scale(1.05, 1.05)"
             hoverCursor="pointer"
+            onClick={onSearchButtonClick}
           >
             Pesquisar
           </Button>
