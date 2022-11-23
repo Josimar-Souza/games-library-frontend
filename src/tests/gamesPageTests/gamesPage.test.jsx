@@ -281,5 +281,17 @@ describe('Testes da página principal de games', () => {
         expect(gameTitle.textContent).toBe(expectedResult[index].title);
       });
     });
+
+    it('Ao pesquisar um game pelo título, só aparece o jogo pesquisado', async () => {
+      const searchInput = await screen.findByPlaceholderText('Digite o jogo para pesquisar');
+      const searchButton = await screen.findByRole('button', { name: 'Pesquisar' });
+
+      userEvent.type(searchInput, 'teste game 7');
+      userEvent.click(searchButton);
+
+      const gameTitleElement = await screen.findByTestId(`${testIds.gameCardTitle}-0`);
+
+      expect(gameTitleElement.textContent).toBe('Teste game 7');
+    });
   });
 });
