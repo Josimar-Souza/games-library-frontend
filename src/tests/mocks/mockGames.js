@@ -20,7 +20,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage1.com',
       backdrop: 'https://www.testebackdropimage1.com',
-      category: 'Categoria teste 1',
+      category: 'Ação',
     },
     {
       _id: 'KKdfjfhhsikJKShyfn876BDkjBGhasdlnmJ',
@@ -41,7 +41,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage2.com',
       backdrop: 'https://www.testebackdropimage2.com',
-      category: 'Categoria teste 2',
+      category: 'Ação',
     },
     {
       _id: 'Kdjignasdhybbiuasd65DjhbasdhbQ',
@@ -65,7 +65,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage3.com',
       backdrop: 'https://www.testebackdropimage3.com',
-      category: 'Categoria teste 3',
+      category: 'Aventura',
     },
     {
       _id: 'Lkjgnkjasdj76Hgf092Gshhfut43FG',
@@ -85,7 +85,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage4.com',
       backdrop: 'https://www.testebackdropimage4.com',
-      category: 'Categoria teste 4',
+      category: 'Terror',
     },
     {
       _id: 'SklghgjksiugyhfBghfgiknasd765asdbnua5daj',
@@ -106,7 +106,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage5.com',
       backdrop: 'https://www.testebackdropimage5.com',
-      category: 'Categoria teste 5',
+      category: 'Aventura',
     },
     {
       _id: 'Jhfvbg54Gfhj76GsdjjMnhvgfkjvgS',
@@ -129,7 +129,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage6.com',
       backdrop: 'https://www.testebackdropimage6.com',
-      category: 'Categoria teste 6',
+      category: 'Terror',
     },
     {
       _id: 'GHkjghgfbJDgd76Hfgbvnhfk87Hdc',
@@ -151,7 +151,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage7.com',
       backdrop: 'https://www.testebackdropimage7.com',
-      category: 'Categoria teste 7',
+      category: 'Terror',
     },
     {
       _id: 'Kjfnhvbf87Hgfv65FdctrSD87Hv',
@@ -176,7 +176,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage8.com',
       backdrop: 'https://www.testebackdropimage8.com',
-      category: 'Categoria teste 8',
+      category: 'Hack and Slash',
     },
     {
       _id: 'UjghhSKjfbSbfjkS76SJhbf87Sbuj12',
@@ -199,7 +199,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage9.com',
       backdrop: 'https://www.testebackdropimage9.com',
-      category: 'Categoria teste 9',
+      category: 'Ação',
     },
     {
       _id: 'KljghDFH3451VHGHFyhsbhasdnjuDHbuDkjbASd',
@@ -219,7 +219,7 @@ const games = {
       user: 'usuarioteste@gmail.com',
       image: 'https://www.testeimage10.com',
       backdrop: 'https://www.testebackdropimage10.com',
-      category: 'Categoria teste 10',
+      category: 'Hack and Slash',
     },
   ],
 };
