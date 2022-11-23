@@ -20,6 +20,7 @@ function SideMenuButton({ onChange, name }) {
         id="side-bar"
         onChange={onChange}
         name={name}
+        data-testid="side-menu-button"
       />
     </SideMenuContainer>
   );

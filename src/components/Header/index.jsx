@@ -48,6 +48,7 @@ function Header(props) {
       />
       <SideMenuContainer
         rightPosition={sideMenu.rightPosition}
+        data-testid="header-side-menu"
       >
         <Button
           width="100%"

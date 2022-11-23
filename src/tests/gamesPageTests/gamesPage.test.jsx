@@ -21,6 +21,8 @@ const testIds = {
   gameHeroMetascore: 'game-hero-metascore',
   gameHeroUserscore: 'game-hero-userscore',
   gameHeroDate: 'game-hero-date',
+  headerSideMenu: 'header-side-menu',
+  sideMenuButton: 'side-menu-button',
 };
 
 describe('Testes da página principal de games', () => {
@@ -233,6 +235,23 @@ describe('Testes da página principal de games', () => {
 
     afterEach(() => {
       jest.clearAllMocks();
+    });
+
+    it('Ao marcar o input de menu de 3 linhas, o side menu aparece e ao desmarcar, desaparece', async () => {
+      const sideMenuInput = await screen.findByTestId(testIds.sideMenuButton);
+      const headerSideMenu = await screen.findByTestId(testIds.headerSideMenu);
+
+      userEvent.click(sideMenuInput);
+
+      expect(headerSideMenu).toHaveStyle(`
+        right: 10px;
+      `);
+
+      userEvent.click(sideMenuInput);
+
+      expect(headerSideMenu).toHaveStyle(`
+        right: -200px;
+      `);
     });
 
     it('Ao clicar no botão "Deslogar", o usuário é deslogado', async () => {
