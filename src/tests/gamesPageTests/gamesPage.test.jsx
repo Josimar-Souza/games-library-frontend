@@ -140,31 +140,39 @@ describe('Testes da página principal de games', () => {
       });
     });
 
-    it('Um input para pesquisa por nome', async () => {
-      const searchInput = await screen.findByPlaceholderText('Digite o jogo para pesquisar');
+    describe('Todos os elementos do filtro', () => {
+      it('Um input para pesquisa por nome', async () => {
+        const searchInput = await screen.findByPlaceholderText('Digite o jogo para pesquisar');
 
-      expect(searchInput).toBeInTheDocument();
-    });
-
-    it('Um botão escrito "Pesquisar"', async () => {
-      const searchButton = await screen.findByRole('button', { name: 'Pesquisar' });
-
-      expect(searchButton).toBeInTheDocument();
-    });
-
-    it('Todas as categorias com as informações corretas', async () => {
-      const categoriesPromises = [];
-
-      mockCategories.forEach(({ category }) => {
-        const categoryElement = screen.findByText(category);
-
-        categoriesPromises.push(categoryElement);
+        expect(searchInput).toBeInTheDocument();
       });
 
-      const categories = await Promise.all(categoriesPromises);
+      it('Um botão escrito "Pesquisar"', async () => {
+        const searchButton = await screen.findByRole('button', { name: 'Pesquisar' });
 
-      categories.forEach((category, index) => {
-        expect(category.textContent).toBe(mockCategories[index].category);
+        expect(searchButton).toBeInTheDocument();
+      });
+
+      it('Todas as categorias com as informações corretas', async () => {
+        const categoriesPromises = [];
+
+        mockCategories.forEach(({ category }) => {
+          const categoryElement = screen.findByText(category);
+
+          categoriesPromises.push(categoryElement);
+        });
+
+        const categories = await Promise.all(categoriesPromises);
+
+        categories.forEach((category, index) => {
+          expect(category.textContent).toBe(mockCategories[index].category);
+        });
+      });
+
+      it('Verifica que no início, o botão "Limpar filtros não existe na página"', async () => {
+        const clearFiltersButton = screen.queryByRole('button', { name: 'Limpar filtros' });
+
+        expect(clearFiltersButton).toBeNull();
       });
     });
 
