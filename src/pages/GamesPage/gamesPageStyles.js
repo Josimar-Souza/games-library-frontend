@@ -9,9 +9,17 @@ export const GamesPageSection = styled.section`
   width: 100%;
 `;
 
-export const CategoriesSearchContainer = styled.div`
+export const FiltersContainer = styled.div`
   align-items: center;
   background-color: #191919;
+  display: flex;
+  flex-direction column;
+  max-width: 100%;
+  width: 100%;
+`;
+
+export const CategoriesSearchContainer = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
   max-width: 100%;
