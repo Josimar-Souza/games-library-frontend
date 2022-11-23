@@ -288,7 +288,7 @@ describe('Testes da página principal de games', () => {
       const { _id } = mockGames.games[0];
       const { location: { pathname } } = window;
 
-      expect(pathname).toBe(`details/${_id}`);
+      expect(pathname).toBe(`/details/${_id}`);
     });
 
     it('Ao clicar em uma categoria, só aparecem jogos dessa categoria', async () => {
@@ -332,7 +332,7 @@ describe('Testes da página principal de games', () => {
       const { _id } = mockGames.games[2];
       const { location: { pathname } } = window;
 
-      expect(pathname).toBe(`details/${_id}`);
+      expect(pathname).toBe(`/details/${_id}`);
     });
   });
 });

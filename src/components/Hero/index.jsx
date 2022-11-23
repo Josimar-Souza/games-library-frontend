@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Title from '../Title';
 import Paragraph from '../Paragraph';
@@ -13,6 +14,13 @@ import {
 } from './heroStyles';
 
 function Hero({ game }) {
+  const navigate = useNavigate();
+
+  const onDetailsButtonClick = () => {
+    const { _id } = game;
+    navigate(`/details/${_id}`);
+  };
+
   return (
     <HeroContainer
       backgroundImage={game.backdrop}
@@ -64,6 +72,7 @@ function Hero({ game }) {
           hoverBackgroundColor="#bc0000"
           textShadow="2px 2px 4px black"
           testId="game-hero-details-button"
+          onClick={onDetailsButtonClick}
         >
           Ver detalhes
         </Button>
@@ -74,12 +83,13 @@ function Hero({ game }) {
 
 Hero.propTypes = {
   game: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     backdrop: PropTypes.string.isRequired,
     sinopse: PropTypes.string.isRequired,
     metacritic: PropTypes.shape({
-      metascore: PropTypes.number.isRequired,
-      userscore: PropTypes.number.isRequired,
+      metascore: PropTypes.string.isRequired,
+      userscore: PropTypes.string.isRequired,
     }).isRequired,
     releaseYear: PropTypes.string.isRequired,
   }).isRequired,
