@@ -20,6 +20,7 @@ function GamesPage() {
   const categoriesContainerRef = createRef();
 
   const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames] = useState([]);
   const [categories, setCategories] = useState([]);
   const [heroGame, setHeroGame] = useState({});
 
@@ -37,6 +38,7 @@ function GamesPage() {
       const heroGameSelected = getArrayRandomItem(gamesFounded);
 
       setGames(gamesFounded);
+      setFilteredGames(gamesFounded);
       setHeroGame(heroGameSelected);
     };
 
@@ -68,6 +70,12 @@ function GamesPage() {
     return null;
   }
 
+  const onCategoryButtonClick = ({ target: { name } }) => {
+    const gamesByCategory = games.filter((game) => game.category === name);
+
+    setFilteredGames(gamesByCategory);
+  };
+
   return (
     <GamesPageSection>
       <Header
@@ -95,6 +103,8 @@ function GamesPage() {
                 transition="0.2s"
                 margin="0 1rem"
                 borderRadius="15px"
+                onClick={onCategoryButtonClick}
+                name={category}
               >
                 {category}
               </Button>
@@ -127,7 +137,7 @@ function GamesPage() {
       </CategoriesSearchContainer>
       <GamesContainer>
         {
-          games.map(({ _id, ...rest }, index) => (
+          filteredGames.map(({ _id, ...rest }, index) => (
             <GameCard
               game={{ _id, ...rest }}
               index={index}
