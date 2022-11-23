@@ -332,6 +332,41 @@ describe('Testes da página principal de games', () => {
       expect(gameTitleElement.textContent).toBe('Teste game 7');
     });
 
+    it('Ao adicionar um filtro, o botão "Limpar filtros aparece na página"', async () => {
+      const actionCategoryButton = await screen.findByRole('button', { name: 'Ação' });
+
+      userEvent.click(actionCategoryButton);
+
+      const clearFiltersButton = await screen.findByRole('button', { name: 'Limpar filtros' });
+
+      expect(clearFiltersButton).toBeDefined();
+    });
+
+    it('Ao clicar no botão "Limpar filtros", todos os jogos aparecem e o botão desaparece', async () => {
+      const actionCategoryButton = await screen.findByRole('button', { name: 'Ação' });
+
+      userEvent.click(actionCategoryButton);
+
+      let clearFiltersButton = await screen.findByRole('button', { name: 'Limpar filtros' });
+
+      userEvent.click(clearFiltersButton);
+
+      const { games } = mockGames;
+
+      const gamesImagesPromises = [];
+
+      games.forEach((_game, index) => {
+        const gameImage = screen.findByTestId(`${testIds.gameCardImage}-${index}`);
+        gamesImagesPromises.push(gameImage);
+      });
+
+      const gamesImages = await Promise.all(gamesImagesPromises);
+      clearFiltersButton = screen.queryByRole('button', { name: 'Limpar filtros' });
+
+      expect(gamesImages.length).toBe(games.length);
+      expect(clearFiltersButton).toBeNull();
+    });
+
     it('Ao clicar no botão "Ver detalhes" do card de game, a página é redirecionada para a página de detalhes desse game', async () => {
       const gameCardDetailsButton = await screen.findByTestId(`${testIds.gameCardDetailsButton}-${2}`);
 
