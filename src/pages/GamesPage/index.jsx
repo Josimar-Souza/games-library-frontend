@@ -90,6 +90,10 @@ function GamesPage() {
     setFilteredGames({ games: searchedGames, hasFilters: true });
   };
 
+  const onClearFiltersButtonClick = () => {
+    setFilteredGames({ games, hasFilters: false });
+  };
+
   const getClearFiltersButton = () => {
     if (filteredGames.hasFilters) {
       return (
@@ -104,6 +108,7 @@ function GamesPage() {
           hoverTransform="scale(1.05, 1.05)"
           hoverCursor="pointer"
           margin="0.8rem 0"
+          onClick={onClearFiltersButtonClick}
         >
           Limpar filtros
         </Button>
