@@ -304,5 +304,16 @@ describe('Testes da página principal de games', () => {
 
       expect(gameTitleElement.textContent).toBe('Teste game 7');
     });
+
+    it('Ao clicar no botão "Ver detalhes" do card de game, a página é redirecionada para a página de detalhes desse game', async () => {
+      const gameCardDetailsButton = await screen.findByTestId(`${testIds.gameCardDetailsButton}-${2}`);
+
+      userEvent.click(gameCardDetailsButton);
+
+      const { _id } = mockGames.games[2];
+      const { location: { pathname } } = window;
+
+      expect(pathname).toBe(`details/${_id}`);
+    });
   });
 });
