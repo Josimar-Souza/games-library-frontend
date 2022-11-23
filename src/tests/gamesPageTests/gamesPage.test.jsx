@@ -235,6 +235,22 @@ describe('Testes da página principal de games', () => {
       jest.clearAllMocks();
     });
 
+    it('Ao clicar no botão "Deslogar", o usuário é deslogado', async () => {
+      localStorage.setItem('token', 'LkdjawoDAOnonF54DliDWniogCndo4Djgnia');
+
+      const logOutButton = await screen.findByRole('button', { name: 'Deslogar' });
+
+      userEvent.click(logOutButton);
+
+      const token = localStorage.getItem('token');
+
+      expect(token).toBe(null);
+
+      const { location: { pathname } } = window;
+
+      expect(pathname).toBe('/');
+    });
+
     it('Ao clicar no botão "Adicionar jogo", a página é redirecionada', async () => {
       const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
 
