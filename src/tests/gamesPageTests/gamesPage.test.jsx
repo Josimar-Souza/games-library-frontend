@@ -260,5 +260,26 @@ describe('Testes da página principal de games', () => {
 
       expect(pathname).toBe('/addgame');
     });
+
+    it('Ao clicar em uma categoria, só aparecem jogos dessa categoria', async () => {
+      const actionCategoryButton = await screen.findByRole('button', { name: 'Ação' });
+
+      userEvent.click(actionCategoryButton);
+
+      const expectedResult = mockGames.games.filter((game) => game.category === 'Ação');
+      const gameTitlePromises = [];
+
+      expectedResult.forEach((_result, index) => {
+        const gameTitleElement = screen.findByTestId(`${testIds.gameCardTitle}-${index}`);
+
+        gameTitlePromises.push(gameTitleElement);
+      });
+
+      const gameTitleElements = await Promise.all(gameTitlePromises);
+
+      gameTitleElements.forEach((gameTitle, index) => {
+        expect(gameTitle.textContent).toBe(expectedResult[index].title);
+      });
+    });
   });
 });
