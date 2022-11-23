@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Title from '../Title';
 import Button from '../Button';
@@ -17,6 +18,7 @@ function Header(props) {
     onHeaderButtonClick,
   } = props;
 
+  const navigate = useNavigate();
   const [sideMenu, setSideMenu] = useState({ show: false, rightPosition: '-200px' });
 
   const getShowSideMenu = (checked) => {
@@ -31,6 +33,10 @@ function Header(props) {
     setSideMenu({ ...sideMenu, show: checked });
 
     getShowSideMenu(checked);
+  };
+
+  const onAddGameButtonClick = () => {
+    navigate('/addgame');
   };
 
   return (
@@ -78,6 +84,7 @@ function Header(props) {
           hoverTransform="scale(1.05, 1.05)"
           transition="0.2s"
           textShadow="1px 1px 2px black"
+          onClick={onAddGameButtonClick}
         >
           Adicionar jogo
         </Button>
