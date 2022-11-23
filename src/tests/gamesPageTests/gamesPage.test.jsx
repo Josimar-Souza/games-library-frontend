@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { screen, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import mockCategories from '../mocks/mockCategories';
@@ -216,6 +217,32 @@ describe('Testes da página principal de games', () => {
           expect(gamesDetailsButtons[index]).toBeInTheDocument();
         }
       });
+    });
+  });
+
+  describe('Verifica o comportamento da página', () => {
+    beforeEach(async () => {
+      jest.spyOn(gamesAPI, 'getAllGames').mockResolvedValue(mockGames.games);
+      jest.spyOn(gamesAPI, 'getAllCategories').mockResolvedValue(mockCategories);
+      getArrayRandomItem.default = jest.fn().mockReturnValue(mockGames.games[0]);
+
+      await act(async () => {
+        renderWithRouter(<pages.GamesPage />);
+      });
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('Ao clicar no botão "Adicionar jogo", a página é redirecionada', async () => {
+      const addGameButton = await screen.findByRole('button', { name: 'Adicionar jogo' });
+
+      userEvent.click(addGameButton);
+
+      const { location: { pathname } } = window;
+
+      expect(pathname).toBe('/addgame');
     });
   });
 });
