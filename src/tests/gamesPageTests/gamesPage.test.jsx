@@ -261,6 +261,17 @@ describe('Testes da página principal de games', () => {
       expect(pathname).toBe('/addgame');
     });
 
+    it('Ao clicar no botão "Ver detalhes" do hero, a página é redirecionada para a de detalhes desse game', async () => {
+      const heroDetailsButton = await screen.findByTestId(testIds.gameHeroDetailsButton);
+
+      userEvent.click(heroDetailsButton);
+
+      const { _id } = mockGames.games[0];
+      const { location: { pathname } } = window;
+
+      expect(pathname).toBe(`details/${_id}`);
+    });
+
     it('Ao clicar em uma categoria, só aparecem jogos dessa categoria', async () => {
       const actionCategoryButton = await screen.findByRole('button', { name: 'Ação' });
 
