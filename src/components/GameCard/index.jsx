@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Title from '../Title';
 import Button from '../Button';
@@ -9,6 +10,13 @@ import {
 } from './gameCardStyles';
 
 function GameCard({ game, index }) {
+  const navigate = useNavigate();
+
+  const onDetailsButtonClick = () => {
+    const { _id } = game;
+    navigate(`/details/${_id}`);
+  };
+
   return (
     <GameCardContainer>
       <GameImageContainer>
@@ -39,6 +47,7 @@ function GameCard({ game, index }) {
         hoverTransform="scale(1.08, 1.08)"
         transition="0.5s"
         testId={`game-card-details-button-${index}`}
+        onClick={onDetailsButtonClick}
       >
         Ver detalhes
       </Button>
@@ -48,6 +57,7 @@ function GameCard({ game, index }) {
 
 GameCard.propTypes = {
   game: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
