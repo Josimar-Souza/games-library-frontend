@@ -131,6 +131,14 @@ describe('Testes da página principal de games', () => {
         expect(gameHeroDateElement.textContent).toBe(`Lançamento: ${games[0].releaseYear}`);
       });
 
+      it('Uma sinopse curta do game', async () => {
+        const expectedText = mockGames.games[0].sinopse.split('.')[0];
+
+        const sinopseElement = await screen.findByText(`${expectedText}.`);
+
+        expect(sinopseElement).toBeInTheDocument();
+      });
+
       it('Um botão para detalhes do game', async () => {
         const gameHeroDetailsButtonElement = await screen.findByTestId(
           testIds.gameHeroDetailsButton,
