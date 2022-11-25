@@ -88,6 +88,7 @@ function GamesPage() {
       .toLowerCase().includes(value.toLowerCase()));
 
     setFilteredGames({ games: searchedGames, hasFilters: true });
+    setSearchTerm({ ...searchTerm, value: '' });
   };
 
   const onClearFiltersButtonClick = () => {
