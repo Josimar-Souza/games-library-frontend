@@ -21,6 +21,20 @@ function Hero({ game }) {
     navigate(`/details/${_id}`);
   };
 
+  const getShortSinopse = () => {
+    const shortSinopse = game.sinopse.split('.')[0];
+
+    return (
+      <Paragraph
+        width="100%"
+        textAlign="center"
+        margin="1rem 0"
+      >
+        {`${shortSinopse}.`}
+      </Paragraph>
+    );
+  };
+
   return (
     <HeroContainer
       backgroundImage={game.backdrop}
@@ -61,6 +75,7 @@ function Hero({ game }) {
             {`Lançamento: ${game.releaseYear}`}
           </Paragraph>
         </MetacriticDateContainer>
+        { getShortSinopse() }
         <Button
           backgroundColor="red"
           border="none"
