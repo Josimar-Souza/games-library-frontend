@@ -26,6 +26,10 @@ export const CategoriesSearchContainer = styled.div`
   margin: 0.5rem 0;
   min-height: 60px;
   width: 100%;
+
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -34,6 +38,11 @@ export const SearchContainer = styled.div`
   max-width: 50%;
   padding: 8px;
   width: 35%;
+
+  @media only screen and (max-width: 480px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 export const CategoriesContainer = styled.div`
@@ -48,6 +57,10 @@ export const CategoriesContainer = styled.div`
 
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
   }
 `;
 

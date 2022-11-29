@@ -109,6 +109,7 @@ function GamesPage() {
           hoverTransform="scale(1.05, 1.05)"
           hoverCursor="pointer"
           margin="0.8rem 0"
+          mobileMargin="0.8rem 0"
           onClick={onClearFiltersButtonClick}
         >
           Limpar filtros
@@ -140,12 +141,14 @@ function GamesPage() {
                   flexShrink="0"
                   backgroundColor="#8e8e8e"
                   fontSize="1vw"
+                  mobileFontSize="3.8vw"
                   border="none"
                   hoverBackgroundColor="#d8d8d8"
                   hoverCursor="pointer"
                   hoverTransform="scale(1.05, 1.05)"
                   transition="0.2s"
                   margin="0 1rem"
+                  mobileMargin="0 1rem"
                   borderRadius="15px"
                   onClick={onCategoryButtonClick}
                   name={category}
@@ -160,15 +163,19 @@ function GamesPage() {
               id="search-term"
               placeholder="Digite o jogo para pesquisar"
               fontSize="1.3vw"
+              mobileFontSize="5vw"
               inputBorderRadius="8px"
               containerWidth="60%"
               inputWidth="100%"
+              mobileInputWidth="80%"
               onChange={onInputChange}
               value={searchTerm.value}
             />
             <Button
               width="35%"
+              mobileWidth="45%"
               fontSize="1.3vw"
+              mobileFontSize="5vw"
               borderRadius="8px"
               backgroundColor="#00b400"
               fontColor="white"
