@@ -38,4 +38,8 @@ export const SideMenuContainer = styled.aside`
   transition: 0.5s;
   top: 60px;
   width: 15%;
+
+  @media only screen and (max-width: 480px) {
+    width: 60%;
+  }
 `;

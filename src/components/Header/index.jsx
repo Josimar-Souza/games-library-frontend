@@ -69,6 +69,7 @@ function Header(props) {
       >
         <Button
           width="100%"
+          mobileWidth="100%"
           borderRadius="15px"
           fontSize="1.5vw"
           border="none"
@@ -80,11 +81,13 @@ function Header(props) {
           transition="0.2s"
           onClick={onHeaderButtonClick}
           textShadow="1px 1px 2px black"
+          mobileMargin="0.5rem 0"
         >
           Deslogar
         </Button>
         <Button
           width="100%"
+          mobileWidth="100%"
           borderRadius="15px"
           fontSize="1.5vw"
           border="none"
@@ -96,6 +99,7 @@ function Header(props) {
           transition="0.2s"
           textShadow="1px 1px 2px black"
           onClick={onAddGameButtonClick}
+          mobileMargin="0.5rem 0"
         >
           Adicionar jogo
         </Button>
