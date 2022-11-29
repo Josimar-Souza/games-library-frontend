@@ -29,6 +29,8 @@ function Hero({ game }) {
         width="100%"
         textAlign="center"
         margin="1rem 0"
+        mobileFontSize="4vw"
+        mobileWidth="100%"
       >
         {`${shortSinopse}.`}
       </Paragraph>
@@ -46,6 +48,7 @@ function Hero({ game }) {
         <Title
           textAlign="center"
           fontSize="2.5vw"
+          mobileFontSize="6vw"
           width="90%"
           testId="game-hero-title"
         >
@@ -55,13 +58,19 @@ function Hero({ game }) {
           <MetacriticContainer>
             <Paragraph
               fontSize="1.5vw"
+              mobileFontSize="4vw"
+              mobileMargin="0 1rem"
               testId="game-hero-metascore"
+              textAlign="center"
             >
               {`Metascore: ${game.metacritic.metascore}`}
             </Paragraph>
             <Paragraph
               testId="game-hero-userscore"
+              mobileFontSize="4vw"
+              mobileMargin="0 1rem"
               fontSize="1.5vw"
+              textAlign="center"
             >
               {`Userscore: ${game.metacritic.userscore}`}
             </Paragraph>
@@ -69,8 +78,9 @@ function Hero({ game }) {
           <Paragraph
             fontSize="1.5vw"
             width="50%"
-            textAlign="right"
+            textAlign="center"
             testId="game-hero-date"
+            mobileFontSize="4vw"
           >
             {`Lançamento: ${game.releaseYear}`}
           </Paragraph>
@@ -88,6 +98,9 @@ function Hero({ game }) {
           textShadow="2px 2px 4px black"
           testId="game-hero-details-button"
           onClick={onDetailsButtonClick}
+          mobileWidth="80%"
+          mobileFontSize="5vw"
+          mobileMargin="1rem 0"
         >
           Ver detalhes
         </Button>

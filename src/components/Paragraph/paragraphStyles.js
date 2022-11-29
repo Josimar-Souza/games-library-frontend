@@ -9,7 +9,7 @@ const ParagraphStyle = styled.p`
 
   @media (max-width: 480px) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
-    mobileMargin: ${({ mobileMargin }) => mobileMargin};
+    margin: ${({ mobileMargin }) => mobileMargin};
     width: ${({ mobileWidth }) => mobileWidth};
   }
 `;

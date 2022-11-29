@@ -43,6 +43,11 @@ export const HeroInfoContainer = styled.div`
   padding: 10px;
   width: 50%;
   z-index: 1;
+
+  @media only screen and (max-width: 480px) {
+    margin: 0 auto;
+    width: 90%;
+  }
 `;
 
 export const MetacriticDateContainer = styled.div`
@@ -52,10 +57,19 @@ export const MetacriticDateContainer = styled.div`
   max-width: 100%;
   margin: 1rem 0;
   width: 90%;
+
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const MetacriticContainer = styled.div`
   display: flex;
   max-width: 100%;
   width: 50%;
+
+  @media only screen and (max-width: 480px) {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
 `;
