@@ -9,6 +9,10 @@ export const SideMenuContainer = styled.div`
     cursor: pointer;
     transform: scale(1.2, 1.2);
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 5%;
+  }
 `;
 
 export const SideMenuStyle = styled.input`

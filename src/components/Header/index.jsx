@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Title from '../Title';
@@ -39,9 +40,19 @@ function Header(props) {
     navigate('/addgame');
   };
 
+  const getHeaderLogo = () => {
+    if (!isMobile) {
+      return (
+        <HeaderLogo src={Logo} alt="Logo da página no header" />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <HeaderContainer>
-      <HeaderLogo src={Logo} alt="Logo da página no header" />
+      { getHeaderLogo() }
       <Title
         fontColor={headerFontColor}
         textAlign="center"
