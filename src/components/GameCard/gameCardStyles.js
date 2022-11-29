@@ -11,6 +11,11 @@ export const GameCardContainer = styled.div`
   min-height: 18rem;
   padding: 10px;
   width: 22%;
+
+  @media only screen and (max-width: 480px) {
+    margin: 2rem 0;
+    width: 80%;
+  }
 `;
 
 export const GameImageContainer = styled.div`

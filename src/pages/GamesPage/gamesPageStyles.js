@@ -58,4 +58,9 @@ export const GamesContainer = styled.main`
   min-height: 100px;
   padding: 10px;
   width: 100%;
+
+  @media only screen and (max-width: 480px) {
+    align-items: center;
+    flex-direction: column;
+  }
 `;

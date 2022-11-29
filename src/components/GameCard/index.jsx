@@ -29,25 +29,30 @@ function GameCard({ game, index }) {
       <Title
         textAlign="center"
         fontSize="1.2vw"
+        mobileFontSize="5vw"
         width="100%"
         margin="0.8rem 0"
+        mobileMargin="1rem 0"
         testId={`game-card-title-${index}`}
       >
         {game.title}
       </Title>
       <Button
         width="80%"
+        mobileWidth="80%"
         border="none"
         backgroundColor="black"
         fontColor="white"
         borderRadius="15px"
         hoverBackgroundColor="black"
         fontSize="1.5vw"
+        mobileFontSize="5vw"
         hoverCursor="pointer"
         hoverTransform="scale(1.08, 1.08)"
         transition="0.5s"
         testId={`game-card-details-button-${index}`}
         onClick={onDetailsButtonClick}
+        mobileMargin="1rem 0"
       >
         Ver detalhes
       </Button>
