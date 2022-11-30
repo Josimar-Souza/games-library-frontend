@@ -35,4 +35,10 @@ describe('Testes da página de detalhes', () => {
 
     expect(userscore).toBeInTheDocument();
   });
+
+  it('Verifica se a data de lançamento do game', async () => {
+    const releaseYear = await screen.findByText(`Data de lançamento: ${games[2].releaseYear}`);
+
+    expect(releaseYear).toBeInTheDocument();
+  });
 });
