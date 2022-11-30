@@ -12,13 +12,13 @@ describe('Testes da página de detalhes', () => {
     renderWithRouter(<pages.DetailsPage />);
   });
 
-  it('Verifica se o o título do game está na página com o valor correto', async () => {
+  it('Verifica se o o título do game está presente', async () => {
     const gameTitle = await screen.findByRole('heading', { name: games[2].title });
 
     expect(gameTitle).toBeInTheDocument();
   });
 
-  it('Verifica se a sinopse do game está presente e com o valor correto', async () => {
+  it('Verifica se a sinopse do game está presente', async () => {
     const gameSinopse = await screen.findByText(games[2].sinopse);
 
     expect(gameSinopse).toBeInTheDocument();
@@ -40,5 +40,17 @@ describe('Testes da página de detalhes', () => {
     const releaseYear = await screen.findByText(`Data de lançamento: ${games[2].releaseYear}`);
 
     expect(releaseYear).toBeInTheDocument();
+  });
+
+  it('Verifica se a desenvolvedora do game está presente', async () => {
+    const gameDeveloper = await screen.findByText(`Desenvolvedora: ${games[2].developer}`);
+
+    expect(gameDeveloper);
+  });
+
+  it('Verifica se a publicadora do game está presente', async () => {
+    const gamePublisher = await screen.findByText(`Publicadora: ${games[2].publisher}`);
+
+    expect(gamePublisher).toBeInTheDocument();
   });
 });
