@@ -105,26 +105,39 @@ function LoginPage() {
         <LoginInputsContainer>
           <Input
             testId="email-input-login"
-            margin="2rem 0"
-            mobileMargin="1rem 0"
-            width="100%"
+            mobileInputMargin="1rem 0"
+            inputMargin="1rem 0"
+            inputWidth="100%"
+            mobileInputWidth="100%"
             placeholder="Digite seu email"
             onChange={handleInputChange}
             name="email"
             value={loginInfo.email}
-            borderRadius="10px"
+            inputBorderRadius="10px"
+            id="email"
+            containerWidth="100%"
+            mobileContainerWidth="100%"
+            labelText="Email"
+            labelFontColor="white"
           />
           <Input
             testId="password-input-login"
-            margin="2rem 0"
-            mobileMargin="1rem 0"
-            width="100%"
+            mobileInputMargin="1rem 0"
+            inputMargin="1rem 0"
+            inputWidth="100%"
+            mobileInputWidth="100%"
             placeholder="Digite sua senha"
             onChange={handleInputChange}
             name="password"
             type="password"
             value={loginInfo.password}
-            borderRadius="10px"
+            inputBorderRadius="10px"
+            id="password"
+            containerWidth="100%"
+            mobileContainerWidth="100%"
+            labelText="Senha"
+            labelFontColor="white"
+            containerMargin="0 0 1rem 0"
           />
         </LoginInputsContainer>
         <LoginButtonsContainer>
