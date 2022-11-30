@@ -69,4 +69,20 @@ describe('Testes da página de detalhes', () => {
       expect(platformElement).toBeInTheDocument();
     });
   });
+
+  it('Verifica se a imagem de capa está presente', async () => {
+    const gameImage = await screen.findAllByAltText(`Imagem de capa do jogo ${games[2].title}`);
+
+    expect(gameImage).toBeInTheDocument();
+    expect(gameImage).toHaveAttribute('src', games[2].image);
+  });
+
+  it('Verifica se a imagem de backdrop está presente', async () => {
+    const backdropImage = await screen.findByTestId('game-details-backdrop');
+
+    expect(backdropImage).toBeInTheDocument();
+    expect(backdropImage).toHaveStyle(`
+      background-image: url(${games[2].backdrop});
+    `);
+  });
 });
