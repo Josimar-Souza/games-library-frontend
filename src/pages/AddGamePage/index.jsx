@@ -193,6 +193,8 @@ function AddGamePage() {
     return null;
   };
 
+  const formatTrailerUrl = (url) => url.replace('watch?v=', 'embed/');
+
   const onAddGameClick = async () => {
     const {
       title,
@@ -221,7 +223,7 @@ function AddGamePage() {
       developer: developer.value,
       publisher: publisher.value,
       platforms: platformsList,
-      trailerURL: trailerURL.value,
+      trailerURL: formatTrailerUrl(trailerURL.value),
       metacritic: {
         metascore: metascore.value,
         userscore: userscore.value,
@@ -237,11 +239,14 @@ function AddGamePage() {
       setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: result.message, color: 'red' } });
     } else {
       setfeedbackMessage({ ...feedbackMessage, addGame: { show: true, value: 'Game adicionado com sucesso!', color: 'green' } });
+
+      setTimeout(() => {
+        navigate('/games');
+      }, 3000);
     }
 
     setTimeout(() => {
       setfeedbackMessage({ ...feedbackMessage, addGame: { show: false, value: '', color: 'red' } });
-      navigate('/games');
     }, 3000);
   };
 

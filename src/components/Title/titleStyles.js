@@ -5,6 +5,7 @@ const TitleStyle = styled.h1`
   font-size: ${({ fontSize }) => fontSize};
   margin: ${({ margin }) => margin};
   text-align: ${({ textAlign }) => textAlign};
+  text-shadow: ${({ textShadow }) => textShadow};
   width: ${({ width }) => width};
 
   @media (max-width: 480px) {

@@ -7,6 +7,10 @@ import TextArea from './TextArea';
 import DropDown from './DropDown';
 import Option from './Option';
 import Line from './Line';
+import Header from './Header';
+import Hero from './Hero';
+import GameCard from './GameCard';
+import SideMenuButton from './SideMenuButton';
 
 const components = {
   Input,
@@ -18,6 +22,10 @@ const components = {
   DropDown,
   Option,
   Line,
+  Header,
+  Hero,
+  GameCard,
+  SideMenuButton,
 };
 
 export default components;
