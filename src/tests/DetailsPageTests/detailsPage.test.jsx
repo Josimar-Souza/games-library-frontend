@@ -53,4 +53,20 @@ describe('Testes da página de detalhes', () => {
 
     expect(gamePublisher).toBeInTheDocument();
   });
+
+  it('Verifica se todas as platformas do game estão presentes', async () => {
+    const gamePlatformsPromises = [];
+
+    games[2].platforms.forEach((platform) => {
+      const platofrmElement = screen.findByText(platform);
+
+      gamePlatformsPromises.push(platofrmElement);
+    });
+
+    const gamePlatforms = await Promise.all(gamePlatformsPromises);
+
+    gamePlatforms.forEach((platformElement) => {
+      expect(platformElement).toBeInTheDocument();
+    });
+  });
 });
