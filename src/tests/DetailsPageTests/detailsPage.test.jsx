@@ -85,4 +85,10 @@ describe('Testes da página de detalhes', () => {
       background-image: url(${games[2].backdrop});
     `);
   });
+
+  it('Verifica se a categoria está presente', async () => {
+    const gameCategory = await screen.findByText(`Categoria: ${games[2].category}`);
+
+    expect(gameCategory).toBeInTheDocument();
+  });
 });
