@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { removeItem } from '../../helpers/localStorageManager';
 import Title from '../Title';
 import Button from '../Button';
 import Logo from '../../images/Logo.jpg';
@@ -16,7 +17,6 @@ function Header(props) {
   const {
     headerFontColor,
     headerTitle,
-    onHeaderButtonClick,
   } = props;
 
   const navigate = useNavigate();
@@ -34,6 +34,12 @@ function Header(props) {
     setSideMenu({ ...sideMenu, show: checked });
 
     getShowSideMenu(checked);
+  };
+
+  const onLogOutButtonClick = () => {
+    removeItem('token');
+
+    navigate('/');
   };
 
   const onAddGameButtonClick = () => {
@@ -79,7 +85,7 @@ function Header(props) {
           hoverBackgroundColor="#c90000"
           hoverTransform="scale(1.05, 1.05)"
           transition="0.2s"
-          onClick={onHeaderButtonClick}
+          onClick={onLogOutButtonClick}
           textShadow="1px 1px 2px black"
           mobileMargin="0.5rem 0"
         >
@@ -115,7 +121,6 @@ Header.defaultProps = {
 Header.propTypes = {
   headerFontColor: PropTypes.string,
   headerTitle: PropTypes.node.isRequired,
-  onHeaderButtonClick: PropTypes.func.isRequired,
 };
 
 export default Header;

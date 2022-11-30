@@ -1,7 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import components from '../../components';
-import { removeItem, getItem } from '../../helpers/localStorageManager';
+import { getItem } from '../../helpers/localStorageManager';
 import getArrayRandomItem from '../../helpers/getArrayRandomItem';
 import GamesAPI from '../../api/gamesAPI';
 import {
@@ -17,7 +16,6 @@ const apiURL = process.env.REACT_APP_API_URL;
 export const gamesAPI = new GamesAPI(apiURL, 15000);
 
 function GamesPage() {
-  const navigate = useNavigate();
   const categoriesContainerRef = createRef();
 
   const [games, setGames] = useState([]);
@@ -53,12 +51,6 @@ function GamesPage() {
     getAllGames();
     getAllCategories();
   }, []);
-
-  const onLogOutButtonClick = () => {
-    removeItem('token');
-
-    navigate('/');
-  };
 
   const onCategoriesWheel = (e) => {
     if (e.deltaY > 0) {
@@ -125,7 +117,6 @@ function GamesPage() {
       <Header
         headerFontColor="white"
         headerTitle="Games Library"
-        onHeaderButtonClick={onLogOutButtonClick}
       />
       <Hero
         game={heroGame}
