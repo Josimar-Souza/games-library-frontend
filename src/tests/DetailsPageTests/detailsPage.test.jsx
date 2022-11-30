@@ -91,4 +91,11 @@ describe('Testes da página de detalhes', () => {
 
     expect(gameCategory).toBeInTheDocument();
   });
+
+  it('Verifica se o trailer está presente', async () => {
+    const gameTrailer = await screen.findByTestId('game-details-trailer');
+
+    expect(gameTrailer).toBeInTheDocument();
+    expect(gameTrailer).toHaveAttribute('src', games[2].trailerURL);
+  });
 });
