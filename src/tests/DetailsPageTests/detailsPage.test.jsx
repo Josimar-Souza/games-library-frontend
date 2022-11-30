@@ -23,4 +23,16 @@ describe('Testes da página de detalhes', () => {
 
     expect(gameSinopse).toBeInTheDocument();
   });
+
+  it('Verifica se a nota "metascore" do game está presente', async () => {
+    const metascore = await screen.findByText(`metascore: ${games[2].metacritic.metascore}`);
+
+    expect(metascore).toBeInTheDocument();
+  });
+
+  it('Verifica se a nota "userscore" do game está presente', async () => {
+    const userscore = await screen.findByText(`userscore: ${games[2].metacritic.userscore}`);
+
+    expect(userscore).toBeInTheDocument();
+  });
 });
