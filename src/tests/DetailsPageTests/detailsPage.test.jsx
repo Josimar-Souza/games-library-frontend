@@ -10,11 +10,11 @@ describe('Testes da página de detalhes', () => {
   const { games } = mockGames;
 
   beforeEach(async () => {
+    jest.spyOn(gamesAPI, 'getGameById').mockResolvedValue(games[2]);
+
     await act(async () => {
       renderWithRouter(<pages.DetailsPage />);
     });
-
-    jest.spyOn(gamesAPI, 'getGameById').mockResolvedValue(games[2]);
   });
 
   afterEach(() => {

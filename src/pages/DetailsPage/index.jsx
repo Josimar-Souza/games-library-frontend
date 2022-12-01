@@ -22,7 +22,10 @@ function DetailsPage() {
   }, []);
 
   return (
-    <DetailsPageSection />
+    <DetailsPageSection
+      backgroundImage={gameDetails.backdrop}
+      data-testid="game-details-backdrop"
+    />
   );
 }
 
