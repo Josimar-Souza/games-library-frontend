@@ -52,6 +52,16 @@ class GamesAPI {
       return new ErrorCreator('Não foi possível listar todos os jogos, por favor, tente mais tarde!');
     }
   }
+
+  async getGameById(id, token) {
+    try {
+      const { data: { game } } = await this.api.get(`/games/${id}`, { headers: { authorization: token } });
+
+      return game;
+    } catch (error) {
+      return new ErrorCreator('Não foi possível acessar os detalhes jogo');
+    }
+  }
 }
 
 export default GamesAPI;
