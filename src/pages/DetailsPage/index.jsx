@@ -8,13 +8,14 @@ import {
   InfoPainel,
   LeftRightPainel,
   GameImage,
+  MetacriticSection,
 } from './detailsPageStyles';
 
 const baseUrl = process.env.REACT_APP_API_URL;
 export const gamesAPI = new GamesAPI(baseUrl, 15000);
 
 function DetailsPage() {
-  const [gameDetails, setGameDetails] = useState({});
+  const [gameDetails, setGameDetails] = useState(undefined);
   const { id } = useParams();
 
   const {
@@ -32,6 +33,10 @@ function DetailsPage() {
     getGameDetails();
   }, []);
 
+  if (!gameDetails) {
+    return null;
+  }
+
   return (
     <DetailsPageSection
       backgroundImage={gameDetails.backdrop}
@@ -40,6 +45,18 @@ function DetailsPage() {
       <InfoPainel>
         <LeftRightPainel>
           <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
+          <MetacriticSection>
+            <Paragraph
+              textAlign="center"
+            >
+              {`metascore: ${gameDetails.metacritic.metascore}`}
+            </Paragraph>
+            <Paragraph
+              textAlign="center"
+            >
+              {`userscore: ${gameDetails.metacritic.userscore}`}
+            </Paragraph>
+          </MetacriticSection>
         </LeftRightPainel>
         <LeftRightPainel>
           <Title

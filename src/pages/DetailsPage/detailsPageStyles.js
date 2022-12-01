@@ -36,3 +36,11 @@ export const GameImage = styled.img`
   max-width: 100%;
   width: 80%;
 `;
+
+export const MetacriticSection = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem 0;
+  max-width: 100%;
+  width: 100%;
+`;
