@@ -80,7 +80,7 @@ describe('Testes da página de detalhes', () => {
   });
 
   it('Verifica se a imagem de capa está presente', async () => {
-    const gameImage = await screen.findAllByAltText(`Imagem de capa do jogo ${games[2].title}`);
+    const gameImage = await screen.findByAltText(`Imagem de capa do jogo ${games[2].title}`);
 
     expect(gameImage).toBeInTheDocument();
     expect(gameImage).toHaveAttribute('src', games[2].image);

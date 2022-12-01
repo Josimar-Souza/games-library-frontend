@@ -6,6 +6,8 @@ import component from '../../components';
 import {
   DetailsPageSection,
   InfoPainel,
+  LeftRightPainel,
+  GameImage,
 } from './detailsPageStyles';
 
 const baseUrl = process.env.REACT_APP_API_URL;
@@ -36,20 +38,25 @@ function DetailsPage() {
       data-testid="game-details-backdrop"
     >
       <InfoPainel>
-        <Title
-          textAlign="center"
-          width="100%"
-          margin="0.5rem 0"
-        >
-          {gameDetails.title}
-        </Title>
-        <Paragraph
-          width="100%"
-          textAlign="center"
-          margin="0.5rem 0"
-        >
-          {gameDetails.sinopse}
-        </Paragraph>
+        <LeftRightPainel>
+          <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
+        </LeftRightPainel>
+        <LeftRightPainel>
+          <Title
+            textAlign="center"
+            width="100%"
+            margin="0.5rem 0"
+          >
+            {gameDetails.title}
+          </Title>
+          <Paragraph
+            width="100%"
+            textAlign="center"
+            margin="0.5rem 0"
+          >
+            {gameDetails.sinopse}
+          </Paragraph>
+        </LeftRightPainel>
       </InfoPainel>
     </DetailsPageSection>
   );
