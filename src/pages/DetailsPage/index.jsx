@@ -5,7 +5,7 @@ import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
 
 const baseUrl = process.env.REACT_APP_API_URL;
-const gamesAPI = new GamesAPI(baseUrl, 15000);
+export const gamesAPI = new GamesAPI(baseUrl, 15000);
 
 function DetailsPage() {
   const [gameDetails, setGameDetails] = useState({});

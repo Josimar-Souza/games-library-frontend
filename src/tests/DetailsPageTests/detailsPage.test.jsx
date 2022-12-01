@@ -1,15 +1,24 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import mockGames from '../mocks/mockGames';
+import { gamesAPI } from '../../pages/DetailsPage';
 
 describe('Testes da página de detalhes', () => {
   const { games } = mockGames;
 
-  beforeEach(() => {
-    renderWithRouter(<pages.DetailsPage />);
+  beforeEach(async () => {
+    await act(async () => {
+      renderWithRouter(<pages.DetailsPage />);
+    });
+
+    jest.spyOn(gamesAPI, 'getGameById').mockResolvedValue(games[2]);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('Verifica se o o título do game está presente', async () => {
