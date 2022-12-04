@@ -57,6 +57,13 @@ function DetailsPage() {
               {`userscore: ${gameDetails.metacritic.userscore}`}
             </Paragraph>
           </MetacriticSection>
+          <Paragraph
+            textAlign="center"
+            width="100%"
+            margin="0.5rem 0"
+          >
+            {`Data de lançamento: ${gameDetails.releaseYear}`}
+          </Paragraph>
         </LeftRightPainel>
         <LeftRightPainel>
           <Title
