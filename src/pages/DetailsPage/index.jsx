@@ -8,7 +8,7 @@ import {
   InfoPainel,
   LeftRightPainel,
   GameImage,
-  MetacriticSection,
+  HorizontalSection,
 } from './detailsPageStyles';
 
 const baseUrl = process.env.REACT_APP_API_URL;
@@ -45,25 +45,46 @@ function DetailsPage() {
       <InfoPainel>
         <LeftRightPainel>
           <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
-          <MetacriticSection>
+          <HorizontalSection>
             <Paragraph
               textAlign="center"
+              fontSize="1vw"
             >
               {`metascore: ${gameDetails.metacritic.metascore}`}
             </Paragraph>
             <Paragraph
               textAlign="center"
+              fontSize="1vw"
             >
               {`userscore: ${gameDetails.metacritic.userscore}`}
             </Paragraph>
-          </MetacriticSection>
+          </HorizontalSection>
           <Paragraph
             textAlign="center"
             width="100%"
             margin="0.5rem 0"
+            fontSize="1vw"
           >
             {`Data de lançamento: ${gameDetails.releaseYear}`}
           </Paragraph>
+          <HorizontalSection>
+            <Paragraph
+              textAlign="center"
+              width="100%"
+              margin="0.5rem 0"
+              fontSize="1vw"
+            >
+              {`Desenvolvedora: ${gameDetails.developer}`}
+            </Paragraph>
+            <Paragraph
+              textAlign="center"
+              width="100%"
+              margin="0.5rem 0"
+              fontSize="1vw"
+            >
+              {`Publicadora: ${gameDetails.publisher}`}
+            </Paragraph>
+          </HorizontalSection>
         </LeftRightPainel>
         <LeftRightPainel>
           <Title

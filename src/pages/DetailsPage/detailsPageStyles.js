@@ -37,7 +37,7 @@ export const GameImage = styled.img`
   width: 80%;
 `;
 
-export const MetacriticSection = styled.div`
+export const HorizontalSection = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 0.5rem 0;
