@@ -94,6 +94,13 @@ function DetailsPage() {
           >
             {`Categoria: ${gameDetails.category}`}
           </Paragraph>
+          <Title
+            textAlign="center"
+            fontSize="1.5vw"
+            margin="0.5rem 0"
+          >
+            Plataformas:
+          </Title>
           <HorizontalSection>
             {
               gameDetails.platforms.map((platform) => (
