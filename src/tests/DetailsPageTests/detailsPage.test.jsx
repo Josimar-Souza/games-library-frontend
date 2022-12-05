@@ -27,6 +27,12 @@ describe('Testes da página de detalhes', () => {
     expect(gameTitle).toBeInTheDocument();
   });
 
+  it('Verifica se o título "Sinopse:" está presente', async () => {
+    const sinopseTitle = await screen.findByRole('heading', { name: 'Sinopse:' });
+
+    expect(sinopseTitle).toBeInTheDocument();
+  });
+
   it('Verifica se a sinopse do game está presente', async () => {
     const gameSinopse = await screen.findByText(games[2].sinopse);
 
@@ -61,6 +67,12 @@ describe('Testes da página de detalhes', () => {
     const gamePublisher = await screen.findByText(`Publicadora: ${games[2].publisher}`);
 
     expect(gamePublisher).toBeInTheDocument();
+  });
+
+  it('Verifica se o título "Plataformas:" está presente', async () => {
+    const platformTitle = await screen.findByRole('heading', { name: 'Plataformas:' });
+
+    expect(platformTitle).toBeInTheDocument();
   });
 
   it('Verifica se todas as platformas do game estão presentes', async () => {
