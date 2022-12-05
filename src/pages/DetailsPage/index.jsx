@@ -46,17 +46,27 @@ function DetailsPage() {
         <LeftRightPainel>
           <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
           <HorizontalSection>
+            <HorizontalSection>
+              <Paragraph
+                textAlign="center"
+                fontSize="1vw"
+              >
+                {`metascore: ${gameDetails.metacritic.metascore}`}
+              </Paragraph>
+              <Paragraph
+                textAlign="center"
+                fontSize="1vw"
+              >
+                {`userscore: ${gameDetails.metacritic.userscore}`}
+              </Paragraph>
+            </HorizontalSection>
             <Paragraph
               textAlign="center"
+              width="100%"
+              margin="0.5rem 0"
               fontSize="1vw"
             >
-              {`metascore: ${gameDetails.metacritic.metascore}`}
-            </Paragraph>
-            <Paragraph
-              textAlign="center"
-              fontSize="1vw"
-            >
-              {`userscore: ${gameDetails.metacritic.userscore}`}
+              {`Data de lançamento: ${gameDetails.releaseYear}`}
             </Paragraph>
           </HorizontalSection>
           <Paragraph
@@ -65,25 +75,38 @@ function DetailsPage() {
             margin="0.5rem 0"
             fontSize="1vw"
           >
-            {`Data de lançamento: ${gameDetails.releaseYear}`}
+            {`Desenvolvedora: ${gameDetails.developer}`}
+          </Paragraph>
+          <Paragraph
+            textAlign="center"
+            width="100%"
+            margin="0.5rem 0"
+            fontSize="1vw"
+          >
+            {`Publicadora: ${gameDetails.publisher}`}
+          </Paragraph>
+          <Paragraph
+            textAlign="center"
+            width="100%"
+            margin="0.5rem 0"
+            fontSize="1vw"
+          >
+            {`Categoria: ${gameDetails.category}`}
           </Paragraph>
           <HorizontalSection>
-            <Paragraph
-              textAlign="center"
-              width="100%"
-              margin="0.5rem 0"
-              fontSize="1vw"
-            >
-              {`Desenvolvedora: ${gameDetails.developer}`}
-            </Paragraph>
-            <Paragraph
-              textAlign="center"
-              width="100%"
-              margin="0.5rem 0"
-              fontSize="1vw"
-            >
-              {`Publicadora: ${gameDetails.publisher}`}
-            </Paragraph>
+            {
+              gameDetails.platforms.map((platform) => (
+                <Paragraph
+                  key={platform}
+                  textAlign="center"
+                  width="20%"
+                  margin="0.5rem 0"
+                  fontSize="1vw"
+                >
+                  {platform}
+                </Paragraph>
+              ))
+            }
           </HorizontalSection>
         </LeftRightPainel>
         <LeftRightPainel>
