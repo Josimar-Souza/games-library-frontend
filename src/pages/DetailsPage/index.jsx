@@ -9,6 +9,7 @@ import {
   LeftRightPainel,
   GameImage,
   HorizontalSection,
+  TrailerIframe,
 } from './detailsPageStyles';
 
 const baseUrl = process.env.REACT_APP_API_URL;
@@ -124,6 +125,11 @@ function DetailsPage() {
           >
             {gameDetails.sinopse}
           </Paragraph>
+          <TrailerIframe
+            src={gameDetails.trailerURL}
+            allowFullScreen
+            data-testid="game-details-trailer"
+          />
         </LeftRightPainel>
       </InfoPainel>
     </DetailsPageSection>

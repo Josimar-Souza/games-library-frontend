@@ -45,3 +45,9 @@ export const HorizontalSection = styled.div`
   max-width: 100%;
   width: 100%;
 `;
+
+export const TrailerIframe = styled.iframe`
+  max-width: 100%;
+  min-height: 250px;
+  width: 100%;
+`;
