@@ -113,6 +113,12 @@ describe('Testes da página de detalhes', () => {
     expect(gameCategory).toBeInTheDocument();
   });
 
+  it('Verifica se o título "Trailer:" está presente', async () => {
+    const trailerTitle = await screen.findByRole('heading', { name: 'Trailer:' });
+
+    expect(trailerTitle).toBeInTheDocument();
+  });
+
   it('Verifica se o trailer está presente', async () => {
     const gameTrailer = await screen.findByTestId('game-details-trailer');
 

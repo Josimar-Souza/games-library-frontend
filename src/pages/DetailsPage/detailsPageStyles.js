@@ -25,7 +25,6 @@ export const LeftRightPainel = styled.div`
   display: flex;
   border-radius: 15px;
   flex-direction: column;
-  justify-content: space-around;
   max-width: 50%;
   padding: 10px;
   width: 45%;
@@ -47,6 +46,7 @@ export const HorizontalSection = styled.div`
 `;
 
 export const TrailerIframe = styled.iframe`
+  margin: 0.5rem 0;
   max-width: 100%;
   min-height: 250px;
   width: 100%;

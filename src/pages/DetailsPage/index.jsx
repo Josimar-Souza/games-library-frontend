@@ -118,6 +118,13 @@ function DetailsPage() {
           >
             {gameDetails.title}
           </Title>
+          <Title
+            textAlign="center"
+            fontSize="2vw"
+            margin="0.5rem 0"
+          >
+            Sinopse:
+          </Title>
           <Paragraph
             width="100%"
             textAlign="center"
@@ -125,6 +132,13 @@ function DetailsPage() {
           >
             {gameDetails.sinopse}
           </Paragraph>
+          <Title
+            textAlign="center"
+            fontSize="2vw"
+            margin="0.5rem 0"
+          >
+            Trailer:
+          </Title>
           <TrailerIframe
             src={gameDetails.trailerURL}
             allowFullScreen
