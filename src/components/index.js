@@ -11,6 +11,7 @@ import Header from './Header';
 import Hero from './Hero';
 import GameCard from './GameCard';
 import SideMenuButton from './SideMenuButton';
+import Loading from './Loading';
 
 const components = {
   Input,
@@ -26,6 +27,7 @@ const components = {
   Hero,
   GameCard,
   SideMenuButton,
+  Loading,
 };
 
 export default components;
