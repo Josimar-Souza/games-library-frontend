@@ -30,6 +30,7 @@ function GamesPage() {
     Input,
     Button,
     GameCard,
+    Loading,
   } = components;
 
   useEffect(() => {
@@ -59,10 +60,6 @@ function GamesPage() {
       categoriesContainerRef.current.scrollLeft -= 100;
     }
   };
-
-  if (games.length === 0) {
-    return null;
-  }
 
   const onCategoryButtonClick = ({ target: { name } }) => {
     const gamesByCategory = games.filter(({ category }) => category === name);
@@ -111,6 +108,12 @@ function GamesPage() {
 
     return null;
   };
+
+  if (games.length === 0) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <GamesPageSection>

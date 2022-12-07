@@ -24,6 +24,7 @@ function DetailsPage() {
   const {
     Title,
     Paragraph,
+    Loading,
   } = component;
 
   useEffect(() => {
@@ -63,7 +64,9 @@ function DetailsPage() {
   };
 
   if (!gameDetails) {
-    return null;
+    return (
+      <Loading />
+    );
   }
 
   return (

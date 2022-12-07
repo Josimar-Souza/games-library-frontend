@@ -20,13 +20,13 @@ function Header(props) {
   } = props;
 
   const navigate = useNavigate();
-  const [sideMenu, setSideMenu] = useState({ show: false, rightPosition: '-200px' });
+  const [sideMenu, setSideMenu] = useState({ show: false, rightPosition: '-250px' });
 
   const getShowSideMenu = (checked) => {
     if (checked) {
       setSideMenu({ ...sideMenu, rightPosition: '10px' });
     } else {
-      setSideMenu({ ...sideMenu, rightPosition: '-200px' });
+      setSideMenu({ ...sideMenu, rightPosition: '-250px' });
     }
   };
 
