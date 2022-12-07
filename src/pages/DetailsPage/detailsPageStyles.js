@@ -8,6 +8,7 @@ export const DetailsPageSection = styled.section`
   justify-content: center;
   max-width: 100%;
   min-height: 100vh;
+  padding: 5rem;
   width: 100%;
 `;
 
