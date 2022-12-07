@@ -44,6 +44,24 @@ function DetailsPage() {
     return Background;
   };
 
+  const getTitle = (showTitle = false) => {
+    if (showTitle) {
+      return (
+        <Title
+          textAlign="center"
+          width="100%"
+          margin="0.5rem 0"
+          mobileFontSize="8vw"
+          mobileMargin="0.5rem 0"
+        >
+          {gameDetails.title}
+        </Title>
+      );
+    }
+
+    return null;
+  };
+
   if (!gameDetails) {
     return null;
   }
@@ -56,17 +74,22 @@ function DetailsPage() {
       <InfoPainel>
         <LeftRightPainel>
           <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
+          { getTitle(isMobile) }
           <HorizontalSection>
             <HorizontalSection>
               <Paragraph
                 textAlign="center"
                 fontSize="1vw"
+                mobileFontSize="4.2vw"
+                mobileMargin="0.5rem 0"
               >
                 {`metascore: ${gameDetails.metacritic.metascore}`}
               </Paragraph>
               <Paragraph
                 textAlign="center"
                 fontSize="1vw"
+                mobileFontSize="4.2vw"
+                mobileMargin="0.5rem 0"
               >
                 {`userscore: ${gameDetails.metacritic.userscore}`}
               </Paragraph>
@@ -76,6 +99,8 @@ function DetailsPage() {
               width="100%"
               margin="0.5rem 0"
               fontSize="1vw"
+              mobileFontSize="4.2vw"
+              mobileMargin="0.5rem 0"
             >
               {`Data de lançamento: ${gameDetails.releaseYear}`}
             </Paragraph>
@@ -85,6 +110,8 @@ function DetailsPage() {
             width="100%"
             margin="0.5rem 0"
             fontSize="1vw"
+            mobileFontSize="4.2vw"
+            mobileMargin="0.5rem 0"
           >
             {`Desenvolvedora: ${gameDetails.developer}`}
           </Paragraph>
@@ -93,6 +120,8 @@ function DetailsPage() {
             width="100%"
             margin="0.5rem 0"
             fontSize="1vw"
+            mobileFontSize="4.2vw"
+            mobileMargin="0.5rem 0"
           >
             {`Publicadora: ${gameDetails.publisher}`}
           </Paragraph>
@@ -101,6 +130,8 @@ function DetailsPage() {
             width="100%"
             margin="0.5rem 0"
             fontSize="1vw"
+            mobileFontSize="4.2vw"
+            mobileMargin="0.5rem 0"
           >
             {`Categoria: ${gameDetails.category}`}
           </Paragraph>
@@ -108,6 +139,8 @@ function DetailsPage() {
             textAlign="center"
             fontSize="1.5vw"
             margin="0.5rem 0"
+            mobileFontSize="8vw"
+            mobileMargin="0.5rem 0"
           >
             Plataformas:
           </Title>
@@ -120,6 +153,8 @@ function DetailsPage() {
                   width="20%"
                   margin="0.5rem 0"
                   fontSize="1vw"
+                  mobileFontSize="4.2vw"
+                  mobileMargin="0.5rem 0"
                 >
                   {platform}
                 </Paragraph>
@@ -128,17 +163,13 @@ function DetailsPage() {
           </HorizontalSection>
         </LeftRightPainel>
         <LeftRightPainel>
-          <Title
-            textAlign="center"
-            width="100%"
-            margin="0.5rem 0"
-          >
-            {gameDetails.title}
-          </Title>
+          { getTitle(!isMobile) }
           <Title
             textAlign="center"
             fontSize="2vw"
             margin="0.5rem 0"
+            mobileFontSize="6vw"
+            mobileMargin="0.5rem 0"
           >
             Sinopse:
           </Title>
@@ -146,6 +177,9 @@ function DetailsPage() {
             width="100%"
             textAlign="center"
             margin="0.5rem 0"
+            mobileFontSize="4.2vw"
+            mobileMargin="0.5rem 0"
+            mobileWidth="100%"
           >
             {gameDetails.sinopse}
           </Paragraph>
