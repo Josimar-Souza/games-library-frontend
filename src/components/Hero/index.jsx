@@ -37,6 +37,10 @@ function Hero({ game }) {
     );
   };
 
+  if (!game) {
+    return null;
+  }
+
   return (
     <HeroContainer
       backgroundImage={game.backdrop}

@@ -10,6 +10,7 @@ import {
   CategoriesContainer,
   GamesContainer,
   FiltersContainer,
+  NoGameContainer,
 } from './gamesPageStyles';
 
 const apiURL = process.env.REACT_APP_API_URL;
@@ -23,6 +24,7 @@ function GamesPage() {
   const [categories, setCategories] = useState([]);
   const [heroGame, setHeroGame] = useState({});
   const [searchTerm, setSearchTerm] = useState({ value: '' });
+  const [loading, setLoading] = useState(true);
 
   const {
     Header,
@@ -31,6 +33,7 @@ function GamesPage() {
     Button,
     GameCard,
     Loading,
+    Title,
   } = components;
 
   useEffect(() => {
@@ -39,6 +42,7 @@ function GamesPage() {
       const heroGameSelected = getArrayRandomItem(gamesFounded);
 
       setGames(gamesFounded);
+      setLoading(false);
       setFilteredGames({ ...filteredGames, games: gamesFounded });
       setHeroGame(heroGameSelected);
     };
@@ -109,7 +113,108 @@ function GamesPage() {
     return null;
   };
 
-  if (games.length === 0) {
+  const getGames = () => {
+    if (games.length >= 1) {
+      return (
+        <GamesContainer>
+          {
+            filteredGames.games.map(({ _id, ...rest }, index) => (
+              <GameCard
+                game={{ _id, ...rest }}
+                index={index}
+                key={_id}
+              />
+            ))
+          }
+        </GamesContainer>
+      );
+    }
+
+    return (
+      <NoGameContainer>
+        <Title
+          width="100%"
+          fontColor="white"
+          textAlign="center"
+          mobileFontSize="5vw"
+        >
+          Nenhum jogo encontrado! Por favor, adicione um jogo
+        </Title>
+      </NoGameContainer>
+    );
+  };
+
+  const getFilters = () => {
+    if (games.length >= 1) {
+      return (
+        <FiltersContainer>
+          <CategoriesSearchContainer>
+            <CategoriesContainer onWheel={onCategoriesWheel} ref={categoriesContainerRef}>
+              {
+                categories.map(({ _id, category }) => (
+                  <Button
+                    key={_id}
+                    width="36%"
+                    flexShrink="0"
+                    backgroundColor="#8e8e8e"
+                    fontSize="1vw"
+                    mobileFontSize="3.8vw"
+                    border="none"
+                    hoverBackgroundColor="#d8d8d8"
+                    hoverCursor="pointer"
+                    hoverTransform="scale(1.05, 1.05)"
+                    transition="0.2s"
+                    margin="0 1rem"
+                    mobileMargin="0 1rem"
+                    borderRadius="15px"
+                    onClick={onCategoryButtonClick}
+                    name={category}
+                  >
+                    {category}
+                  </Button>
+                ))
+              }
+            </CategoriesContainer>
+            <SearchContainer>
+              <Input
+                id="search-term"
+                placeholder="Digite o jogo para pesquisar"
+                fontSize="1.3vw"
+                mobileFontSize="5vw"
+                inputBorderRadius="8px"
+                containerWidth="60%"
+                inputWidth="100%"
+                mobileInputWidth="80%"
+                onChange={onInputChange}
+                value={searchTerm.value}
+              />
+              <Button
+                width="35%"
+                mobileWidth="45%"
+                fontSize="1.3vw"
+                mobileFontSize="5vw"
+                borderRadius="8px"
+                backgroundColor="#00b400"
+                fontColor="white"
+                hoverBackgroundColor="#00db00"
+                transition="0.3s"
+                hoverTransform="scale(1.05, 1.05)"
+                hoverCursor="pointer"
+                onClick={onSearchButtonClick}
+              >
+                Pesquisar
+              </Button>
+            </SearchContainer>
+          </CategoriesSearchContainer>
+          { getClearFiltersButton() }
+        </FiltersContainer>
+      );
+    }
+
+    return null;
+  };
+
+  if (loading) {
     return (
       <Loading />
     );
@@ -124,78 +229,8 @@ function GamesPage() {
       <Hero
         game={heroGame}
       />
-      <FiltersContainer>
-        <CategoriesSearchContainer>
-          <CategoriesContainer onWheel={onCategoriesWheel} ref={categoriesContainerRef}>
-            {
-              categories.map(({ _id, category }) => (
-                <Button
-                  key={_id}
-                  width="36%"
-                  flexShrink="0"
-                  backgroundColor="#8e8e8e"
-                  fontSize="1vw"
-                  mobileFontSize="3.8vw"
-                  border="none"
-                  hoverBackgroundColor="#d8d8d8"
-                  hoverCursor="pointer"
-                  hoverTransform="scale(1.05, 1.05)"
-                  transition="0.2s"
-                  margin="0 1rem"
-                  mobileMargin="0 1rem"
-                  borderRadius="15px"
-                  onClick={onCategoryButtonClick}
-                  name={category}
-                >
-                  {category}
-                </Button>
-              ))
-            }
-          </CategoriesContainer>
-          <SearchContainer>
-            <Input
-              id="search-term"
-              placeholder="Digite o jogo para pesquisar"
-              fontSize="1.3vw"
-              mobileFontSize="5vw"
-              inputBorderRadius="8px"
-              containerWidth="60%"
-              inputWidth="100%"
-              mobileInputWidth="80%"
-              onChange={onInputChange}
-              value={searchTerm.value}
-            />
-            <Button
-              width="35%"
-              mobileWidth="45%"
-              fontSize="1.3vw"
-              mobileFontSize="5vw"
-              borderRadius="8px"
-              backgroundColor="#00b400"
-              fontColor="white"
-              hoverBackgroundColor="#00db00"
-              transition="0.3s"
-              hoverTransform="scale(1.05, 1.05)"
-              hoverCursor="pointer"
-              onClick={onSearchButtonClick}
-            >
-              Pesquisar
-            </Button>
-          </SearchContainer>
-        </CategoriesSearchContainer>
-        { getClearFiltersButton() }
-      </FiltersContainer>
-      <GamesContainer>
-        {
-          filteredGames.games.map(({ _id, ...rest }, index) => (
-            <GameCard
-              game={{ _id, ...rest }}
-              index={index}
-              key={_id}
-            />
-          ))
-        }
-      </GamesContainer>
+      { getFilters() }
+      { getGames() }
     </GamesPageSection>
   );
 }

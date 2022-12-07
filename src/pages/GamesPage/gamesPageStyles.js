@@ -77,3 +77,12 @@ export const GamesContainer = styled.main`
     flex-direction: column;
   }
 `;
+
+export const NoGameContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 100vh;
+  width: 100%:
+`;
