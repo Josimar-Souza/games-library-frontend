@@ -187,6 +187,8 @@ function DetailsPage() {
             textAlign="center"
             fontSize="2vw"
             margin="0.5rem 0"
+            mobileFontSize="8vw"
+            mobileMargin="0.5rem 0"
           >
             Trailer:
           </Title>
