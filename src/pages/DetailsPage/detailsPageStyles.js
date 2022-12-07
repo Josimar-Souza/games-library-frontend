@@ -10,6 +10,10 @@ export const DetailsPageSection = styled.section`
   min-height: 100vh;
   padding: 5rem;
   width: 100%;
+
+  @media only screen and (max-width: 480px) {
+    padding: 2rem;
+  }
 `;
 
 export const InfoPainel = styled.div`
@@ -19,6 +23,12 @@ export const InfoPainel = styled.div`
   max-width: 100%;
   padding: 10px;
   width: 80%;
+
+  @media only screen and (max-width: 480px) {
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const LeftRightPainel = styled.div`
@@ -29,12 +39,21 @@ export const LeftRightPainel = styled.div`
   max-width: 50%;
   padding: 10px;
   width: 45%;
+
+  @media only screen and (max-width: 480px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 export const GameImage = styled.img`
   border-radius: 15px;
   max-width: 100%;
   width: 80%;
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const HorizontalSection = styled.div`

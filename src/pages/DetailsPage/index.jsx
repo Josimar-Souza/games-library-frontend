@@ -36,10 +36,6 @@ function DetailsPage() {
     getGameDetails();
   }, []);
 
-  if (!gameDetails) {
-    return null;
-  }
-
   const getBackground = () => {
     if (!isMobile) {
       return gameDetails.backdrop;
@@ -47,6 +43,10 @@ function DetailsPage() {
 
     return Background;
   };
+
+  if (!gameDetails) {
+    return null;
+  }
 
   return (
     <DetailsPageSection
