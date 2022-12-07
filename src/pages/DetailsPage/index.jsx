@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useParams } from 'react-router-dom';
 import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
 import component from '../../components';
+import Background from '../../images/Background.jpg';
 import {
   DetailsPageSection,
   InfoPainel,
@@ -38,9 +40,17 @@ function DetailsPage() {
     return null;
   }
 
+  const getBackground = () => {
+    if (!isMobile) {
+      return gameDetails.backdrop;
+    }
+
+    return Background;
+  };
+
   return (
     <DetailsPageSection
-      backgroundImage={gameDetails.backdrop}
+      backgroundImage={getBackground()}
       data-testid="game-details-backdrop"
     >
       <InfoPainel>
