@@ -77,5 +77,17 @@ describe('Testes da página de atualização', () => {
 
       expect(publisherLabel).toBeInTheDocument();
     });
+
+    it('Um input para informar a quantidade de plataformas do game', async () => {
+      const platformCountInput = await screen.findByDisplayValue(games[5].platforms.length);
+
+      expect(platformCountInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Quantidade de plataformas"', async () => {
+      const platformCountLabel = await screen.findByLabelText('Quantidade de plataformas');
+
+      expect(platformCountLabel).toBeInTheDocument();
+    });
   });
 });
