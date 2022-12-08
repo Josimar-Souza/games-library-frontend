@@ -13,12 +13,14 @@ import {
   HorizontalSection,
   TrailerIframe,
 } from './detailsPageStyles';
+import ErrorCreator from '../../helpers/ErrorCreator';
 
 const baseUrl = process.env.REACT_APP_API_URL;
 export const gamesAPI = new GamesAPI(baseUrl, 15000);
 
 function DetailsPage() {
   const [gameDetails, setGameDetails] = useState(undefined);
+  const [feedback, setFeedback] = useState({ show: false, message: '' });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -70,6 +72,38 @@ function DetailsPage() {
     navigate(`/update/${_id}`);
   };
 
+  const onDeleteButtonClick = async () => {
+    const { _id } = gameDetails;
+    const deleteResult = await gamesAPI.deleteGameById(_id, getItem('token'));
+
+    if (deleteResult instanceof ErrorCreator) {
+      setFeedback({ show: true, message: deleteResult.message });
+    } else {
+      setFeedback({ show: true, message: 'Jogo deletado com sucesso!' });
+    }
+
+    setTimeout(() => {
+      setFeedback({ show: false, message: '' });
+    }, 3000);
+  };
+
+  const getFeedbackMessage = () => {
+    if (feedback.show) {
+      return (
+        <Paragraph
+          textAlign="center"
+          fontSize="1vw"
+          mobileFontSize="4.2vw"
+          mobileMargin="0.5rem 0"
+        >
+          {feedback.message}
+        </Paragraph>
+      );
+    }
+
+    return null;
+  };
+
   if (!gameDetails) {
     return (
       <Loading />
@@ -97,6 +131,7 @@ function DetailsPage() {
               hoverCursor="pointer"
               hoverTransform="scale(1.1, 1.1)"
               transition="0.5s"
+              onClick={onDeleteButtonClick}
             >
               Deletar
             </Button>
@@ -116,6 +151,7 @@ function DetailsPage() {
               Atualizar
             </Button>
           </HorizontalSection>
+          { getFeedbackMessage() }
           <HorizontalSection>
             <HorizontalSection>
               <Paragraph
