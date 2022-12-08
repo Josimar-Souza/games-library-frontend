@@ -29,5 +29,17 @@ describe('Testes da página de atualização', () => {
 
       expect(titleLabel).toBeInTheDocument();
     });
+
+    it('Um input para a data de lançamento do game', async () => {
+      const releaseDateInput = await screen.findByDisplayValue(games[5].releaseYear);
+
+      expect(releaseDateInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Data de lançamento"', async () => {
+      const releaseDateLabel = await screen.findByLabelText('Data de lançamento');
+
+      expect(releaseDateLabel).toBeInTheDocument();
+    });
   });
 });
