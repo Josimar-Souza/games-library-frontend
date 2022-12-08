@@ -89,9 +89,21 @@ describe('Testes da página de atualização', () => {
 
       const gamePlatforms = await Promise.all(gamePlatformsPromises);
 
-      gamePlatforms.forEach((platformInput) => {
-        expect(platformInput).toBeInTheDocument();
-      });
+      expect(gamePlatforms.length).toBe(games[5].platforms.length);
+    });
+
+    it('Todas as labels com escrita nesse exemplo "Plataforma 1" devem existir na página', async () => {
+      const platformsLabelsPromises = [];
+
+      for (let index = 0; index < 5; index += 1) {
+        const platformLabel = screen.findByLabelText(`Plataforma ${index + 1}`);
+
+        platformsLabelsPromises.push(platformLabel);
+      }
+
+      const platformsLabels = await Promise.all(platformsLabelsPromises);
+
+      expect(platformsLabels.length).toBe(5);
     });
   });
 });
