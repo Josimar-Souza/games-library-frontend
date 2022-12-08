@@ -157,5 +157,17 @@ describe('Testes da página de atualização', () => {
 
       expect(metascoreLabel).toBeInTheDocument();
     });
+
+    it('Um input para a nota "userscore" do site Metacriic', async () => {
+      const userscoreInput = await screen.findByDisplayValue(games[5].metacritic.userscore);
+
+      expect(userscoreInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Userscore"', async () => {
+      const userscoreLabel = await screen.findByLabelText('Userscore');
+
+      expect(userscoreLabel).toBeInTheDocument();
+    });
   });
 });
