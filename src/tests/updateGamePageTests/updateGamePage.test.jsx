@@ -4,6 +4,7 @@ import { screen } from '@testing-library/react';
 import pages from '../../pages';
 import renderWithRouter from '../helpers/renderWithRouter';
 import mockGames from '../mocks/mockGames';
+import mockCategories from '../mocks/mockCategories';
 
 describe('Testes da página de atualização', () => {
   const { games } = mockGames;
@@ -128,6 +129,21 @@ describe('Testes da página de atualização', () => {
       const categoryLabel = await screen.findByLabelText('Categoria');
 
       expect(categoryLabel).toBeInTheDocument();
+    });
+
+    it('Todas as categorias devem aparecer como opções do dropdown', async () => {
+      const categoriesOptionsPromises = [];
+      mockCategories.forEach((category, index) => {
+        const categoryOption = screen.findByTestId(`category-option-${index}`);
+
+        categoriesOptionsPromises.push(categoryOption);
+      });
+
+      const categoriesOptions = await Promise.all(categoriesOptionsPromises);
+
+      categoriesOptions.forEach((category, index) => {
+        expect(category.textContent).toBe(mockCategories[index].category);
+      });
     });
   });
 });
