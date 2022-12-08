@@ -78,16 +78,20 @@ describe('Testes da página de atualização', () => {
       expect(publisherLabel).toBeInTheDocument();
     });
 
-    it('Um input para informar a quantidade de plataformas do game', async () => {
-      const platformCountInput = await screen.findByDisplayValue(games[5].platforms.length);
+    it('Todos os inputs para as plataformas devem existir na página', async () => {
+      const gamePlatformsPromises = [];
 
-      expect(platformCountInput).toBeInTheDocument();
-    });
+      games[5].platforms.forEach((platform) => {
+        const platformInput = screen.findByDisplayValue(platform);
 
-    it('Uma label escrito "Quantidade de plataformas"', async () => {
-      const platformCountLabel = await screen.findByLabelText('Quantidade de plataformas');
+        gamePlatformsPromises.push(platformInput);
+      });
 
-      expect(platformCountLabel).toBeInTheDocument();
+      const gamePlatforms = await Promise.all(gamePlatformsPromises);
+
+      gamePlatforms.forEach((platformInput) => {
+        expect(platformInput).toBeInTheDocument();
+      });
     });
   });
 });
