@@ -117,5 +117,17 @@ describe('Testes da página de atualização', () => {
 
       expect(trailerURLLabel).toBeInTheDocument();
     });
+
+    it('Um select para as categorias', async () => {
+      const categorySelect = await screen.findByRole('combobox');
+
+      expect(categorySelect).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Categoria"', async () => {
+      const categoryLabel = await screen.findByLabelText('Categoria');
+
+      expect(categoryLabel).toBeInTheDocument();
+    });
   });
 });
