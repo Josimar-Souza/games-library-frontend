@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
 import component from '../../components';
@@ -20,6 +20,7 @@ export const gamesAPI = new GamesAPI(baseUrl, 15000);
 function DetailsPage() {
   const [gameDetails, setGameDetails] = useState(undefined);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
     Title,
@@ -64,6 +65,11 @@ function DetailsPage() {
     return null;
   };
 
+  const onUpdateButtonClick = () => {
+    const { _id } = gameDetails;
+    navigate(`/update/${_id}`);
+  };
+
   if (!gameDetails) {
     return (
       <Loading />
@@ -105,6 +111,7 @@ function DetailsPage() {
               hoverCursor="pointer"
               hoverTransform="scale(1.1, 1.1)"
               transition="0.5s"
+              onClick={onUpdateButtonClick}
             >
               Atualizar
             </Button>
