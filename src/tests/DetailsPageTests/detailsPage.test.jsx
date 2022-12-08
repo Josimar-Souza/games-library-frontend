@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { screen, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import pages from '../../pages';
 import mockGames from '../mocks/mockGames';
@@ -137,6 +138,19 @@ describe('Testes da página de detalhes', () => {
       const updateButton = await screen.findByRole('button', { name: 'Atualizar' });
 
       expect(updateButton).toBeInTheDocument();
+    });
+  });
+
+  describe('Verifica o comportamento da página', () => {
+    it('Ao clicar no botão "Atualizar", a página é redirecionada', async () => {
+      const updateButton = await screen.findByRole('button', { name: 'Atualizar' });
+
+      userEvent.click(updateButton);
+
+      const { pathname } = window.location;
+      const { _id } = games[2];
+
+      expect(pathname).toBe(`/update/${_id}`);
     });
   });
 });
