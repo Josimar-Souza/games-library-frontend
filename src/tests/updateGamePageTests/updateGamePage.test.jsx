@@ -169,5 +169,17 @@ describe('Testes da página de atualização', () => {
 
       expect(userscoreLabel).toBeInTheDocument();
     });
+
+    it('Um input para a imagem do game', async () => {
+      const imageInput = await screen.findByDisplayValue(games[5].image);
+
+      expect(imageInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Imagem"', async () => {
+      const imageLabel = await screen.findByLabelText('Imagem');
+
+      expect(imageLabel).toBeInTheDocument();
+    });
   });
 });
