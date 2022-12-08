@@ -21,108 +21,122 @@ describe('Testes da página de detalhes', () => {
     jest.clearAllMocks();
   });
 
-  it('Verifica se o o título do game está presente', async () => {
-    const gameTitle = await screen.findByRole('heading', { name: games[2].title });
+  describe('Verifica a existência dos elementos', () => {
+    it('O título do game deve está presente', async () => {
+      const gameTitle = await screen.findByRole('heading', { name: games[2].title });
 
-    expect(gameTitle).toBeInTheDocument();
-  });
-
-  it('Verifica se o título "Sinopse:" está presente', async () => {
-    const sinopseTitle = await screen.findByRole('heading', { name: 'Sinopse:' });
-
-    expect(sinopseTitle).toBeInTheDocument();
-  });
-
-  it('Verifica se a sinopse do game está presente', async () => {
-    const gameSinopse = await screen.findByText(games[2].sinopse);
-
-    expect(gameSinopse).toBeInTheDocument();
-  });
-
-  it('Verifica se a nota "metascore" do game está presente', async () => {
-    const metascore = await screen.findByText(`metascore: ${games[2].metacritic.metascore}`);
-
-    expect(metascore).toBeInTheDocument();
-  });
-
-  it('Verifica se a nota "userscore" do game está presente', async () => {
-    const userscore = await screen.findByText(`userscore: ${games[2].metacritic.userscore}`);
-
-    expect(userscore).toBeInTheDocument();
-  });
-
-  it('Verifica se a data de lançamento do game', async () => {
-    const releaseYear = await screen.findByText(`Data de lançamento: ${games[2].releaseYear}`);
-
-    expect(releaseYear).toBeInTheDocument();
-  });
-
-  it('Verifica se a desenvolvedora do game está presente', async () => {
-    const gameDeveloper = await screen.findByText(`Desenvolvedora: ${games[2].developer}`);
-
-    expect(gameDeveloper);
-  });
-
-  it('Verifica se a publicadora do game está presente', async () => {
-    const gamePublisher = await screen.findByText(`Publicadora: ${games[2].publisher}`);
-
-    expect(gamePublisher).toBeInTheDocument();
-  });
-
-  it('Verifica se o título "Plataformas:" está presente', async () => {
-    const platformTitle = await screen.findByRole('heading', { name: 'Plataformas:' });
-
-    expect(platformTitle).toBeInTheDocument();
-  });
-
-  it('Verifica se todas as platformas do game estão presentes', async () => {
-    const gamePlatformsPromises = [];
-
-    games[2].platforms.forEach((platform) => {
-      const platofrmElement = screen.findByText(platform);
-
-      gamePlatformsPromises.push(platofrmElement);
+      expect(gameTitle).toBeInTheDocument();
     });
 
-    const gamePlatforms = await Promise.all(gamePlatformsPromises);
+    it('O título "Sinopse:" deve está presente', async () => {
+      const sinopseTitle = await screen.findByRole('heading', { name: 'Sinopse:' });
 
-    gamePlatforms.forEach((platformElement) => {
-      expect(platformElement).toBeInTheDocument();
+      expect(sinopseTitle).toBeInTheDocument();
     });
-  });
 
-  it('Verifica se a imagem de capa está presente', async () => {
-    const gameImage = await screen.findByAltText(`Imagem de capa do jogo ${games[2].title}`);
+    it('A sinopse do game deve está presente', async () => {
+      const gameSinopse = await screen.findByText(games[2].sinopse);
 
-    expect(gameImage).toBeInTheDocument();
-    expect(gameImage).toHaveAttribute('src', games[2].image);
-  });
+      expect(gameSinopse).toBeInTheDocument();
+    });
 
-  it('Verifica se a imagem de backdrop está presente', async () => {
-    const backdropImage = await screen.findByTestId('game-details-backdrop');
+    it('A nota "metascore" do game deve está presente', async () => {
+      const metascore = await screen.findByText(`metascore: ${games[2].metacritic.metascore}`);
 
-    expect(backdropImage).toBeInTheDocument();
-    expect(backdropImage).toHaveStyle(`
-      background-image: url(${games[2].backdrop});
-    `);
-  });
+      expect(metascore).toBeInTheDocument();
+    });
 
-  it('Verifica se a categoria está presente', async () => {
-    const gameCategory = await screen.findByText(`Categoria: ${games[2].category}`);
+    it('A nota "userscore" do game deve está presente', async () => {
+      const userscore = await screen.findByText(`userscore: ${games[2].metacritic.userscore}`);
 
-    expect(gameCategory).toBeInTheDocument();
-  });
+      expect(userscore).toBeInTheDocument();
+    });
 
-  it('Verifica se o título "Trailer:" está presente', async () => {
-    const trailerTitle = await screen.findByRole('heading', { name: 'Trailer:' });
+    it('A data de lançamento do game', async () => {
+      const releaseYear = await screen.findByText(`Data de lançamento: ${games[2].releaseYear}`);
 
-    expect(trailerTitle).toBeInTheDocument();
-  });
+      expect(releaseYear).toBeInTheDocument();
+    });
 
-  it('Verifica se o trailer está presente', async () => {
-    const gameTrailer = await screen.findByTestId('game-details-trailer');
+    it('A desenvolvedora do game deve está presente', async () => {
+      const gameDeveloper = await screen.findByText(`Desenvolvedora: ${games[2].developer}`);
 
-    expect(gameTrailer).toBeInTheDocument();
-    expect(gameTrailer).toHaveAttribute('src', games[2].trailerURL);
+      expect(gameDeveloper);
+    });
+
+    it('A publicadora do game deve está presente', async () => {
+      const gamePublisher = await screen.findByText(`Publicadora: ${games[2].publisher}`);
+
+      expect(gamePublisher).toBeInTheDocument();
+    });
+
+    it('O título "Plataformas:" deve está presente', async () => {
+      const platformTitle = await screen.findByRole('heading', { name: 'Plataformas:' });
+
+      expect(platformTitle).toBeInTheDocument();
+    });
+
+    it('Todas as platformas do game devem estão presentes', async () => {
+      const gamePlatformsPromises = [];
+
+      games[2].platforms.forEach((platform) => {
+        const platofrmElement = screen.findByText(platform);
+
+        gamePlatformsPromises.push(platofrmElement);
+      });
+
+      const gamePlatforms = await Promise.all(gamePlatformsPromises);
+
+      gamePlatforms.forEach((platformElement) => {
+        expect(platformElement).toBeInTheDocument();
+      });
+    });
+
+    it('A imagem de capa deve está presente', async () => {
+      const gameImage = await screen.findByAltText(`Imagem de capa do jogo ${games[2].title}`);
+
+      expect(gameImage).toBeInTheDocument();
+      expect(gameImage).toHaveAttribute('src', games[2].image);
+    });
+
+    it('A imagem de backdrop deve está presente', async () => {
+      const backdropImage = await screen.findByTestId('game-details-backdrop');
+
+      expect(backdropImage).toBeInTheDocument();
+      expect(backdropImage).toHaveStyle(`
+        background-image: url(${games[2].backdrop});
+      `);
+    });
+
+    it('A categoria deve está presente', async () => {
+      const gameCategory = await screen.findByText(`Categoria: ${games[2].category}`);
+
+      expect(gameCategory).toBeInTheDocument();
+    });
+
+    it('O título "Trailer:" deve está presente', async () => {
+      const trailerTitle = await screen.findByRole('heading', { name: 'Trailer:' });
+
+      expect(trailerTitle).toBeInTheDocument();
+    });
+
+    it('O trailer deve está presente', async () => {
+      const gameTrailer = await screen.findByTestId('game-details-trailer');
+
+      expect(gameTrailer).toBeInTheDocument();
+      expect(gameTrailer).toHaveAttribute('src', games[2].trailerURL);
+    });
+
+    it('Um botão escrito "Deletar"', async () => {
+      const deleteButton = await screen.findByRole('button', { name: 'Deletar' });
+
+      expect(deleteButton).toBeInTheDocument();
+    });
+
+    it('Um botão escrito "Atualizar"', async () => {
+      const updateButton = await screen.findByRole('button', { name: 'Atualizar' });
+
+      expect(updateButton).toBeInTheDocument();
+    });
   });
 });
