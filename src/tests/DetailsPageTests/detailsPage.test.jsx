@@ -152,5 +152,15 @@ describe('Testes da página de detalhes', () => {
 
       expect(pathname).toBe(`/update/${_id}`);
     });
+
+    it('Ao clicar no botão "Deletar", o método deleteGameById é chamado', async () => {
+      gamesAPI.deleteGameById = jest.fn();
+
+      const deleteButton = await screen.findByRole('button', { name: 'Deletar' });
+
+      userEvent.click(deleteButton);
+
+      expect(gamesAPI.deleteGameById).toHaveBeenCalled();
+    });
   });
 });
