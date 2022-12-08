@@ -65,5 +65,17 @@ describe('Testes da página de atualização', () => {
 
       expect(developerLabel).toBeInTheDocument();
     });
+
+    it('Um input para a publicadora do game', async () => {
+      const publisherInput = await screen.findByDisplayValue(games[5].publisher);
+
+      expect(publisherInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Publicadora"', async () => {
+      const publisherLabel = await screen.findByLabelText('Publicadora');
+
+      expect(publisherLabel).toBeInTheDocument();
+    });
   });
 });
