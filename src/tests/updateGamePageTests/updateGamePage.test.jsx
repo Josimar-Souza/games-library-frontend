@@ -41,5 +41,17 @@ describe('Testes da página de atualização', () => {
 
       expect(releaseDateLabel).toBeInTheDocument();
     });
+
+    it('Um text area para a sinopse do game', async () => {
+      const sinopseTextArea = await screen.findByDisplayValue(games[5].sinopse);
+
+      expect(sinopseTextArea).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Sinopse"', async () => {
+      const sinopseLabel = await screen.findByLabelText('Sinopse');
+
+      expect(sinopseLabel).toBeInTheDocument();
+    });
   });
 });
