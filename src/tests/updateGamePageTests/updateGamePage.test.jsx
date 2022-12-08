@@ -181,5 +181,17 @@ describe('Testes da página de atualização', () => {
 
       expect(imageLabel).toBeInTheDocument();
     });
+
+    it('Um input para a imagem de backdrop do game', async () => {
+      const backdropImageInput = await screen.findByDisplayValue(games[5].backdrop);
+
+      expect(backdropImageInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Imagem de backdrop"', async () => {
+      const backdropImageLabel = await screen.findByLabelText('Imagem de backdrop');
+
+      expect(backdropImageLabel).toBeInTheDocument();
+    });
   });
 });
