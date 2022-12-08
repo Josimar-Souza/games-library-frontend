@@ -193,5 +193,11 @@ describe('Testes da página de atualização', () => {
 
       expect(backdropImageLabel).toBeInTheDocument();
     });
+
+    it('Um botão para atualizar o jogo', async () => {
+      const addGameButton = await screen.findByRole('button', { name: 'Atualizar jogo' });
+
+      expect(addGameButton).toBeInTheDocument();
+    });
   });
 });
