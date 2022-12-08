@@ -3,8 +3,10 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import pages from '../../pages';
 import renderWithRouter from '../helpers/renderWithRouter';
+import mockGames from '../mocks/mockGames';
 
 describe('Testes da página de atualização', () => {
+  const { games } = mockGames;
   describe('Verifica a existência dos elementos', () => {
     beforeEach(() => {
       renderWithRouter(<pages.UpdatePage />);
@@ -14,6 +16,18 @@ describe('Testes da página de atualização', () => {
       const pageTitle = await screen.findByRole('heading', { name: 'Atualize o jogo' });
 
       expect(pageTitle).toBeInTheDocument();
+    });
+
+    it('Um input para o título do game', async () => {
+      const titleInput = await screen.findByDisplayValue(games[5].title);
+
+      expect(titleInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Nome"', async () => {
+      const titleLabel = await screen.findByLabelText('Nome');
+
+      expect(titleLabel).toBeInTheDocument();
     });
   });
 });
