@@ -11,6 +11,7 @@ function App() {
       <Route exact path="/addgame" element={<pages.AddGamePage />} />
       <Route exact path="/games" element={<pages.GamesPage />} />
       <Route exact path="/details/:id" element={<pages.DetailsPage />} />
+      <Route exact path="/update/:id" element={<pages.UpdatePage />} />
     </Routes>
   );
 }
