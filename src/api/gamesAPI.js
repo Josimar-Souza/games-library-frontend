@@ -62,6 +62,16 @@ class GamesAPI {
       return new ErrorCreator('Não foi possível acessar os detalhes jogo');
     }
   }
+
+  async deleteGameById(id, token) {
+    try {
+      const { data } = await this.api.delete(`/games/${id}`, { headers: { authorization: token } });
+
+      return data;
+    } catch (error) {
+      return new ErrorCreator('Não foi possível deletar o jogo');
+    }
+  }
 }
 
 export default GamesAPI;

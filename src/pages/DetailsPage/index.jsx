@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import GamesAPI from '../../api/gamesAPI';
 import { getItem } from '../../helpers/localStorageManager';
 import component from '../../components';
@@ -13,18 +13,22 @@ import {
   HorizontalSection,
   TrailerIframe,
 } from './detailsPageStyles';
+import ErrorCreator from '../../helpers/ErrorCreator';
 
 const baseUrl = process.env.REACT_APP_API_URL;
 export const gamesAPI = new GamesAPI(baseUrl, 15000);
 
 function DetailsPage() {
   const [gameDetails, setGameDetails] = useState(undefined);
+  const [feedback, setFeedback] = useState({ show: false, message: '', color: 'green' });
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
     Title,
     Paragraph,
     Loading,
+    Button,
   } = component;
 
   useEffect(() => {
@@ -63,6 +67,45 @@ function DetailsPage() {
     return null;
   };
 
+  const onUpdateButtonClick = () => {
+    const { _id } = gameDetails;
+    navigate(`/update/${_id}`);
+  };
+
+  const onDeleteButtonClick = async () => {
+    const { _id } = gameDetails;
+    const deleteResult = await gamesAPI.deleteGameById(_id, getItem('token'));
+
+    if (deleteResult instanceof ErrorCreator) {
+      setFeedback({ show: true, message: deleteResult.message, color: 'red' });
+    } else {
+      setFeedback({ ...feedback, show: true, message: 'Jogo deletado com sucesso!' });
+
+      setTimeout(() => {
+        setFeedback({ show: false, message: '', color: 'green' });
+        navigate('/games');
+      }, 3000);
+    }
+  };
+
+  const getFeedbackMessage = () => {
+    if (feedback.show) {
+      return (
+        <Paragraph
+          textAlign="center"
+          fontSize="1vw"
+          mobileFontSize="4.2vw"
+          mobileMargin="0.5rem 0"
+          fontColor={feedback.color}
+        >
+          {feedback.message}
+        </Paragraph>
+      );
+    }
+
+    return null;
+  };
+
   if (!gameDetails) {
     return (
       <Loading />
@@ -78,6 +121,39 @@ function DetailsPage() {
         <LeftRightPainel>
           <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
           { getTitle(isMobile) }
+          <HorizontalSection>
+            <Button
+              width="20%"
+              fontSize="1.2vw"
+              borderRadius="15px"
+              backgroundColor="red"
+              border="none"
+              fontColor="white"
+              hoverBackgroundColor="red"
+              hoverCursor="pointer"
+              hoverTransform="scale(1.1, 1.1)"
+              transition="0.5s"
+              onClick={onDeleteButtonClick}
+            >
+              Deletar
+            </Button>
+            <Button
+              width="20%"
+              fontSize="1.2vw"
+              borderRadius="15px"
+              backgroundColor="blue"
+              border="none"
+              fontColor="white"
+              hoverBackgroundColor="blue"
+              hoverCursor="pointer"
+              hoverTransform="scale(1.1, 1.1)"
+              transition="0.5s"
+              onClick={onUpdateButtonClick}
+            >
+              Atualizar
+            </Button>
+          </HorizontalSection>
+          { getFeedbackMessage() }
           <HorizontalSection>
             <HorizontalSection>
               <Paragraph
