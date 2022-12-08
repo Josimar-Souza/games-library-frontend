@@ -25,6 +25,7 @@ function DetailsPage() {
     Title,
     Paragraph,
     Loading,
+    Button,
   } = component;
 
   useEffect(() => {
@@ -78,6 +79,36 @@ function DetailsPage() {
         <LeftRightPainel>
           <GameImage src={gameDetails.image} alt={`Imagem de capa do jogo ${gameDetails.title}`} />
           { getTitle(isMobile) }
+          <HorizontalSection>
+            <Button
+              width="20%"
+              fontSize="1.2vw"
+              borderRadius="15px"
+              backgroundColor="red"
+              border="none"
+              fontColor="white"
+              hoverBackgroundColor="red"
+              hoverCursor="pointer"
+              hoverTransform="scale(1.1, 1.1)"
+              transition="0.5s"
+            >
+              Deletar
+            </Button>
+            <Button
+              width="20%"
+              fontSize="1.2vw"
+              borderRadius="15px"
+              backgroundColor="blue"
+              border="none"
+              fontColor="white"
+              hoverBackgroundColor="blue"
+              hoverCursor="pointer"
+              hoverTransform="scale(1.1, 1.1)"
+              transition="0.5s"
+            >
+              Atualizar
+            </Button>
+          </HorizontalSection>
           <HorizontalSection>
             <HorizontalSection>
               <Paragraph
