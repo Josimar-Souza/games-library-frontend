@@ -20,7 +20,7 @@ export const gamesAPI = new GamesAPI(baseUrl, 15000);
 
 function DetailsPage() {
   const [gameDetails, setGameDetails] = useState(undefined);
-  const [feedback, setFeedback] = useState({ show: false, message: '' });
+  const [feedback, setFeedback] = useState({ show: false, message: '', color: 'green' });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -77,14 +77,15 @@ function DetailsPage() {
     const deleteResult = await gamesAPI.deleteGameById(_id, getItem('token'));
 
     if (deleteResult instanceof ErrorCreator) {
-      setFeedback({ show: true, message: deleteResult.message });
+      setFeedback({ show: true, message: deleteResult.message, color: 'red' });
     } else {
-      setFeedback({ show: true, message: 'Jogo deletado com sucesso!' });
-    }
+      setFeedback({ ...feedback, show: true, message: 'Jogo deletado com sucesso!' });
 
-    setTimeout(() => {
-      setFeedback({ show: false, message: '' });
-    }, 3000);
+      setTimeout(() => {
+        setFeedback({ show: false, message: '', color: 'green' });
+        navigate('/games');
+      }, 3000);
+    }
   };
 
   const getFeedbackMessage = () => {
@@ -95,6 +96,7 @@ function DetailsPage() {
           fontSize="1vw"
           mobileFontSize="4.2vw"
           mobileMargin="0.5rem 0"
+          fontColor={feedback.color}
         >
           {feedback.message}
         </Paragraph>
