@@ -53,5 +53,17 @@ describe('Testes da página de atualização', () => {
 
       expect(sinopseLabel).toBeInTheDocument();
     });
+
+    it('Um input para a desenvolvedora do game', async () => {
+      const developerInput = await screen.findByDisplayValue(games[5].developer);
+
+      expect(developerInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito ""Desenvolvedora', async () => {
+      const developerLabel = await screen.findByLabelText('Desenvolvedora');
+
+      expect(developerLabel).toBeInTheDocument();
+    });
   });
 });
