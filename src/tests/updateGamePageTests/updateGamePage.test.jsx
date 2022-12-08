@@ -105,5 +105,17 @@ describe('Testes da página de atualização', () => {
 
       expect(platformsLabels.length).toBe(5);
     });
+
+    it('Um input para a url do trailer do game', async () => {
+      const urlInput = await screen.findByDisplayValue(games[5].trailerURL);
+
+      expect(urlInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Trailer URL"', async () => {
+      const trailerURLLabel = await screen.findByLabelText('Trailer URL');
+
+      expect(trailerURLLabel).toBeInTheDocument();
+    });
   });
 });
