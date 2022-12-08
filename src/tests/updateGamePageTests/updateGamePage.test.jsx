@@ -145,5 +145,17 @@ describe('Testes da página de atualização', () => {
         expect(category.textContent).toBe(mockCategories[index].category);
       });
     });
+
+    it('Um input para a nota "metascore" do site Metacriic', async () => {
+      const metascoreInput = await screen.findByDisplayValue(games[5].metacritic.metascore);
+
+      expect(metascoreInput).toBeInTheDocument();
+    });
+
+    it('Uma label escrito "Metascore"', async () => {
+      const metascoreLabel = await screen.findByLabelText('Metascore');
+
+      expect(metascoreLabel).toBeInTheDocument();
+    });
   });
 });
