@@ -200,4 +200,36 @@ describe('Testes da página de atualização', () => {
       expect(addGameButton).toBeInTheDocument();
     });
   });
+
+  describe('Verifica o comportamento da página', () => {
+    const invalidStyle = `
+      border: 1px solid red;
+      box-shadow: 0 0 8px 4px red;
+    `;
+
+    const validStyle = `
+      border: 1px solid green;
+      box-shadow: 0 0 8px 4px green;
+    `;
+
+    beforeEach(() => {
+      renderWithRouter(<pages.UpdatePage />);
+    });
+
+    it('Ao digitar um nome inválido, o input deverá ficar com características vermelhas', async () => {
+      const titleInput = await screen.findByPlaceholderText(games[5].title);
+
+      userEvent.type(titleInput, 'Lk');
+
+      expect(titleInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar um nome válido, o input deverá ficar com características verdes', async () => {
+      const titleInput = await screen.findByPlaceholderText(games[5].title);
+
+      userEvent.type(titleInput, 'Meu jogo 2');
+
+      expect(titleInput).toHaveStyle(validStyle);
+    });
+  });
 });
