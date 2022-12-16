@@ -295,5 +295,21 @@ describe('Testes da página de atualização', () => {
 
       expect(publisherInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma url de trailer inválida, o input deverá ficar com características vermelhas', async () => {
+      const trailerUrlInput = await screen.findByPlaceholderText(games[5].trailerURL);
+
+      userEvent.type(trailerUrlInput, 'Kjdfghiasjxnhfgkawq');
+
+      expect(trailerUrlInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma url de trailer válida, o input deverá ficar com características verdes', async () => {
+      const trailerUrlInput = await screen.findByPlaceholderText(games[5].trailerURL);
+
+      userEvent.type(trailerUrlInput, 'https://www.youtube.com/watch?v=GFd25aGfsER');
+
+      expect(trailerUrlInput).toHaveStyle(validStyle);
+    });
   });
 });
