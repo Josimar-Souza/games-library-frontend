@@ -279,5 +279,21 @@ describe('Testes da página de atualização', () => {
 
       expect(developerInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma publicadora inválida, o input deverá ficar com características vermelhas', async () => {
+      const publisherInput = await screen.findByPlaceholderText(games[5].publisher);
+
+      userEvent.type(publisherInput, 'Kjvs');
+
+      expect(publisherInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma publicadora válida, o input deverá ficar com características verders', async () => {
+      const publisherInput = await screen.findByPlaceholderText(games[5].publisher);
+
+      userEvent.type(publisherInput, 'Minha publicadora');
+
+      expect(publisherInput).toHaveStyle(validStyle);
+    });
   });
 });
