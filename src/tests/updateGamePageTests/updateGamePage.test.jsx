@@ -247,5 +247,21 @@ describe('Testes da página de atualização', () => {
 
       expect(releaseYearInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma sinopse inválida, o input deverá ficar com características vermelhas', async () => {
+      const sinopseInput = await screen.findByPlaceholderText(games[5].sinopse);
+
+      userEvent.type(sinopseInput, 'sinopse');
+
+      expect(sinopseInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma sinopse válida, o input deverá ficar com características verdes', async () => {
+      const sinopseInput = await screen.findByPlaceholderText(games[5].sinopse);
+
+      userEvent.type(sinopseInput, 'Essa é minha sinpse do jogo!');
+
+      expect(sinopseInput).toHaveStyle(validStyle);
+    });
   });
 });
