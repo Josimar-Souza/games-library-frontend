@@ -359,5 +359,21 @@ describe('Testes da página de atualização', () => {
 
       expect(imageUrlInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma url de imagem de backdrop inválida, o input deverá ficar com características vermelhas', async () => {
+      const backdropImageInput = await screen.findByPlaceholderText(games[5].backdrop);
+
+      userEvent.type(backdropImageInput, 'asdninawd857asd');
+
+      expect(backdropImageInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma url de imagem de backdrop válida, o input deverá ficar com características verdes', async () => {
+      const backdropImageInput = await screen.findByPlaceholderText(games[5].backdrop);
+
+      userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
+
+      expect(backdropImageInput).toHaveStyle(validStyle);
+    });
   });
 });
