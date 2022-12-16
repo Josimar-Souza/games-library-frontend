@@ -343,5 +343,21 @@ describe('Testes da página de atualização', () => {
 
       expect(userScoreInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma url de imagem inválida, o input deverá ficar com características vermelhas', async () => {
+      const imageUrlInput = await screen.findByPlaceholderText(games[5].image);
+
+      userEvent.type(imageUrlInput, 'fklakdd5a4w78erkn');
+
+      expect(imageUrlInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma url de imagem válida, o input deverá ficar com características verdes', async () => {
+      const imageUrlInput = await screen.findByPlaceholderText(games[5].image);
+
+      userEvent.type(imageUrlInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
+
+      expect(imageUrlInput).toHaveStyle(validStyle);
+    });
   });
 });
