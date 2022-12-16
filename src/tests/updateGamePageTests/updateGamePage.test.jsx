@@ -327,5 +327,21 @@ describe('Testes da página de atualização', () => {
 
       expect(metascoreInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma nota userscore inválida, o input deverá ficar com características vermelhas', async () => {
+      const userScoreInput = await screen.findByPlaceholderText(games[5].metacritic.userscore);
+
+      userEvent.type(userScoreInput, '14');
+
+      expect(userScoreInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma nota userscore válida, o input deverá ficar com características verdes', async () => {
+      const userScoreInput = await screen.findByPlaceholderText(games[5].metacritic.userscore);
+
+      userEvent.type(userScoreInput, '5.6');
+
+      expect(userScoreInput).toHaveStyle(validStyle);
+    });
   });
 });
