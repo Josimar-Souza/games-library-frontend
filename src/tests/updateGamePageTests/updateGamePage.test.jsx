@@ -263,5 +263,21 @@ describe('Testes da página de atualização', () => {
 
       expect(sinopseInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma desenvolvedora inválida, o input deverá ficar com características vermelhas', async () => {
+      const developerInput = await screen.findByPlaceholderText(games[5].developer);
+
+      userEvent.type(developerInput, 'kju8');
+
+      expect(developerInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma desenvolvedora válida, o input deverá ficar com características verdes', async () => {
+      const developerInput = await screen.findByPlaceholderText(games[5].developer);
+
+      userEvent.type(developerInput, 'Game Studio');
+
+      expect(developerInput).toHaveStyle(validStyle);
+    });
   });
 });
