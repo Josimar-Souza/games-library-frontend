@@ -311,5 +311,21 @@ describe('Testes da página de atualização', () => {
 
       expect(trailerUrlInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma nota metascore inválido, o input deverá ficar com características vermelhas', async () => {
+      const metascoreInput = await screen.findByPlaceholderText(games[5].metacritic.metascore);
+
+      userEvent.type(metascoreInput, '12');
+
+      expect(metascoreInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma nota metascore válido, o input deverá ficar com características verdes', async () => {
+      const metascoreInput = await screen.findByPlaceholderText(games[5].metacritic.metascore);
+
+      userEvent.type(metascoreInput, '9.8');
+
+      expect(metascoreInput).toHaveStyle(validStyle);
+    });
   });
 });
