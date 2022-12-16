@@ -231,5 +231,21 @@ describe('Testes da página de atualização', () => {
 
       expect(titleInput).toHaveStyle(validStyle);
     });
+
+    it('Ao digitar uma data inválida, o input deverá ficar com características vermelhas', async () => {
+      const releaseYearInput = await screen.findByPlaceholderText(games[5].releaseYear);
+
+      userEvent.type(releaseYearInput, '10-09-2022');
+
+      expect(releaseYearInput).toHaveStyle(invalidStyle);
+    });
+
+    it('Ao digitar uma data válida, o input deverá ficar com características verdes', async () => {
+      const releaseYearInput = await screen.findByPlaceholderText(games[5].releaseYear);
+
+      userEvent.type(releaseYearInput, '10/09/2022');
+
+      expect(releaseYearInput).toHaveStyle(validStyle);
+    });
   });
 });
