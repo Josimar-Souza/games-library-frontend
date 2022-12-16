@@ -217,7 +217,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar um nome inválido, o input deverá ficar com características vermelhas', async () => {
-      const titleInput = await screen.findByPlaceholderText(games[5].title);
+      const titleInput = await screen.findByDisplayValue(games[5].title);
 
       userEvent.type(titleInput, 'Lk');
 
@@ -225,7 +225,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar um nome válido, o input deverá ficar com características verdes', async () => {
-      const titleInput = await screen.findByPlaceholderText(games[5].title);
+      const titleInput = await screen.findByDisplayValue(games[5].title);
 
       userEvent.type(titleInput, 'Meu jogo 2');
 
@@ -233,7 +233,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma data inválida, o input deverá ficar com características vermelhas', async () => {
-      const releaseYearInput = await screen.findByPlaceholderText(games[5].releaseYear);
+      const releaseYearInput = await screen.findByDisplayValue(games[5].releaseYear);
 
       userEvent.type(releaseYearInput, '10-09-2022');
 
@@ -241,7 +241,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma data válida, o input deverá ficar com características verdes', async () => {
-      const releaseYearInput = await screen.findByPlaceholderText(games[5].releaseYear);
+      const releaseYearInput = await screen.findByDisplayValue(games[5].releaseYear);
 
       userEvent.type(releaseYearInput, '10/09/2022');
 
@@ -249,7 +249,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma sinopse inválida, o input deverá ficar com características vermelhas', async () => {
-      const sinopseInput = await screen.findByPlaceholderText(games[5].sinopse);
+      const sinopseInput = await screen.findByDisplayValue(games[5].sinopse);
 
       userEvent.type(sinopseInput, 'sinopse');
 
@@ -257,7 +257,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma sinopse válida, o input deverá ficar com características verdes', async () => {
-      const sinopseInput = await screen.findByPlaceholderText(games[5].sinopse);
+      const sinopseInput = await screen.findByDisplayValue(games[5].sinopse);
 
       userEvent.type(sinopseInput, 'Essa é minha sinpse do jogo!');
 
@@ -265,7 +265,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma desenvolvedora inválida, o input deverá ficar com características vermelhas', async () => {
-      const developerInput = await screen.findByPlaceholderText(games[5].developer);
+      const developerInput = await screen.findByDisplayValue(games[5].developer);
 
       userEvent.type(developerInput, 'kju8');
 
@@ -273,7 +273,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma desenvolvedora válida, o input deverá ficar com características verdes', async () => {
-      const developerInput = await screen.findByPlaceholderText(games[5].developer);
+      const developerInput = await screen.findByDisplayValue(games[5].developer);
 
       userEvent.type(developerInput, 'Game Studio');
 
@@ -281,7 +281,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma publicadora inválida, o input deverá ficar com características vermelhas', async () => {
-      const publisherInput = await screen.findByPlaceholderText(games[5].publisher);
+      const publisherInput = await screen.findByDisplayValue(games[5].publisher);
 
       userEvent.type(publisherInput, 'Kjvs');
 
@@ -289,7 +289,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma publicadora válida, o input deverá ficar com características verders', async () => {
-      const publisherInput = await screen.findByPlaceholderText(games[5].publisher);
+      const publisherInput = await screen.findByDisplayValue(games[5].publisher);
 
       userEvent.type(publisherInput, 'Minha publicadora');
 
@@ -297,7 +297,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma url de trailer inválida, o input deverá ficar com características vermelhas', async () => {
-      const trailerUrlInput = await screen.findByPlaceholderText(games[5].trailerURL);
+      const trailerUrlInput = await screen.findByDisplayValue(games[5].trailerURL);
 
       userEvent.type(trailerUrlInput, 'Kjdfghiasjxnhfgkawq');
 
@@ -305,7 +305,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma url de trailer válida, o input deverá ficar com características verdes', async () => {
-      const trailerUrlInput = await screen.findByPlaceholderText(games[5].trailerURL);
+      const trailerUrlInput = await screen.findByDisplayValue(games[5].trailerURL);
 
       userEvent.type(trailerUrlInput, 'https://www.youtube.com/watch?v=GFd25aGfsER');
 
@@ -313,7 +313,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma nota metascore inválido, o input deverá ficar com características vermelhas', async () => {
-      const metascoreInput = await screen.findByPlaceholderText(games[5].metacritic.metascore);
+      const metascoreInput = await screen.findByDisplayValue(games[5].metacritic.metascore);
 
       userEvent.type(metascoreInput, '12');
 
@@ -321,7 +321,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma nota metascore válido, o input deverá ficar com características verdes', async () => {
-      const metascoreInput = await screen.findByPlaceholderText(games[5].metacritic.metascore);
+      const metascoreInput = await screen.findByDisplayValue(games[5].metacritic.metascore);
 
       userEvent.type(metascoreInput, '9.8');
 
@@ -329,7 +329,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma nota userscore inválida, o input deverá ficar com características vermelhas', async () => {
-      const userScoreInput = await screen.findByPlaceholderText(games[5].metacritic.userscore);
+      const userScoreInput = await screen.findByDisplayValue(games[5].metacritic.userscore);
 
       userEvent.type(userScoreInput, '14');
 
@@ -337,7 +337,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma nota userscore válida, o input deverá ficar com características verdes', async () => {
-      const userScoreInput = await screen.findByPlaceholderText(games[5].metacritic.userscore);
+      const userScoreInput = await screen.findByDisplayValue(games[5].metacritic.userscore);
 
       userEvent.type(userScoreInput, '5.6');
 
@@ -345,7 +345,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma url de imagem inválida, o input deverá ficar com características vermelhas', async () => {
-      const imageUrlInput = await screen.findByPlaceholderText(games[5].image);
+      const imageUrlInput = await screen.findByDisplayValue(games[5].image);
 
       userEvent.type(imageUrlInput, 'fklakdd5a4w78erkn');
 
@@ -353,7 +353,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma url de imagem válida, o input deverá ficar com características verdes', async () => {
-      const imageUrlInput = await screen.findByPlaceholderText(games[5].image);
+      const imageUrlInput = await screen.findByDisplayValue(games[5].image);
 
       userEvent.type(imageUrlInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_SL1500_.jpg');
 
@@ -361,7 +361,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma url de imagem de backdrop inválida, o input deverá ficar com características vermelhas', async () => {
-      const backdropImageInput = await screen.findByPlaceholderText(games[5].backdrop);
+      const backdropImageInput = await screen.findByDisplayValue(games[5].backdrop);
 
       userEvent.type(backdropImageInput, 'asdninawd857asd');
 
@@ -369,7 +369,7 @@ describe('Testes da página de atualização', () => {
     });
 
     it('Ao digitar uma url de imagem de backdrop válida, o input deverá ficar com características verdes', async () => {
-      const backdropImageInput = await screen.findByPlaceholderText(games[5].backdrop);
+      const backdropImageInput = await screen.findByDisplayValue(games[5].backdrop);
 
       userEvent.type(backdropImageInput, 'https://m.media-studio-tz.com/images/I/81nuHUOENtL._AC_LK1786_.jpg');
 
